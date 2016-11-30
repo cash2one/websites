@@ -1,0 +1,40 @@
+{%extends file="base.html"%}
+
+{%block name="body"%}
+<div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="index.php?c=main&m=welcome">主页</a>
+            </li>
+
+
+            {%block name="breadcrumb"%}
+
+            {%/block%}
+        </ul><!-- /.breadcrumb -->
+
+        <div class="nav-search" id="nav-search">
+            <button class="btn btn-light btn-xs btn-app re" onclick="self.location.reload()">
+                <i class="ace-icon fa fa-refresh bigger-120"></i>
+            </button>
+        </div><!-- /.nav-search -->
+    </div>
+
+    <div class="page-content">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                {%block name="content"%}
+
+                {%/block%}
+                <!-- PAGE CONTENT ENDS -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.page-content -->
+</div>
+{%/block%}

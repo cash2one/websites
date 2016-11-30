@@ -1,0 +1,112 @@
+ <div class="layout banner"><?=$config_site['ad_index']?></div>
+ <div class="m3"></div>
+        <!--main star-->
+        <div class="main">
+            <div class="layout out">
+                <div class="weixinBox_707 in">
+                    <div class="out">
+                        <div class="weixinBox_685 boxDashed padb20  marbottom10  in">
+                            <div class="ztitle padlr10">
+                                <h2>热门体育公众号大全</h2>
+                            </div>
+                            <div class="zbg padlr10">
+                                <ul class="weixinIcoBlock out">
+                        <?php foreach ($this->sys_cms_category->hotWeixinList(9,'id desc',6) as $key => $value) {?>    
+                                    <li class="in">
+                                        <a class="pic in"  href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['catname']?>">
+                                            <img src="<?=$value['logourl']?>" alt="<?=$value['catname']?>" />
+                                        </a>
+                                        <a class="txt in"  href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['catname']?>">
+                                            <h2><?=$value['catname']?></h2>
+                                            <span><?=$value['weixinhao']?></span>
+                                        </a>
+                                    </li>
+                        <?php }?>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="weixinBox_323 boxDashed padb20 in">
+                            <div class="ztitle padlr10">
+                                <h2>最新资讯</h2>
+                            </div>
+                            <div class="zbg padlr10">
+                                <ul class="newList">
+               <?php foreach ($this->sys_cms_content->getNewList(8) as $key => $value) {?>             
+              <li class="out"><a class="in" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a><span class="time in">
+              <?=date('m-d',strtotime($value['buildtime']))?></span></li>
+                <?php }?>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="weixinBox_323 marleft15 boxDashed padb20  in">
+                            <div class="ztitle padlr10">
+                                <h2>最热资讯</h2>
+                            </div>
+                            <div class="zbg padlr10">
+                                <ul class="newList">
+               <?php foreach ($this->sys_cms_content->getNewList(8,8,'onclick desc') as $key => $value) {?>             
+              <li class="out"><a class="in" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a><span class="time in"> <?=date('m-d',strtotime($value['buildtime']))?></span></li>
+                <?php }?>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="banner"><?=$config_site['ad_index2']?></div>
+                 <div class="m3"></div>
+                    </div>
+                </div>
+                <div class="weixinBox_240 marleft10 boxDashed h636 in">
+                 <div class="banner"><?=$config_site['ad_index2']?></div>
+                 <div class="m3"></div>
+                    <div class="ztitle padlr10">
+                        <h2>最新公众号</h2>
+                    </div>
+                    <div class="zbg padlr10">
+                        <ul class="weixinIcoBlock">
+                        <?php foreach ($this->sys_cms_category->hotWeixinList(6) as $key => $value) {?>    
+                            <li class="in">
+                                <a class="pic in"  href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['catname']?>">
+                                    <img src="<?=$value['logourl']?>" alt="<?=$value['catname']?>" />
+                                </a>
+                                <a class="txt in"  href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['catname']?>">
+                                    <h2><?=$value['catname']?></h2>
+                                    <span><?=$value['weixinhao']?></span>
+                                </a>
+                            </li>
+                        <?php }?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="m10"></div>
+            <div class="layout">
+                <div class="weixinbox960 boxDashed  padb20">
+                    <div class="ztitle padlr10">
+                        <h2>公众号号排行榜</h2>
+                    </div>
+                    <div class="zbg padlr10">
+                        <ul class="newList newListMuch out">
+                        <?php foreach ($this->sys_cms_category->hotWeixinList(20,'onclick desc') as $key => $value) {?>    
+                             <li class="in"><a  href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['catname']?>"><?=$value['catname']?></a></li>
+                        <?php }?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--main stop-->
+        <div class="m10"></div>
+        <!--friendlyLink star-->
+        <div class="layout fLine">
+             <div class="weixinbox960 boxDashed ">
+                    <div class="ztitle padlr10">
+                        <h2>友情链接</h2>
+                    </div>
+                    <div class="zbg fribox padlr10">
+            <?php foreach ($this->sys_cms_link->linklist('all') as $key => $value) {?>
+                <a href="<?=$value['url']?>" target="_blank"><?=$value['name']?></a>
+            <?php }?>
+                    </div>
+             </div>
+        </div>
+        <!--friendlyLink stop-->
+        <div class="m10"></div>

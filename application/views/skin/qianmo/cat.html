@@ -1,0 +1,104 @@
+
+<div class="qianmo-content">
+<div class="center-container qianmo-index-container qianmo-channel-container">
+        <div class="qianmo-index-article">
+                <div class="qianmo-article-top qianmo-flexarea">
+        <?php foreach ($this->sys_cms_content->getWhereList('and class_id = '.$_GET['cid'].' and isrecommend>1',8,0,' order by id desc') as $key => $value) {?>  
+        <div class="column">
+                <a  target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>">
+                        <img src="<?=$value['headimage']?>" alt="<?=$value['title']?>"/>
+                        <p><?=$value['description']?></p>
+                </a>
+        </div>
+        <?php }?>
+
+                        <div id="banner" class="qianmo-slide">
+                                <div class="qianmo-slider-inner">
+                        <?php foreach ($this->sys_cms_content->getWhereList('and class_id = '.$_GET['cid'].' and isrecommend=1',4,0,' order by id desc') as $key => $value) {?>  
+                        <a  class="qianmo-slider-slide"  href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>">
+                                <img src="<?=$value['videoimg']?>" alt="<?=$value['title']?>"/>
+                                <span><?=$value['title']?></span>
+                        </a>
+                        <?php }?>
+                                </div>
+                                <div class="qianmo-slider-indicator"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                </div>
+                <div class="qianmo-index-section" data-limit="20" data-id="3d764aa5-086a-47af-89fc-b5385a0b70b0" data-pagecount="50">
+                        <div class="qianmo-index-section-header">
+                                <a class="title">最新投稿
+</a>
+                        </div>
+                        <div class="qianmo-flexarea">
+
+           <?php foreach ($news as $key => $value) {?>
+                <div class="column">
+                        <div class="thumbnail video-thumbnail">
+                                <a class="video-thumbnail-con" target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" >
+                                        <img src="<?=$value['headimage']?>" alt="<?=$value['title']?>"/>
+                                        <div class="time" data-duration="44"><?=date('m-d H:i',strtotime($value['buildtime']))?></div>
+                                </a>
+                                <div class="caption">
+                                        <a href="<?=$domainname?>/view-<?=$value['id']?>.html" ><?=$value['title']?></a><p><?=mb_substr($value['description'],0,16)?></p>
+                                </div>
+                        </div>
+                </div>
+            <?php } ?>
+
+                        </div>
+                </div>
+            <!--page star-->
+            <div class="page">
+            <?php  $this->pagercat->show();  ?>
+            </div>
+            <!--page stop-->    
+        </div>
+        <div class="qianmo-index-aside">
+                <div class="qianmo-aside-banner">
+                        <a href="<?=$domainname?>">
+                                <img src="<?=$skin?>/images/app_sidebar.jpg" alt="" />
+                        </a>
+                </div>
+                <div class="qianmo-aside-wrapper">
+                        <div class="qianmo-aside-title">
+                                <h3>娱乐排行</h3>
+                        </div>
+
+                        <?php 
+                        $topnum = 0;
+                        foreach ($this->sys_cms_content->getWhereList('and class_id='.$_GET['cid'].'',10,0,' order by onclick desc') as $key => $value) {
+                        $topnum = $topnum + 1;
+                        $topclass = $topnum > 3 ? 'top3' : ''; 
+                        ?>
+                        <div class="qianmo-aside-info">
+                                <a  href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" >
+                                        <img src="<?=$value['headimage']?>" alt="<?=$value['title']?>">
+                                </a>
+                                <div class="caption">
+                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" ><?=$value['title']?></a>
+                                        <div class="caption-info">
+                                                <div class="icon-con"><i class="fa fa-user"></i><span><?=$value['catname']?></span></div>
+                                                <div class="number"><?=$topnum?></div>
+                                        </div>
+                                </div>
+                        </div>
+                        <?php }?>
+
+                </div>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

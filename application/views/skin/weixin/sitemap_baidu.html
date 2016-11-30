@@ -1,0 +1,37 @@
+<?php
+$list = "";
+$list .= '<?xml version="1.0" encoding="utf-8"?>';
+$list .=  '<urlset>';
+
+
+foreach ($posts as $post){
+
+        $arr = explode(" ", $post['buildtime']);
+        $putdate = $arr[0];
+        if($putdate=="0000-00-00"){
+                $putdate = date('Y-m-d',time());
+        } 
+        $list .=  '<url>';
+        $list .=  '<loc>'.$domainname.'/view-'.$post['id'].'.html'.'</loc>';
+        $list .=  '<lastmod>'.$putdate.'</lastmod>';
+        $list .=  '<changefreq>'.'always'.'</changefreq>';
+        $list .=  '<priority>'.'0.6'.'</priority>';
+        $list .=  '<data>';
+        $list .=  '<display>';
+        $list .=  '<title><![CDATA['.$post['title'].']]></title>';
+        $list .=  '<content><![CDATA['.str_replace(" ", "", $post['description']).']]></content>';
+        $list .=  '<tag><![CDATA['.$post['catname'].']]></tag>';
+        $list .=  '<pubTime>'.$putdate.'T'.$arr[1].'</pubTime>';
+        $list .=  '<breadCrumb title="" url="'.$domainname.'/view-'.$post['id'].'.html'.'"></breadCrumb>';
+        $list .=  '<thumbnail loc="'.$post['imglink'].'"></thumbnail>';
+        $list .=  '<image loc="'.$post['imglink'].'"></image>';
+        $list .=  '</display>';
+        $list .=  '</data>';
+        $list .=  '</url>';
+}
+ 
+$list .=  '</urlset>';
+echo $list;
+?>
+
+

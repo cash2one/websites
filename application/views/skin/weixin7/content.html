@@ -1,0 +1,89 @@
+ <div class="layout banner"><?=$config_site['ad_content']?></div>
+ <div class="m3"></div>
+ <!--main star-->
+        <div class="main">
+            <div class="layout out">
+                <div class="weixinbox665 boxDashed  in">
+                    <div class="ztitle padlr20">
+                        您的位置： <?=$mypostion?>
+                    </div>
+                     <div class="m3"></div>
+                     <div class="banner"><?=$config_site['ad_content2']?></div>
+                    <div class="m10"></div>
+                    {data_content}
+                    <input type="hidden" id="content_id" value="{id}">
+                    <div class="zContent padlr20">
+                        <h1 class="ctitle bottomBorder">{title}</h1>
+                        <div class="sourTime">
+                            <span>{buildtime}</span>&nbsp;<span>{catname}</span>
+                        </div>
+                        <div class="ct">
+                            <p>{content}</p>
+                        </div>
+                        <div class="perNext">
+                            <div class="per"><span>上一篇：</span><?=$content_per?></div>
+                            <div class="next"><span>下一篇：</span><?=$content_next?></div>
+                        </div>
+                    </div>
+                    {/data_content}
+                    <div class="m50"></div>
+                    <div class="loveSee ">
+                        <div class="ztitle padlr20">
+                            <h3>大家都爱看</h3>
+                        </div>
+                        <div class="loveListBlock padlr20">
+                            <ul class="out">
+                             <?php foreach ($this->sys_cms_content->getNewList(10,10) as $key => $value) {?>       
+                                    <li class="in">
+                                        <a  href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a>
+                                    </li>
+                            <?php }?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="weixinBox_240 marleft10 boxDashed in">
+                <div class="banner"><?=$config_site['ad_content3']?></div>
+                    <div class="ztitle padlr10">
+                        <h2>最新公众号</h2>
+                    </div>
+                    <div class="zbg padlr10">
+                        <ul class="weixinIcoBlock">
+                        <?php foreach ($this->sys_cms_category->hotWeixinList(10,'id desc') as $key => $value) {?>    
+                            <li class="in">
+                                <a class="pic in" href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['catname']?>">
+                                    <img src="<?=$value['logourl']?>" alt="<?=$value['catname']?>">
+                                </a>
+                                <a class="txt in" href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['catname']?>">
+                                    <h2><?=$value['catname']?></h2>
+                                    <span>微信号：<?=$value['weixinhao']?></span>
+                                </a>
+                            </li>
+                        <?php }?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--main stop-->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var id  = $("#content_id").val();
+                $.ajax({
+                    type:'GET',
+                    url:'/index.php?c=cms_index&m=viewClick&id='+id+''
+                });
+
+                var imgobj = $(".zContent img");
+                $.each(imgobj,function (key){
+                    var datasrc = $(this).attr("data-src");
+                    if(datasrc == undefined){
+
+                    }else{
+                        $(this).attr("src",datasrc);
+                    }
+                });
+                
+            });
+        </script>

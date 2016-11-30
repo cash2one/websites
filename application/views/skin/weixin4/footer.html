@@ -1,0 +1,26 @@
+        <div class="m20"></div>
+        <!--footer star-->
+        <div class="layout footer">
+            <div class="footerBody">
+                <a style="padding-right:0px;" href="/skin/weixin/html/link.html" target="_blank" rel="nofollow">联系站长</a>&nbsp|&nbsp
+                <span><?=$beian?></span>&nbsp|&nbsp
+                <a href="<?=$domainname?>/sitemap.xml" title="网站地图">网站地图</a>&nbsp|&nbsp
+                <?=$zhanzhangtong?>
+                <?=$bottom?>
+                <?=$ad_index?>
+            </div>
+        </div>
+        <!--footer stop-->
+        <!--flink star-->
+        <div class="layout flink">
+            <div class="flinkBody">
+                <span> 友情链接：</span>
+                <?php foreach ($this->sys_cms_link->linklist('all') as $key => $value) {?>
+                <a href="<?=$value['url']?>" target="_blank"><?=$value['name']?></a>
+                <?php }?>
+            </div>
+        </div>
+        <!--flink stop-->
+    </div>
+</body>
+</html>

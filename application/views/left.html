@@ -1,0 +1,60 @@
+{%extends file="base.html"%}
+
+{%block name="css"%}
+<style>
+    .menu-text {
+        font-size: 15px;
+    }
+
+    a {
+        font-size: 14px;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .no-skin .sidebar {
+        border: 0px;
+    }
+</style>
+
+{%/block%}
+
+{%block name="body"%}
+<div id="sidebar" class="sidebar">
+
+
+<ul class="nav nav-list" style="top: 0px;height: 100%">
+    {%foreach from=$menu item=module%}
+    {%if count($module.page)>0%}
+    <li class="hsub">
+        <a href="blank.html#" class="dropdown-toggle">
+            <i class="menu-icon fa {%$module.module_icon|default:'fa-desktop'%}"></i>
+            <span class="menu-text"> {%$module.module_name%} </span>
+
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            {%foreach from=$module.page item=value%}
+            <li class="">
+                <a href="{%$value.module_resource%}" target="mainFrame">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    {%$value.module_name%}
+                </a>
+                <b class="arrow"></b>
+            </li>
+            {%/foreach%}
+        </ul>
+    </li>
+    {%/if%}
+    {%/foreach%}
+</ul>
+<!-- /.nav-list -->
+
+
+</div>
+{%/block%}

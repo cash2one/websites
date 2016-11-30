@@ -1,0 +1,74 @@
+<div class="qianmo-content">
+<div>
+<div class="qianmo-video-player">
+<div class="qiano-player-coverpage"></div>
+<div class="watch-container">
+<div class="qianmo-player-info">
+{data_content}
+<div class="qianmo-comment-left inline-block fl">
+        <div class="qianmo-video-summary">
+            <input type="hidden" id="civideoid" value="{id}">
+                <h3>{title}
+                                <i  style="float:right">
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                                </i>
+                </h3>
+
+                <h5>发布于 <span data-posttime="2015-11-09 04:41:44">{buildtime}</span>
+                        播放次数：<span>{onclick}</span><span><a href="<?=$domainname?>/list-{cid}.html">{catname}</a></span>
+                </h5>
+                <p>{content}</p>
+                <div class="qianmo-summary-tags">
+                <?php foreach ($this->sys_cms_content->getTagsByAid($data_content[0]['id']) as $key => $value) {?>
+                     <a  href="<?=$domainname?>/tags-<?=$value['tid']?>.html" ><?=$value['tagname']?></a>
+                <?php }?>
+
+
+                </div>
+
+        </div>
+        <div class="qianmo-comment-info">
+                <p class="qianmo-comment-num"><span></span></p>
+                <div class="qianmo-commentList">
+                    上一篇：<?=$content_per?>  
+                    下一篇：<?=$content_next?>
+                </div>
+        </div>
+</div>
+{/data_content}
+<div class="qianmo-sidebar-postlist qianmo-sidebar-card qianmo-comment-right inline-block fr">
+        <h3>当前排行</h3>
+        <ul>
+        
+            <?php 
+             $topnum = 0;
+             foreach ($this->sys_cms_content->getNewList(10,10,'id desc') as $key => $value) {
+             $topnum = $topnum + 1;
+             ?>  
+                <li>
+                        <div>
+                                <a  href="<?=$domainname?>/view-<?=$value['id']?>.html">
+                                        <img src="<?=$value['headimage']?>" alt="<?=$value['title']?>" /></a><div class="sub-content-text">
+                                                <h5 class="sub-content-title"><a href="<?=$domainname?>/view-<?=$value['id']?>.html"><?=$value['title']?></a></h5>
+                                                <div><i class="fa fa-user"></i><a href="<?=$domainname?>/list-<?=$value['cid']?>.html"><?=$value['catname']?></a><span class="fl red"><?=$topnum?></span></div>
+                                        </div>
+                        </div>
+                        <p class="sub-content-summary"><?=$value['title']?></p>
+                </li>
+                        <?php }?>
+            
+
+        </ul>
+            <script type="text/javascript">
+             $(document).ready(function(){
+                var vid = $("#civideoid").val();
+                $.ajax({
+                    type:'GET',
+                    url:'/index.php?c=cms_index&m=viewClick&id='+vid+''
+                });   
+            });
+            </script>
+
+
+

@@ -1,0 +1,155 @@
+ <!--main star-->
+                <section class="conter marauto">
+                        <script type="text/javascript">loading('33%', 1000)</script>
+                        <div class="mbx">
+                                <i class="icon-home icon-large" style="font-size: 14px;"></i>
+                                <?=$mypostion?>
+                        </div>
+                        <div id="container">
+                                <div id="content" role="main">
+                                        <h1 class="page-title">分类目录归档：<span>{catname}</span></h1>
+                                        <div class="archive-meta">
+                                                <p>{description}</p>
+                                        </div>
+                                        <div class="top_box">
+                                        </div>
+                                        <!--模块文章列表 star-->
+                                        <?php foreach ($news as $key => $value) {?>
+                                        <article class="post_box">
+                                                <div class="c-top" id="post-46981">
+                                                        <div class="datetime">
+                                                                <?=date('y',strtotime($value['buildtime']))?><br />
+                                                                <?=date('m-d',strtotime($value['buildtime']))?>
+                                                        </div>
+                                                        <header class="tit">
+                                                                <h2 class="h1">
+                                                                        <a href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" rel="bookmark"><?=$value['title']?></a>
+                                                                        <span class='title_new'>NEW</span>
+
+                                                                </h2>
+                                                                <aside class="iititle">
+                                                                        <span>
+                                                                                <i class="icon-user icon-large"></i>
+                                                                                <a href="<?=$domainname?>" title="<?=$sitename?>" rel="author"><?=$sitename?></a>
+
+                                                                        </span>
+                                                                        <span>
+                                                                                <i class="icon-folder-open icon-large"></i>
+                                                                                <a href="<?=$domainname?>/list-<?=$value['cid']?>.html" rel="category tag"><?=$value['catname']?></a>
+
+                                                                        </span>
+                                                                        <span>
+                                                                                <i class="icon-eye-open icon-large"></i>围观<?=$value['onclick']?>次
+
+                                                                        </span>
+                                                                        <span>
+                                                                                <i class="icon-comment-alt icon-large"></i>
+                                                                                <a href="javascript:;" class="ds-thread-count">留下评论</a>
+                                                                        </span>
+
+                                                                </aside>
+                                                        </header>
+                                                </div>
+                                                <div class="c-con">
+                                                        <a href="<?=$domainname?>/view-<?=$value['id']?>.html" class="disp_a" rel="bookmark" title="<?=$value['title']?>">
+                                                                <img src="<?=$value['headimage']?>" alt="<?=$value['title']?>" /><?=mb_substr($value['description'],0,180)?> </a><a href="<?=$domainname?>/view-<?=$value['id']?>.html" class="more-link">Read More ></a><div class="cls"></div>
+                                                </div>
+                                                <div class="c-bot">
+                                                        <aside class="cb_bq">
+                                                                <i class="icon-tag icon-large"></i>
+                                                                <a href="javascript:;" rel="tag">QQ农场</a>，
+                                                                <a href="javascript:;" rel="tag">营销知识</a>，
+                                                                <a href="javascript:;" rel="tag">运营</a>
+                                                        </aside>
+                                                        <div class="cls"></div>
+                                                </div>
+                                         </article>
+                                        <?php } ?>
+
+                                        <!--模块文章列表 stop-->
+
+                                        <div class="cls"></div>
+                                        <!--分页 star-->
+                                        <div class="page_num">
+                                                <a href='javascript:;' class='current'>1</a>
+                                                <a href='javascript:;'>2</a>
+                                                <a href='javascript:;'>3</a>
+                                                <a href='javascript:;'>4</a>
+                                                <a href='javascript:;'>5</a>
+                                                <a href='javascript:;'>6</a>
+                                                <a href='javascript:;'>7</a>
+                                                <a href='javascript:;'>8</a>
+                                                <a href='javascript:;'>9</a>
+                                                <a href='javascript:;'>10</a>
+                                                <a href="httpjavascript:;">下一页 &raquo;</a>
+                                        </div>
+                                        <!--分页 stop-->
+                                </div>
+                                <!-- #content -->
+                        </div>
+                        <!-- #container -->
+                        <script type="text/javascript">loading('55%', 1000)</script>
+                         <!-- 右侧内容 star-->
+                        <aside id="primary" class="side" role="complementary">
+                                <ul class="xoxo">
+                                        <li id="text-5" class="widget-container widget_text">
+                                                <div class="textwidget">
+                                                        <a target="_blank" href="javascript:;">
+                                                                <img alt="云表格" src="<?=$skin?>/images/300x300.png">
+                                                        </a>
+                                                </div>
+                                        </li>
+                                        <li id="text-3" class="widget-container widget_text">
+                                                <h3 class="widget-title">推荐运营专题</h3>
+                                                <div class="textwidget">
+                                                        <?php foreach ($this->sys_cms_content->getNewList(10,0,'id desc') as $key => $value) { ?>
+                                                            <p>
+                                                                    <a href="<?=$domainname?>/view-<?=$value['id']?>.html" ><?=$value['title']?></a>
+                                                            </p>
+                                                        <?php }?>  
+                                                </div>
+                                        </li>
+                                       
+                                       
+                                        <li id="recent-posts-2" class="widget-container widget_recent_entries">
+                                                <h3 class="widget-title">最新运营文章</h3>
+                                                <ul>
+                                                        <?php foreach ($this->sys_cms_content->getNewList(10,10,'id desc') as $key => $value) { ?>
+                                                                <li>
+                                                                        <a href="<?=$domainname?>/view-<?=$value['id']?>.html"><?=$value['title']?></a>
+                                                                </li>
+                                                        <?php }?>
+                                                </ul>
+                                        </li>
+                                        <li id="ds-top-threads-2" class="widget-container ds-widget-top-threads">
+                                                <h3 class="widget-title">随机运营文章</h3>
+                                                <ul class="ds-top-threads" data-num-items="25" data-range="monthly">
+                                                        <?php foreach ($this->sys_cms_content->getWhereList('and isrecommend=2',10,0,' order by newsdate desc') as $key => $value) {?>
+                                                                <li>
+                                                                        <a href="<?=$domainname?>/view-<?=$value['id']?>.html"><?=$value['title']?></a>
+                                                                </li>
+                                                        <?php }?>   
+                                                </ul>
+                                        </li>
+                                        <script>
+                                                if (typeof DUOSHUO !== 'undefined')
+                                                        DUOSHUO.TopThreads && DUOSHUO.TopThreads('.ds-top-threads');
+                                        </script>
+                                        <li id="tag_cloud-2" class="widget-container widget_tag_cloud">
+                                                <h3 class="widget-title">热门运营词</h3>
+                                                <div class="tagcloud">
+                                                       <?php foreach ($this->sys_cms_content->getTagsList(60,0) as $key => $value) { $randnum = mt_rand(0,3000)?>
+
+                                                        <a href='<?=$domainname?>/tags-<?=$value['id']?>.html' class='tag-link-<?=$randnum?>' title='<?=$value['name']?>' style='font-size: 14px;'><?=$value['name']?></a>
+                                                        <?php }?>
+                                                </div>
+                                        </li>
+                                        
+                                </ul>
+                        </aside>
+                         <!-- 右侧内容 stop-->
+                        <script type="text/javascript">loading('78%', 1000)</script>
+                        <div class="cls"></div>
+                </section>
+                 <div class="cls"></div>
+<!-- main star -->

@@ -1,0 +1,19 @@
+{%extends file="base_content.html"%}
+{%block name="breadcrumb"%}
+<li class="active">用户统计</li>
+{%/block%}
+
+{%block name="content"%}
+
+<div id="my_chart"></div>
+
+{%/block%}
+{%block name="js"%}
+<script type="text/javascript" src="{%$smarty.const.RES_PATH%}/assets/js/swfobject.js"></script>
+<script>
+    swfobject.embedSWF(
+            "{%$smarty.const.RES_PATH%}/open-flash-chart.swf", "my_chart",
+            "100%", "380", "9.0.0", "expressInstall.swf",
+            {"data-file":"index.php?c=stat_user%26m=reg_data"} );
+</script>
+{%/block%}

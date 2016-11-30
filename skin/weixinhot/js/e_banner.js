@@ -1,0 +1,1 @@
+﻿$("body").append('<div class="ebanner" style="position:fixed;bottom:-30px;right:0;"><a href="http://www.esudai.com/ac/newregister?soure=chian-7" title="e速贷" target="_blank"><img src="/skin/weixinhot/images/ad.gif" alt="e速贷" /> </a> </div>');

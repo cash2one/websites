@@ -1,0 +1,119 @@
+
+<!--header-web-->
+<div id="main">
+
+     <div id="container">
+  <nav id="mbx">当前位置： <?=$mypostion?></nav>
+<!--mbx-->
+        <article class="content">
+      {data_content}
+      <header class="contenttitle"> 
+          <a href="<?=$domainname?>/view-{id}.html#comments" class="count" >2</a>
+          <div class="mscc">
+          <h1 class="mscctitle"> <a href="<?=$domainname?>/view-{id}.html">{title}</a> </h1>
+          <address class="msccaddress ">
+		  <em>已有
+           {onclick} 人阅读此文 -</em>
+		  
+           <time>
+            {buildtime}          </time>
+		  - 
+          {source}         </address>    
+          </div>
+      </header>
+            <div class="content-text">
+        <p>{content}</p>
+      <div class="tagg">
+        <ul id="menu-tag" class="menu">
+              <?php foreach ($this->sys_cms_content->getTagsByAid($data_content[0]['id']) as $key => $value) {?>
+                     <li class="menu-item="><a  href="<?=$domainname?>/tags-<?=$value['tid']?>.html" ><?=$value['tagname']?></a></li>
+                <?php }?>
+              </p>
+            </ul></div>
+      </div>
+      {/data_content}
+
+      <!--content_text-->
+      <div class="fenxian">
+          <div class="qqzone">
+      <a href="javascript:void(0);" onclick="window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(document.location.href));return false;" title="分享到QQ空间"><img src="<?=$skin?>/images/qqzone.png" alt="分享到QQ空间" /><span>QQ空间</span></a>
+      </div> 
+      <div class="xinlan"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://v.t.sina.com.cn/share/share.php?',u=d.location.href,p=['url=',e(u),'&title=',e(d.title),'&appkey=4144218247'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" title="分享到新浪微博" target="_blank" ><img src="<?=$skin?>/images/xinlan.png" alt="分享到新浪微博" /><span>新浪微博</span></a>
+      </div>
+      </div>
+    </article>
+    <!--content-->
+    
+    <!--相关文章-->
+    <div class="xianguan">
+      <div class="xianguantitle">相关文章！</div>
+      <ul class="pic">
+                <?php foreach ($this->sys_cms_content->getNewList(4,0,'id desc') as $key => $value) {?>
+                <li>
+                  <a href="<?=$domainname?>/view-<?=$value['id']?>.html" target="_blank">
+                    <img width="400" height="244" src="<?=$value['headimage']?>" class="attachment-medium wp-post-image" alt="FEFE" /></a>
+                    <a rel="bookmark" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"  class="link" target="_blank">
+          <?=$value['title']?></a>        <address class="meccaddress">
+        <time><?=date('m-d H:i',strtotime($value['buildtime']))?></time>-
+         <a href="<?=$domainname?>/list-<?=$value['cid']?>.html" rel="<?=$value['catname']?>"><?=$value['catname']?></a>
+       </address>
+       <p><?=mb_substr($value['description'],0,100)?></p>
+</li>
+<?php }?>      
+              </ul>
+    </div>
+    <!--相关文章-->
+    
+    <div class="comment" id="comments">
+       <ul id="comment"></ul>
+<div id="respond">
+<form  method="post" id="commentform" >
+<input type="text" name="author" class="inputt" size="22" tabindex="1" value="匿名" onfocus="this.value='';" onblur="if(this.value==''){this.value='匿名';}" />
+<input type="text" name="email" class="inputt" size="22" tabindex="2" value="hao@yzipi.com" onfocus="this.value='';" onblur="if(this.value==''){this.value='hao@yzipi.com';}" />
+<textarea name="comment" id="comment"  rows="5" tabindex="4" placeholder="" ></textarea>
+<input name="submit" type="submit" id="submit" tabindex="2" value="提交评论" />
+<input type='hidden' name='comment_post_ID' value='2737' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</form>
+</div>
+
+    </div>
+    <!-- .nav-single -->
+          </div>
+  <!--Container End-->
+  <aside id="sitebar"> 
+  <!--erweima-->
+  <div class="sitebar_list">
+    <div class="wptag"> 
+      <span class="tagtitle">热词 ...</span>
+      <div class="tagg">
+        <ul id="menu-tag" class="menu">
+          <?php foreach ($this->sys_cms_content->getTagsList() as $key => $value) {?>
+               <li class="menu-item="><a  href="<?=$domainname?>/tags-<?=$value['id']?>.html" ><?=$value['name']?></a></li>
+          <?php }?>
+        </ul>
+      </div>
+      
+      <span class="tagtitle">热门标签 ...</span>
+      <div class="tagg">
+        <ul id="menu-tag" class="menu">
+          <?php foreach ($this->sys_cms_content->getTagsList(30,30) as $key => $value) {?>
+               <li class="menu-item="><a  href="<?=$domainname?>/tags-<?=$value['id']?>.html" ><?=$value['name']?></a></li>
+          <?php }?>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="sitebar_list">
+    <h4 class="sitebar_title">栏目随机</h4>
+        <ul class="sitebar_list_ul">
+          <?php foreach ($this->sys_cms_content->getNewList(10,20,'id desc') as $key => $value) { ?>
+           <li><a href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+           <?=$value['title']?></a></li>
+          <?php }?>
+          </ul>
+      </div>
+    </aside>
+  <div class="clear"></div>
+</div>
+<!--main-->

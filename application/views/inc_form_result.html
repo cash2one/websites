@@ -1,0 +1,17 @@
+{%if isset($error)%}
+<div class="alert alert-danger">
+    <strong>
+        <i class="icon-remove"></i>
+        {%$do_result|default:''%}
+    </strong>
+</div>
+{%else if isset($do_result)%}
+<div class="alert alert-block alert-success">
+    <strong>
+        <i class="icon-ok"></i>
+        {%$do_result|default:''%}
+    </strong>
+</div>
+{%/if%}
+
+

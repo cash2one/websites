@@ -1,0 +1,495 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>列表页</title>
+        <link href="../css/reset.css" rel="stylesheet" />
+        <link href="../css/base.css" rel="stylesheet" />
+        <script src="../js/jquery-1.11.1.js"></script>
+        <script src="../js/fixed.js"></script>
+</head>
+<body>
+        <div class="zhenPage">
+                <!--header star-->
+                <div class="header">
+                        <div class="layout zhenFw out">
+                                <div class="logo in">
+                                        <a href="javascript:;" title="微信头条"></a>
+                                </div>
+                                <div class="search in">
+                                        <form class="out">
+                                                <div class="query-box in">
+                                                        <div class="q-border">
+                                                                <input type="text" name="query" class="query" />
+                                                        </div>
+                                                </div>
+                                                <div class="sbtn in">
+                                                        <input type="submit" value="内容搜索" />
+                                                </div>
+                                        </form>
+                                </div>
+                        </div>
+                </div>
+                <!--header stop-->
+                <div class="m15"></div>
+                <!--main star-->
+                <div class="main">
+                        <div class="layout zhenFw out">
+                                <div class="main-left in">
+                                        <div class="main-container">
+                                                <div class="nav" id="nav">
+                                                        <ul class="nav-box out">
+                                                                <li class="in current"><a href="javascript:;" title="推荐">推荐</a></li>
+                                                                <li class="in"><a href="javascript:;" title="段子手">段子手</a></li>
+                                                                <li class="in"><a href="javascript:;" title="财经迷">财经迷</a></li>
+                                                                <li class="in"><a href="javascript:;" title="私房活">私房活</a></li>
+                                                                <li class="in"><a href="javascript:;" title="汽车迷">汽车迷</a></li>
+                                                                <li class="in"><a href="javascript:;" title="科技咖">科技咖</a></li>
+                                                                <li class="in"><a href="javascript:;" title="八卦精">八卦精</a></li>
+                                                                <li class="in"><a href="javascript:;" title="养生堂">养生堂</a></li>
+                                                                <li class="in"><a href="javascript:;" title="潮人帮">潮人帮</a></li>
+                                                                <li class="in"><a href="javascript:;" title="美食家">美食家</a></li>
+                                                                <li class="in"><a href="javascript:;" title="古今通">古今通</a></li>
+                                                                <li class="in"><a href="javascript:;" title="旅行家">旅行家</a></li>
+                                                                <li class="in"><a href="javascript:;" title="点赞党">点赞党</a></li>
+                                                                <li class="in"><a href="javascript:;" title="星座控">星座控</a></li>
+                                                                <li class="in"><a href="javascript:;" title="体育迷">体育迷</a></li>
+                                                                <li class="in"><a href="javascript:;" title="辣妈帮">辣妈帮</a></li>
+                                                                <li class="in"><a href="javascript:;" title="职场人">职场人</a></li>
+                                                                <li class="in"><a href="javascript:;" title="爱生活">爱生活</a></li>
+                                                                <li class="in"><a href="javascript:;" title="学霸族">学霸族</a></li>
+                                                        </ul>
+                                                </div>
+                                                <div class="container-list">
+                                                        <ul class="su-bd su-list-bd" id="er-show">
+                                                                <li class="out">
+                                                                        <div class="weixin-img in">
+                                                                                <a href="javascript:;" title="一块去旅行">
+                                                                                        <span class="ico-bg"></span>
+                                                                                        <p class="ico-im">
+                                                                                                <img src="../images/weixin.jpg" />
+                                                                                        </p>
+                                                                                </a>
+                                                                                <div class="fxf">
+                                                                                        <div class="erweima clearfix" style="display: none;">
+                                                                                                <div class="erweima-img fl">
+                                                                                                        <em>
+                                                                                                                <img src="../images/weixin.jpg" /></em>
+                                                                                                        <img src="../images/erweima.jpg" />
+                                                                                                </div>
+                                                                                                <div class="phone fr"></div>
+                                                                                        </div>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h6>一块去旅行</h6>
+                                                                                <p class="m-txt m-list-txt">
+                                                                                        <span>微信号：hhzzttjjdd </span>
+                                                                                        <em>功能介绍:互联网头条,重磅新闻跟踪报道!</em>
+                                                                                </p>
+                                                                        </div>
+                                                                </li>
+                                                        </ul>
+                                                </div>
+                                                <script type="text/javascript">
+                                                        $("#er-show li").hover(function () {
+                                                                $('.fxf .erweima').show(600);
+
+                                                        }, function () {
+                                                                $('.fxf .erweima').hide(600);
+                                                        });
+                                                </script>
+                                                <div class="m20"></div>
+                                                <div class="container-list">
+                                                        <ul class="su-bd">
+                                                                <li class="out">
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h3><a href="javascript:;">即使蚂蚁，本身也有一种精神</a></h3>
+                                                                                <p class="m-txt">
+                                                                                        <a href="javascirpt:;" title=" " target="_blank">“即使蚂蚁，本身也有一种精神。一只蚂蚁过河肯定会被水冲走，蚂蚁怎么过河呢？一群蚂蚁密密麻麻地缠绕在一起，像球一样滚过河水去。当然，最外围的蚂蚁肯定被冲走了，但是整个蚂蚁群体就过了那条河。企业发展中...</a>
+                                                                                </p>
+                                                                                <p class="other">
+                                                                                        <span>阅读:</span>
+                                                                                        <i>384</i>
+                                                                                        <em class="time">2015-02-01</em>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="weixin-news-img in">
+                                                                                <a href="javascript:;" title="即使蚂蚁，本身也有一种精神">
+                                                                                        <img src="../images/link.jpg" />
+                                                                                </a>
+                                                                        </div>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h3><a href="javascript:;">即使蚂蚁，本身也有一种精神</a></h3>
+                                                                                <p class="m-txt">
+                                                                                        <a href="javascirpt:;" title=" " target="_blank">“即使蚂蚁，本身也有一种精神。一只蚂蚁过河肯定会被水冲走，蚂蚁怎么过河呢？一群蚂蚁密密麻麻地缠绕在一起，像球一样滚过河水去。当然，最外围的蚂蚁肯定被冲走了，但是整个蚂蚁群体就过了那条河。企业发展中...</a>
+                                                                                </p>
+                                                                                <p class="other">
+                                                                                        <span>阅读:</span>
+                                                                                        <i>384</i>
+                                                                                        <em class="time">2015-02-01</em>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="weixin-news-img in">
+                                                                                <a href="javascript:;" title="即使蚂蚁，本身也有一种精神">
+                                                                                        <img src="../images/link.jpg" />
+                                                                                </a>
+                                                                        </div>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h3><a href="javascript:;">即使蚂蚁，本身也有一种精神</a></h3>
+                                                                                <p class="m-txt">
+                                                                                        <a href="javascirpt:;" title=" " target="_blank">“即使蚂蚁，本身也有一种精神。一只蚂蚁过河肯定会被水冲走，蚂蚁怎么过河呢？一群蚂蚁密密麻麻地缠绕在一起，像球一样滚过河水去。当然，最外围的蚂蚁肯定被冲走了，但是整个蚂蚁群体就过了那条河。企业发展中...</a>
+                                                                                </p>
+                                                                                <p class="other">
+                                                                                        <span>阅读:</span>
+                                                                                        <i>384</i>
+                                                                                        <em class="time">2015-02-01</em>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="weixin-news-img in">
+                                                                                <a href="javascript:;" title="即使蚂蚁，本身也有一种精神">
+                                                                                        <img src="../images/link.jpg" />
+                                                                                </a>
+                                                                        </div>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h3><a href="javascript:;">即使蚂蚁，本身也有一种精神</a></h3>
+                                                                                <p class="m-txt">
+                                                                                        <a href="javascirpt:;" title=" " target="_blank">“即使蚂蚁，本身也有一种精神。一只蚂蚁过河肯定会被水冲走，蚂蚁怎么过河呢？一群蚂蚁密密麻麻地缠绕在一起，像球一样滚过河水去。当然，最外围的蚂蚁肯定被冲走了，但是整个蚂蚁群体就过了那条河。企业发展中...</a>
+                                                                                </p>
+                                                                                <p class="other">
+                                                                                        <span>阅读:</span>
+                                                                                        <i>384</i>
+                                                                                        <em class="time">2015-02-01</em>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="weixin-news-img in">
+                                                                                <a href="javascript:;" title="即使蚂蚁，本身也有一种精神">
+                                                                                        <img src="../images/link.jpg" />
+                                                                                </a>
+                                                                        </div>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h3><a href="javascript:;">即使蚂蚁，本身也有一种精神</a></h3>
+                                                                                <p class="m-txt">
+                                                                                        <a href="javascirpt:;" title=" " target="_blank">“即使蚂蚁，本身也有一种精神。一只蚂蚁过河肯定会被水冲走，蚂蚁怎么过河呢？一群蚂蚁密密麻麻地缠绕在一起，像球一样滚过河水去。当然，最外围的蚂蚁肯定被冲走了，但是整个蚂蚁群体就过了那条河。企业发展中...</a>
+                                                                                </p>
+                                                                                <p class="other">
+                                                                                        <span>阅读:</span>
+                                                                                        <i>384</i>
+                                                                                        <em class="time">2015-02-01</em>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="weixin-news-img in">
+                                                                                <a href="javascript:;" title="即使蚂蚁，本身也有一种精神">
+                                                                                        <img src="../images/link.jpg" />
+                                                                                </a>
+                                                                        </div>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h3><a href="javascript:;">即使蚂蚁，本身也有一种精神</a></h3>
+                                                                                <p class="m-txt">
+                                                                                        <a href="javascirpt:;" title=" " target="_blank">“即使蚂蚁，本身也有一种精神。一只蚂蚁过河肯定会被水冲走，蚂蚁怎么过河呢？一群蚂蚁密密麻麻地缠绕在一起，像球一样滚过河水去。当然，最外围的蚂蚁肯定被冲走了，但是整个蚂蚁群体就过了那条河。企业发展中...</a>
+                                                                                </p>
+                                                                                <p class="other">
+                                                                                        <span>阅读:</span>
+                                                                                        <i>384</i>
+                                                                                        <em class="time">2015-02-01</em>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="weixin-news-img in">
+                                                                                <a href="javascript:;" title="即使蚂蚁，本身也有一种精神">
+                                                                                        <img src="../images/link.jpg" />
+                                                                                </a>
+                                                                        </div>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h3><a href="javascript:;">即使蚂蚁，本身也有一种精神</a></h3>
+                                                                                <p class="m-txt">
+                                                                                        <a href="javascirpt:;" title=" " target="_blank">“即使蚂蚁，本身也有一种精神。一只蚂蚁过河肯定会被水冲走，蚂蚁怎么过河呢？一群蚂蚁密密麻麻地缠绕在一起，像球一样滚过河水去。当然，最外围的蚂蚁肯定被冲走了，但是整个蚂蚁群体就过了那条河。企业发展中...</a>
+                                                                                </p>
+                                                                                <p class="other">
+                                                                                        <span>阅读:</span>
+                                                                                        <i>384</i>
+                                                                                        <em class="time">2015-02-01</em>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="weixin-news-img in">
+                                                                                <a href="javascript:;" title="即使蚂蚁，本身也有一种精神">
+                                                                                        <img src="../images/link.jpg" />
+                                                                                </a>
+                                                                        </div>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h3><a href="javascript:;">即使蚂蚁，本身也有一种精神</a></h3>
+                                                                                <p class="m-txt">
+                                                                                        <a href="javascirpt:;" title=" " target="_blank">“即使蚂蚁，本身也有一种精神。一只蚂蚁过河肯定会被水冲走，蚂蚁怎么过河呢？一群蚂蚁密密麻麻地缠绕在一起，像球一样滚过河水去。当然，最外围的蚂蚁肯定被冲走了，但是整个蚂蚁群体就过了那条河。企业发展中...</a>
+                                                                                </p>
+                                                                                <p class="other">
+                                                                                        <span>阅读:</span>
+                                                                                        <i>384</i>
+                                                                                        <em class="time">2015-02-01</em>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="weixin-news-img in">
+                                                                                <a href="javascript:;" title="即使蚂蚁，本身也有一种精神">
+                                                                                        <img src="../images/link.jpg" />
+                                                                                </a>
+                                                                        </div>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h3><a href="javascript:;">即使蚂蚁，本身也有一种精神</a></h3>
+                                                                                <p class="m-txt">
+                                                                                        <a href="javascirpt:;" title=" " target="_blank">“即使蚂蚁，本身也有一种精神。一只蚂蚁过河肯定会被水冲走，蚂蚁怎么过河呢？一群蚂蚁密密麻麻地缠绕在一起，像球一样滚过河水去。当然，最外围的蚂蚁肯定被冲走了，但是整个蚂蚁群体就过了那条河。企业发展中...</a>
+                                                                                </p>
+                                                                                <p class="other">
+                                                                                        <span>阅读:</span>
+                                                                                        <i>384</i>
+                                                                                        <em class="time">2015-02-01</em>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="weixin-news-img in">
+                                                                                <a href="javascript:;" title="即使蚂蚁，本身也有一种精神">
+                                                                                        <img src="../images/link.jpg" />
+                                                                                </a>
+                                                                        </div>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <div class="weixin-news-info weixin-list-news-info in">
+                                                                                <h3><a href="javascript:;">即使蚂蚁，本身也有一种精神</a></h3>
+                                                                                <p class="m-txt">
+                                                                                        <a href="javascirpt:;" title=" " target="_blank">“即使蚂蚁，本身也有一种精神。一只蚂蚁过河肯定会被水冲走，蚂蚁怎么过河呢？一群蚂蚁密密麻麻地缠绕在一起，像球一样滚过河水去。当然，最外围的蚂蚁肯定被冲走了，但是整个蚂蚁群体就过了那条河。企业发展中...</a>
+                                                                                </p>
+                                                                                <p class="other">
+                                                                                        <span>阅读:</span>
+                                                                                        <i>384</i>
+                                                                                        <em class="time">2015-02-01</em>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="weixin-news-img in">
+                                                                                <a href="javascript:;" title="即使蚂蚁，本身也有一种精神">
+                                                                                        <img src="../images/link.jpg" />
+                                                                                </a>
+                                                                        </div>
+                                                                </li>
+                                                        </ul>
+                                                        <div class="m20"></div>
+                                                        <!--page star-->
+                                                        <div class="page">
+                                                                <ul class="page-nav inline-block">
+                                                                        <li><a class="current" href="javascript:void(0)">1</a></li>
+                                                                        <li><a href="/cat-3-2.html">2</a></li>
+                                                                        <li><a href="/cat-3-3.html">3</a></li>
+                                                                        <li><a href="/cat-3-4.html">4</a></li>
+                                                                        <li>...</li>
+                                                                        <li><a href="/cat-3-16.html">16</a></li>
+                                                                        <li class="next-page"><a href="/cat-3-2.html">下一页</a></li>
+                                                                </ul>
+                                                        </div>
+                                                        <!--page stop-->
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="main-right in">
+                                        <div class="xixi-box">
+                                                <div class="hd">
+                                                        <h3>最热收藏</h3>
+                                                        <span></span>
+                                                </div>
+                                                <div class="bd">
+                                                        <ul>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                        </ul>
+
+                                                </div>
+                                        </div>
+                                        <div class="m15"></div>
+                                        <div class="xixi-box">
+                                                <div class="hd">
+                                                        <h3>最热内容</h3>
+                                                        <span></span>
+                                                </div>
+                                                <div class="bd">
+                                                        <ul>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                                <li class="out">
+                                                                        <p class="txt in">
+                                                                                <a href="javascript:;" title="" target="_blank">为什么人类和动物一样喜欢挖洞？</a>
+                                                                                <i class="time">2015-10-32</i>
+                                                                        </p>
+                                                                        <p class="pic in">
+                                                                                <a href="javascirpt:;" title="文章图片" target="_blank">
+                                                                                        <img src="../images/weixin.jpg" />
+                                                                                </a>
+                                                                        </p>
+                                                                </li>
+                                                        </ul>
+
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <!--main stop-->
+                <div class="m20"></div>
+                <!--footer star-->
+                <div class="footer">
+                        <div class="layout zhenFw">
+                                <p>? 2015 SOGOU - 京ICP证050897号 - 京公网安备110000000025号</p>
+                        </div>
+                </div>
+                <!--footer stop-->
+        </div>
+</body>
+</html>

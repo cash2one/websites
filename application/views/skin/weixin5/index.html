@@ -1,0 +1,64 @@
+<!--内容开始-->
+<div class="ind_Box clearfix">
+    <div class="banner float">
+    	<?=$ad_index?>
+    </div>
+    <div class="news float">
+    	<div class="news_t float">
+        	<a href="#">最新资讯</a>
+        </div>
+        <div class="news_f float">
+                <ul>
+                 <?php foreach ($this->sys_cms_content->getNewList(30) as $key => $value) {
+                        
+                        $huanhang = ($key+1)%3 == 0 ? " class=\"nomar\"":"";
+                 ?>             
+                        <li<?=$huanhang?>><a href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a></li>
+
+                <?php }?>
+                </ul>
+        </div>
+    </div>
+    <div class="news float">
+    	<div class="news_t float">
+        	<a href="#">热门体育公众号大全</a>
+        </div>
+        <div class="dq_f float">
+        	<ul>
+             <?php foreach ($this->sys_cms_category->hotWeixinList(15,'rand()') as $key => $value) {?>    
+                <li>
+                    <a href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['catname']?>">
+                        <img src="<?=$value['logourl']?>" alt="<?=$value['catname']?>" width="90" height="90" />
+                        <p><?=$value['catname']?></p>
+                        <p class="txt_wxh">微信号：<?=$value['weixinhao']?></p>
+                    </a>
+                </li>
+             <?php }?>
+            </ul>
+        </div>
+    </div>
+    <div class="news float">
+   	  <div class="news_t float">
+        	<a href="#">公众号排行榜</a>
+        </div>
+        <div class="news_f ph_f float">
+                <ul>
+                    <?php foreach ($this->sys_cms_category->hotWeixinList(40,'id desc') as $key => $value) {
+                        $huanhang = ($key+1)%4 == 0 ? " class=\"nomar\"":"";
+                    ?>    
+                        <li<?=$huanhang?>><a href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['catname']?>"><?=$value['catname']?></a></li>
+                    <?php }?>
+                </ul>
+        </div>
+    </div>
+     <div class="f_yqlj float">
+        <p><a href="#">友情链接</a></p>
+        <p>
+            <?php foreach ($this->sys_cms_link->linklist('all') as $key => $value) {?>
+                <a href="<?=$value['url']?>" target="_blank"><?=$value['name']?></a>
+            <?php }?>
+        </p>
+    </div>
+</div>
+
+<!--内容结束-->

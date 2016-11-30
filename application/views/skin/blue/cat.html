@@ -1,0 +1,125 @@
+                <!--main star-->
+                <div class="main">
+                        <div class="layout ">
+                                <div class="clearfix">
+                                        <div class="sd_780_box fl">
+                                                <div class="storey_list bgColor_white">
+                                                        <div class="m30"></div>
+                                                        <ul>
+                <?php foreach ($news as $key => $value) {
+                 $current = $key==0 ? "current" : "";
+                ?>
+                            <li class="clearfix">
+                                <?php 
+                                if(!empty($value['headimage']))
+                                {?>
+                                        <div class="spic fl">
+                                                <a href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>">
+                                                        <img src="<?=$value['headimage']?>" />
+                                                </a>
+                                        </div>
+                                        <div class="stxt fr">
+                                                <h2><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a></h2>
+                                                <div class="soure">
+                                                        <a  class="blue"><?=$value['buildtime']?></a>
+                                                        <a target="_blank" href="<?=$domainname?>/list-<?=$value['cid']?>.html" ><?=$value['catname']?></a>
+                                                </div>
+                                                <p>
+                                                     <?=$value['description']?>....
+                                                </p>
+
+                                        </div>
+                                <?php
+                            }else{
+                                ?>
+
+                                        <div class="stxt fr" style="width:735px;height:175px">
+                                                <h2><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a></h2>
+                                                <div class="soure">
+                                                        <a  class="blue"><?=$value['buildtime']?></a>
+                                                        <a target="_blank" href="<?=$domainname?>/list-<?=$value['cid']?>.html" ><?=$value['catname']?></a>
+                                                </div>
+                                                <p>
+                                                     <?=$value['description']?>....
+                                                </p>
+
+                                        </div>
+                                <?php }?>
+
+                            </li>
+
+                <?php }?>
+                                                                
+                                                        </ul>
+                                                        <div class="page clearfix">
+                                                                <div class="page_count fl"><span><?php  $this->pagercat->showtotal();  ?></span></div>
+                                                                <div class="page_btn fr">
+                                                                        <div class="clearfix">
+                                                                        <?php  $this->pagercat->show();  ?>
+                                                                        </div>
+                                                                </div>
+                                                                 
+                                                               
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="sd 400_box fr">
+                                                <!--推荐文章 star-->
+                                                <div class="recom_art bgColor_white">
+                                                        <div class="parall">推荐文章</div>
+                                                        <div class="hot_art">
+                                                               <?php foreach ($this->sys_cms_content->getWhereList('',1,0,' order by buildtime desc') as $key => $value) {?>                          
+                                                                <h2><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a></h2>
+                                                                <div class="abstract">
+                                                                        <p><?=$value['description']?></p>
+                                                                </div>
+                                                                <?php }?>
+                                                        </div>
+                                                        <div class="hot_art_list">
+                                                                <ul class="clearfix">
+
+                                             <?php foreach ($this->sys_cms_content->getWhereList('',4,1,' order by buildtime desc') as $key => $value) {?>
+                                                                <li><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a></li>
+                                             <?php }?>
+                                                                </ul>
+                                                        </div>
+                                                </div>
+                                                <!--推荐文章 stop-->
+                                                <div class="m15"></div>
+                                                <div class="fix" id="fix">
+                                                        <!--随机文章列表 star-->
+                                                        <div class="artich_box bgColor_white box_padding">
+                                                                <div class="boxhd">
+                                                                        <h2>您可能感兴趣的文章</h2>
+                                                                </div>
+                                                                <div class="boxbg">
+                                                                        <div class="pic_news_list">
+                                                                        </div>
+                                                                        <div class="txt_news_list">
+                                                                                <ul>
+                                                <?php foreach ($this->sys_cms_content->getNewList(10,0,'newsdate desc') as $key => $value) {?>
+                                                                 <li><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a></li>
+                                                                 <?php }?>
+                                                                                </ul>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                        <!--随机文章列表 stop-->
+                                                        <div class="m15"></div>
+                                                        <div class="hot_KeyWorld bgColor_white box_padding">
+                                                                <div class="boxhd">
+                                                                        <h2>热门关键词</h2>
+                                                                </div>
+                                                                <div class="boxbg" id="tags">
+                                                                {hotweixin}
+                                                                                <a href="<?=$domainname?>/list-{id}.html" title="{catname}" target="_blank">{catname}</a>
+                                                                 {/hotweixin}
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <!--main stop-->
+                <div class="m50"></div>

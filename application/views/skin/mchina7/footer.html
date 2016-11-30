@@ -1,0 +1,26 @@
+        <!--footer star-->
+        <div class="footer">
+                <div class="copyright"><?=$beian?></div>
+        </div>
+        <!--footer stop-->
+        <div class="more-navbg" id="more-navbg">
+                <div class="more-warp">
+                        <div class="more-hd">
+                                <span>选择频道</span>
+                                <div class="more-close" id="more-clos"><i class="fa fa-close"></i></div>
+                        </div>
+                        <div class="more-bd">
+                                <div class="desc">机智的骚年呀！很少人会发现这里，有意外惊喜=_=凸</div>
+                                <div class="more-bd-navL clearfix">
+                                        <?php foreach ($this->sys_cms_category->footerCat(10) as $key => $value) {?>
+                                        <a  href="<?=$domainname?>/list-<?=$value['id']?>.html" ><?=$value['catname']?></a>
+                                        <?php }?>
+                                       <?php foreach ($this->sys_cms_content->getTagsList(10,10) as $key => $value) {?>
+                                           <a  href="<?=$domainname?>/tags-<?=$value['id']?>.html" ><?=$value['name']?></a>
+                                      <?php }?>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</body>
+</html>

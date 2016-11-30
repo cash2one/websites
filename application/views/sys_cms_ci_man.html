@@ -1,0 +1,182 @@
+{%extends file="base_content.html"%}
+{%block name="breadcrumb"%}
+<li class="active">内容管理</li>
+{%/block%}
+
+{%block name="content"%}
+
+<div class="page-header">
+
+    <div class="row">
+        
+
+       <select name="cid" id="cid" class="col-xs-1 col-sm-2" onchange="setCatname(this.value);" >
+        <option value="0">所属栏目</option>
+        {%html_options options=$group_list selected=$cid%}
+    </select>
+
+    <select name="issend" id="issend" class="col-xs-1 col-sm-2" onchange="setissend(this.value);" >
+        <option value="-1">是否导出</option>
+        {%html_options options=$issendarray selected=$issend%}
+    </select>
+
+    <div class="col-xs-8">
+        <form class="form-inline" style="width: 300px" method="post">
+
+            <div class="input-group">
+                <input type="text" class="form-control search-query" name="keywords" placeholder="标题" value="{%$keywords%}">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-purple btn-sm">
+                            查询
+                            <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
+                        </button>
+                    </span>
+            </div>
+             <span id="page_count">共{%$total%}条</span>
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+
+   </div>
+
+</div>
+
+<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+
+    <th>ID</th>
+    <th>标题</th>
+    <th>栏目</th>
+    <th>时间</th>
+    <th>导出</th>
+    <th style="width: 90px">操作</th>
+</tr>
+</thead>
+
+<tbody>
+{%foreach from=$list item=value%}
+<tr>
+
+    <td>{%$value.id%}</td>
+    <td>{%$value.name%}</td>
+    <td>{%$value.cid%}</td>
+    <td>{%$value.buildtime%}</td>
+    <td><label>
+        <input name="issend" id="issend" class="ace ace-switch ace-switch-6" type="checkbox"
+               onchange="updateStatus('{%$value.id%}',this)"
+        {%if $value.issend|default:''==1%}checked{%/if%}  value="0"/>
+        <span class="lbl"></span>
+    </label></td>
+    <td>
+        <div class="action-buttons">
+
+            <div class="inline position-relative">
+
+
+                <a href="#" class="red dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                    <i class="ace-icon fa fa-trash-o icon-only bigger-130"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                    <li>
+                        <a href="javascript:void(0)" onclick="deleteEntity('{%$value.id%}',this)"
+                           class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
+                                <span class="red">
+                                    <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </td>
+</tr>
+{%foreachelse%}
+{%include file="inc_gritter.html"%}
+{%/foreach%}
+</tbody>
+</table>
+<style type="text/css">
+#page_count{
+    float: right;
+margin-top: 7px;
+margin-left: 10px;
+color: lightcoral;
+}    
+</style>
+
+<span id="page_count">共{%$total%}条</span>
+{%$pagerbar%}
+{%/block%}
+{%block name="js"%}
+<script>
+    function deleteEntity(id,btn){
+
+
+            $.get("index.php?c=cms_contentMan&m=delete&id="+id,function(r){
+                if(r=='{%$smarty.const.STATUS_SUCCESS%}'){
+                    tr_row = btn.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
+                    list_table=tr_row.parentNode;
+                    list_table.removeChild(tr_row);
+                }else{
+                    alert("删除失败");
+                }
+            });
+
+    }
+
+    function setCatname(obj){
+        var issend = $("#issend").val();
+        location.href='index.php?c=sys_ciman&m=index&issend='+issend+'&cid='+obj;
+    }    
+
+    function setissend(obj){
+        var cid=$("#cid").val();
+        location.href='index.php?c=sys_ciman&m=index&cid='+cid+'&issend='+obj;
+    }
+
+    function updateStatus(id,cb){
+
+        $.get("index.php?c=sys_ciman&m=recomstatus&id="+id+"&issend="+(cb.checked?1:0),function(r){
+            if(r=='{%$smarty.const.STATUS_SUCCESS%}'){
+
+            }else{
+                if(cb.checked){
+                    cb.checked = false;
+                }else{
+                    cb.checked = true;
+                }
+            }
+        });
+
+    }
+
+    function updateFTStatus(id,cb){
+
+        $.get("index.php?c=sys_ciman&m=ftstatus&id="+id+"&status="+(cb.checked?1:0),function(r){
+            if(r=='{%$smarty.const.STATUS_SUCCESS%}'){
+
+            }else{
+                if(cb.checked){
+                    cb.checked = false;
+                }else{
+                    cb.checked = true;
+                }
+            }
+        });
+
+    }
+
+</script>
+{%/block%}
+

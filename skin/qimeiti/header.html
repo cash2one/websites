@@ -1,0 +1,104 @@
+        <header class="p-header p-header-show">
+                <div class="container-fluid first-nav hidden-xs">
+                        <div class="row">
+                                <div class="col-sm-10">
+                                        <ul class="list-inline">
+                                                <li class="current">
+                                                        <a href="http://www.china-7.net" target="_blank">七媒体</a>
+                                                </li>
+                                                <li>
+                                                        <a href="javascript:;" target="_blank">话题</a>
+                                                </li>
+                                                <li>
+                                                        <a href="javascript:;" target="_blank">作者</a>
+                                                </li>
+                                                <li>
+                                                        <a href="javascript:;" target="_blank">活动</a>
+                                                </li>
+                                                <li>
+                                                        <a href="javascript:;" target="_blank">钛币商城</a>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="col-sm-2">
+                                        <form class="bs-example bs-example-form" data-example-id="input-group-with-button">
+                                                <div class="input-group">
+                                                        <input type="text" class="form-control search" placeholder="Search for..." />
+                                                        <span class="input-group-btn">
+                                                                <button class="btn btn-default" type="button">Go!</button>
+                                                        </span>
+                                                </div>
+                                        </form>
+                                </div>
+
+                        </div>
+                </div>
+                <nav class="main-navigation ">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-sm-3 logo hidden-xs">
+                                                <h3><a href="javascript:;" title="七媒体">广东新闻·七媒体</a></h3>
+                                        </div>
+                                        <div class="col-sm-9 col-xs-12 ">
+                                                <div class="navbar-header visible-xs-block">
+                                                        <div class="row">
+                                                                <div class="col-xs-10 xs-logo">
+                                                                        <h2><a href="javascript:;">七媒体·[!--class.name--]</a></h2>
+                                                                </div>
+                                                                <div class="col-xs-2">
+                                                                        <span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+                                                                                <span class="sr-only">Toggle navigation</span>
+                                                                                <i class="fa fa-bars"></i>
+                                                                        </span>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <div class="collapse navbar-collapse" id="main-menu">
+                                                        <ul class="menu list-unstyled">
+
+
+                                                                <li><a href="http://www.china-7.net">七媒体</a></li>
+
+                                        <?php
+                                                $fcr=explode('|',$class_r[$GLOBALS[navclassid]][featherclass]);
+                                                $topbclassid=$fcr[1]?$fcr[1]:$GLOBALS[navclassid];//取得当前栏目的顶级栏目ID
+                                        ?>
+                                        [e:loop={"select classid,classname from {$dbtbpre}enewsclass where (bclassid={$topbclassid} or classid={$topbclassid}) and showclass=0 order by myorder asc limit 0,7",0,24,0}]
+                                        <?php
+                                        $classurl=sys_ReturnBqClassname($bqr,9);//取得栏目地址
+                                        $gbclass="";
+                                        if($bqr[classid]==$GLOBALS[navclassid])//当前栏目ID
+                                        {
+                                        $gbclass="class=\"nav-current\"";
+                                        } 
+                                        ?>
+                                        <li <?=$gbclass?>><a  href="<?=$classurl?>" title="<?=$bqr[classname]?>"><?=$bqr[classname]?></a></li>
+                                        [/e:loop]
+                                                                <li>
+                                                                        <div class="dropdown">
+                                                                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                                        Dropdown
+    <span class="caret"></span>
+                                                                                </button>
+                                                                                <ul class="dropdown-menu list-inline z-dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        [e:loop={"select classid,classname from {$dbtbpre}enewsclass where bclassid={$topbclassid}  and showclass=0 order by myorder asc limit 7,100",0,24,0}]
+                                        <?php
+                                        $classurl=sys_ReturnBqClassname($bqr,9);//取得栏目地址
+                                        $gbclass="";
+                                        if($bqr[classid]==$GLOBALS[navclassid])//当前栏目ID
+                                        {
+                                        $gbclass="class=\"nav-current\"";
+                                        } 
+                                        ?>
+                                        <li <?=$gbclass?>><a  href="<?=$classurl?>" title="<?=$bqr[classname]?>"><?=$bqr[classname]?></a></li>
+                                        [/e:loop]
+                                                                                </ul>
+                                                                        </div>
+                                                                </li>
+                                                        </ul>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </nav>
+        </header>

@@ -1,0 +1,116 @@
+        <div class="m30"></div>
+        <!--main star-->
+        <div class="layout siteMain out">
+            <div class="left in">
+            <div class="weixinFw">
+                    <div class="title">
+                        <h2>推荐公众号</h2>
+                    </div>
+                    <div class="m20"></div>
+                    <div class="fwPicListFw">
+                        <ul class="out">
+                         {hotweixin}
+                            <li class="in">
+                                <a class="pic" href="<?=$domainname?>/list-{id}.html" title="{catname}">
+                                    <img src="{logourl}" alt="{catname}" />
+                                </a>
+                                <a class="txt " href="<?=$domainname?>/list-{id}.html" title="{catname}">
+                                    <h2>{catname}</h2>
+                                </a>
+                            </li>
+                          {/hotweixin}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="weixinFw">
+                    <div class="title">
+                        <h2>最新资讯</h2>
+                    </div>
+                    <div class="m20"></div>
+                    <div class="fwListFw out">
+                        <div class="list in">
+                            <ul>
+                            <?php foreach ($this->sys_cms_content->getNewList(10) as $key => $value) {?>
+                            <li class="out"><em class="in">·</em><a class="in"  href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a></li>
+                            <?php }?>
+                            </ul>
+                        </div>
+                        <div class="line in"></div>
+                        <div class="list in">
+                            <ul>
+                            <?php foreach ($this->sys_cms_content->getNewList(10,10) as $key => $value) {?>
+                            <li class="out"><em class="in">·</em><a class="in"  href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a></li>
+                            <?php }?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="weixinFw">
+                        <?php foreach ($this->sys_cms_category->classlistbypid(1,10,'id desc',8) as $key => $value) {?>
+                            <div class="title">
+                                <h2><a href="<?=$domainname?>/cat-<?=$value['id']?>.html" ><?=$value['name']?>公众号</a></h2>
+                            </div>
+                            <div class="m20"></div>
+                            <div class="fwPicListFw">
+                                <ul class="out">
+                                    <?php foreach ($this->sys_cms_category->catlistbyid($value['id'],4) as $key => $list) {?>
+                                    <li class="in">
+                                        <a class="pic" href="<?=$domainname?>/list-<?=$list['id']?>.html" title="<?=$list['catname']?>">
+                                            <img src="<?=$list['logourl']?>" alt="<?=$list['catname']?>" />
+                                        </a>
+                                        <a class="txt " href="<?=$domainname?>/list-<?=$list['id']?>.html" title="<?=$list['catname']?>">
+                                            <h2><?=$list['catname']?></h2>
+                                        </a>
+                                    </li>
+                                    <?php }?>
+
+                                </ul>
+                            </div>
+                        <?php }?>
+                </div>
+            </div>
+            <div class="right in">
+
+                    <div class="serFw">
+                    <div class="title">
+                        <h2>热门新闻</h2>
+                    </div>
+                    <div class="m20"></div>
+                    <div class="serList">
+                        <ul class="out">
+                            <?php foreach ($this->sys_cms_content->getNewList(10,20) as $key => $value) {?>
+                            <li><a class="in"  href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a></li>
+                            <?php }?>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="serFw">
+                    <div class="title">
+                        <h2>公众号排行榜</h2>
+                    </div>
+                    <div class="m20"></div>
+                    <div class="serList">
+                        <ul class="out">
+                        {senweixin}
+                            <li class="in"><a href="<?=$domainname?>/list-{id}.html" title="{catname}">{catname}</a></li>
+                        {/senweixin}
+                        </ul>
+                    </div>
+                </div>
+                <script type="text/javascript">
+    /*340*250 创建于 2015-06-01*/
+    var cpro_id = "u2130929";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+            </div>
+        </div>
+        <!--main stop-->
+        <div class="m20" style="display:none"></div>
+        <div class="friendLink"style="display:none">
+            <div class="layout friendLinkBody" >
+                <h2><a style="padding-right: 0px"> 友情链接</a> </h2>
+
+            </div>
+        </div>

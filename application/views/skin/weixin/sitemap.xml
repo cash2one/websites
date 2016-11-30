@@ -1,0 +1,44 @@
+ <?php
+echo htmlspecialchars('<?xml version="1.0" encoding="utf-8"?>').'<br/>';
+echo htmlspecialchars('<urlset>').'<br/>';
+ 
+//首页单独写一个url
+echo htmlspecialchars('<url>').'<br/>';
+echo htmlspecialchars(' <loc>').'http://www.hyci.com'.htmlspecialchars('</loc>').'<br/>';
+echo htmlspecialchars('<lastmod>').date('Y-m-d',time()).htmlspecialchars('</lastmod>').'<br/>';
+echo htmlspecialchars('<changefreq>').'daily'.htmlspecialchars('</changefreq>').'<br/>';
+echo htmlspecialchars('<priority>').'1'.htmlspecialchars('</priority>').'<br/>';
+echo htmlspecialchars('</url>').'<br/>';
+ 
+//类别页
+foreach ($categorys as $category){
+        echo htmlspecialchars('<url>').'<br/>';
+        echo htmlspecialchars(' <loc>').'http://www.hyci.com/list-'.$category['id'].'.html'.htmlspecialchars('</loc>').'<br/>';
+        echo htmlspecialchars('<lastmod>').date('Y-m-d',time()).htmlspecialchars('</lastmod>').'<br/>';
+        echo htmlspecialchars('<changefreq>').'weekly'.htmlspecialchars('</changefreq>').'<br/>';
+        echo htmlspecialchars('<priority>').'0.8'.htmlspecialchars('</priority>').'<br/>';
+        echo htmlspecialchars('</url>').'<br/>';
+}
+ 
+//文章页
+foreach ($posts as $post){
+        echo htmlspecialchars('<url>').'<br/>';
+        echo htmlspecialchars(' <loc>').'http://www.hyci.com/view-'.$post['id'].'.html'.htmlspecialchars('</loc>').'<br/>';
+        echo htmlspecialchars('<lastmod>').date('Y-m-d',$post['newsdate']).htmlspecialchars('</lastmod>').'<br/>';
+        echo htmlspecialchars('<changefreq>').'weekly'.htmlspecialchars('</changefreq>').'<br/>';
+        echo htmlspecialchars('<priority>').'0.6'.htmlspecialchars('</priority>').'<br/>';
+        echo htmlspecialchars('</url>').'<br/>';
+}
+ 
+//留言板
+// echo htmlspecialchars('<url>').'<br/>';
+// echo htmlspecialchars(' <loc>').'http://101ban.sinaapp.com/index.php/guest'.htmlspecialchars('</loc>').'<br/>';
+// echo htmlspecialchars('<lastmod>').date('Y-m-d',time()).htmlspecialchars('</lastmod>').'<br/>';
+// echo htmlspecialchars('<changefreq>').'weekly'.htmlspecialchars('</changefreq>').'<br/>';
+// echo htmlspecialchars('<priority>').'0.5'.htmlspecialchars('</priority>').'<br/>';
+// echo htmlspecialchars('</url>').'<br/>';
+ 
+echo htmlspecialchars('</urlset>');
+?>
+
+ 
