@@ -1,0 +1,48 @@
+{%extends file="base_content.html"%}
+{%block name="breadcrumb"%}
+<li class="active">访问拒绝</li>
+{%/block%}
+
+{%block name="content"%}
+<div class="page-header">
+    <h1>
+
+    </h1>
+</div>
+<div class="error-container">
+    <div class="well">
+        <h1 class="grey lighter smaller">
+										<span class="red bigger-125">
+											<i class="ace-icon fa fa-ban"></i>
+											403
+										</span>
+
+        </h1>
+
+        <hr>
+        <h3 class="lighter smaller">
+            对不起！您无权限访问此功能！
+        </h3>
+
+        <div class="space"></div>
+
+
+
+        <hr>
+        <div class="space"></div>
+
+        <div class="center">
+            <a href="javascript:history.back()" class="btn btn-grey">
+                <i class="ace-icon fa fa-arrow-left"></i>
+                返回
+            </a>
+
+            <a href="index.php?c=main&m=welcome" class="btn btn-primary">
+                <i class="ace-icon fa fa-tachometer"></i>
+                主页
+            </a>
+        </div>
+    </div>
+</div>
+
+{%/block%}

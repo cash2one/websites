@@ -1,0 +1,77 @@
+<section class="content-wrap content-page">
+    <div class="container whitebg">
+            <div class="row">
+                    <div class="col-sm-8 col-md-offset-2">
+                            <div class="breadcrumb-box">
+                                    <ol class="breadcrumb">
+                                            <?=$mypostion?>
+                                    </ol>
+                            </div>
+                            <div class="article-detail">
+                                {data_content}
+                                    <div class="title">
+                                            <h3>{title}</h3>
+                                            <div class="subtitle clearfix">
+                                                    <span class="src"><a href="<?=$domainname?>/list-{cid}.html">{catname}</a></span>
+                                                    <span class="time">{buildtime}</span>
+                                            </div>
+                                    </div>
+                                    <div class="article-content">
+                                            <p>{content}</p>
+                                    </div>
+                                    <div class="pagelet-detailbar">
+                                            <ul class="tag-list list-inline">
+                                                    <i class="lb">相关标签：</i>
+                <?php foreach ($this->sys_cms_category->footerCat(4) as $key => $value) {?>
+                     <li><a target="_blank" href="<?=$domainname?>/list-<?=$value['id']?>.html" ><?=$value['catname']?></a></li>
+                <?php }?>
+                                            </ul>
+                                    </div>
+                                {/data_content}
+                                    <nav>
+                                            <ul class="pager">
+                                                    <li><?=$content_per?></li>
+                                                    <li><?=$content_next?></li>
+                                            </ul>
+                                    </nav>
+                            </div>
+                    </div>
+            </div>
+
+
+
+            <div class="row">
+                    <div class="col-sm-4 col-xs-12 other-r">
+                            <h3>相关阅读</h3>
+                            <ul class="list-unstyled">
+                                <?php foreach ($this->sys_cms_content->getNewList(10,10,'id desc') as $key => $value) {?>
+                                <li>
+                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
+                                </li>
+                                <?php }?>
+                            </ul>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 other-r">
+                            <h3>热门精选</h3>
+                            <ul class="list-unstyled">
+                                <?php foreach ($this->sys_cms_content->getNewList(10,20,'id desc') as $key => $value) {?>
+                                <li>
+                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
+                                </li>
+                                <?php }?>
+                            </ul>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 other-r">
+                            <h3>最热内容</h3>
+                            <ul class="list-unstyled">
+                                {newest}
+                                <li>
+                                        <a target="_blank" href="<?=$domainname?>/view-{id}.html" title="{title}" target="_blank">{title}</a>
+                                </li>
+                                {/newest} 
+
+                            </ul>
+                    </div>
+            </div>
+    </div>
+</section>

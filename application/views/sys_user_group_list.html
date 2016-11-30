@@ -1,0 +1,103 @@
+{%extends file="base_content.html"%}
+{%block name="breadcrumb"%}
+<li class="active">用户组管理</li>
+{%/block%}
+
+{%block name="content"%}
+
+<div class="page-header">
+
+    <div class="row">
+        <div class="col-xs-1"  style="min-width: 80px">
+            <a href="index.php?c=sys_user_group&m=add" class="btn btn-success btn-sm">
+                <i class="ace-icon fa fa-plus bigger-110"></i>新建
+            </a>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+
+
+    <th>组名</th>
+    <th style="width: 90px">操作</th>
+</tr>
+</thead>
+
+<tbody>
+{%foreach from=$list item=value%}
+<tr>
+
+    <td>{%$value.group_name%}</td>
+
+
+    <td>
+        <div class="action-buttons">
+
+            <a class="blue" href="index.php?c=sys_group_permission&m=config&sys_group_id={%$value.id%}">
+                <i class="ace-icon fa fa-cog bigger-130"></i>
+            </a>
+
+            <a class="green" href="index.php?c=sys_user_group&m=edit&id={%$value.id%}">
+                <i class="ace-icon fa fa-pencil bigger-130"></i>
+            </a>
+
+
+            <div class="inline position-relative">
+
+
+
+                <a href="#" class="red dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                    <i class="ace-icon fa fa-trash-o icon-only bigger-130"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                    <li>
+                        <a href="javascript:void(0)" onclick="deleteEntity('{%$value.id%}',this)"
+                           class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
+                                <span class="red">
+                                    <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </td>
+</tr>
+{%foreachelse%}
+{%include file="inc_gritter.html"%}
+{%/foreach%}
+</tbody>
+</table>
+
+
+{%$pagerbar%}
+{%/block%}
+{%block name="js"%}
+<script>
+    function deleteEntity(id,btn){
+
+
+            $.get("index.php?c=sys_user_group&m=delete&id="+id,function(r){
+                if(r=='{%$smarty.const.STATUS_SUCCESS%}'){
+                    tr_row = btn.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
+                    list_table=tr_row.parentNode;
+                    list_table.removeChild(tr_row);
+                }else{
+                    alert("删除失败");
+                }
+            });
+
+    }
+</script>
+{%/block%}
+

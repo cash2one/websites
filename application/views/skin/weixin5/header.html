@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?=$htitle?></title>
+<meta name="keywords" content="<?=$sitekeywords?>" />
+<meta name="description" content="<?=$sitedescription?>" />
+<link rel="stylesheet" type="text/css" href="<?=$skin?>/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="<?=$skin?>/css/style4.css"/>
+<script src="<?=$skin?>/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var urlstr = location.href;
+        var urlstatus = false;
+        $("#nav_first li").each(function () {
+            if ((urlstr + '/').indexOf($(this).find('a').attr('href')) > -1 && $(this).find('a').attr('href') != '') {
+                $(this).addClass("shouyeLi active").siblings().removeClass("shouyeLi active");
+                urlstatus = true;
+            }
+        });
+    });
+</script>
+</head>
+
+<body>
+<!--头部-->
+<div class="header">
+	<!--Logo-->
+	<div class="header_t clearfix">
+      <div class="logo fl"><a href="<?=$domainname?>" title="<?=$sitename?>"><?=$sitename?></a></div>
+        <div class="head-search" id="head-search">
+                <form name="head-search-form" id="head-search-form" action="#" method="get">
+                    <div class="s-input">
+                        <input id="head-search-word" name="q" autocomplete="off" type="text" placeholder="请输入您要搜索的内容^_^">
+                    </div>
+                    <div class="s-button"><input type="submit" value="提交"></div>
+                </form>
+		</div>
+	</div>
+	<!--Logo end-->
+    <!--导航开始-->
+  <div class="navBg">
+    	<div class="nav">
+			   <ul id="nav_first">
+            <li><a href="<?=$domainname?>">首页</a></li>
+            <li><a href="<?=$domainname?>/list-map.html" >公众号地图</a></li>
+         </ul>
+      </div>
+  </div>
+    <!--导航结束-->
+</div>
+<!--头部end-->
+        <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('img').each(function(){
+                var imgsrc = this.src;
+                if(imgsrc.match("http://mmbiz.qpic.cn")){
+                    var newurl = "/getimg.php?url="+imgsrc;
+                    $(this).attr('src',newurl);
+                }
+            });
+        });
+        </script>

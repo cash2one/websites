@@ -1,0 +1,75 @@
+<!--内容开始-->
+<div class="ind_Box">
+	<!--左边-->
+    <div class="ind_Box_lt fl">
+	<div class="conBox float">
+		<div class="conBox_t">
+			{data_content}
+			<h1>{title}</h1>
+			<p>时间 {buildtime}</p>
+		</div>
+		<div class="conBox_f">
+        	<p>
+            	{content}
+            </p>
+      {/data_content}
+        </div>
+        <div class="con_xg float">
+        	<div class="con_xg_t float">相关资讯</div>
+            <div class="con_xg_f float">
+            	<ul>
+            		{news}
+                	<li><a href="<?=$domainname?>/view-{id}.html" title="{title}">{title}</a></li>
+                {/news}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    </div>
+    <!--左边end-->
+    <!--右边-->
+    <div class="ind_Box_rt fl clearfix">
+    	<div class="new_wx float">
+       	  <div class="float">
+            	<div class="green fl">&nbsp;</div>
+                <div class="new_wx_title fl"><a href="#">最新公众号</a></div>
+          </div>
+          <div class="new_wx_f float">
+          	<ul>
+          		<?php foreach ($this->sys_cms_category->hotWeixinList(10,'id desc') as $key => $value) {?>  
+          		<li><a href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['catname']?>"><img src="<?=$value['logourl']?>" width="80" height="72" /><span>微信号：<?=$value['weixinhao']?></span></a></li>
+          		<?php }?>
+            </ul>
+          </div>
+        </div>
+        <div class="new_wx float">
+       	  <div class="float">
+            	<div class="green fl">&nbsp;</div>
+                <div class="new_wx_title fl"><a href="#">最新资讯</a></div>
+          </div>
+          <div class="new_wx_f new_xc float">
+          	<ul>
+          		<?php foreach ($this->sys_cms_content->getNewList(10) as $key => $value) {?>
+          		<li><a href="<?=$domainname?>/list-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a></li>
+          		<?php }?>
+            </ul>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="new_wx float">
+         <div id="elFix">
+       	  <div class="float">
+            	<div class="green fl">&nbsp;</div>
+                <div class="new_wx_title fl"><a href="#">大家都爱看</a></div>
+          </div>
+          <div class="new_wx_f float">
+          	<p>广告</p>
+          </div>
+          </div>
+        </div>
+    </div>
+    <!--右边end-->
+<div class="clear"></div>
+</div>
+<!--内容结束-->

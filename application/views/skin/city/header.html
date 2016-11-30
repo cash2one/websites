@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><?=$htitle?></title>
+<meta name="keywords" content="<?=$sitekeywords?>" />
+<meta name="description" content="<?=$sitedescription?>" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<link rel='stylesheet' id='sytle-css'  href='<?=$skin?>/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='yzipi-pc-css'  href='<?=$skin?>/css/yzipi-pc.css' type='text/css' media='all' />
+<link rel='stylesheet' id='yzipi-ipad2-css'  href='<?=$skin?>/css/yzipi-ipad2.css' type='text/css' media='all' />
+<link rel='stylesheet' id='yzipi-ipad-css'  href='<?=$skin?>/css/yzipi-ipad.css' type='text/css' media='all' />
+<link rel='stylesheet' id='yzipi-phone2-css'  href='<?=$skin?>/css/yzipi-phone2.css' type='text/css' media='all' />
+<link rel='stylesheet' id='yzipi-phone-css'  href='<?=$skin?>/css/yzipi-phone.css' type='text/css' media='all' />
+<script type='text/javascript' src='<?=$skin?>/js/html5shiv.js'></script>
+<script type='text/javascript' src='<?=$skin?>/js/css3-mediaqueries.js'></script>
+<script type='text/javascript' src='<?=$skin?>/js/selectivizr-min.js'></script>
+<script type='text/javascript' src='<?=$skin?>/js/jquery.1.11.1.js'></script>
+<script type='text/javascript' src='<?=$skin?>/js/main.js'></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('img').each(function(){
+        var imgsrc = this.src;
+        if(imgsrc.match("http://mmbiz.qpic.cn") || imgsrc.match("qq.com") || imgsrc.match("hiphotos.baidu.com") || imgsrc.match("ph.126.net") || imgsrc.match("yujiame.com") || imgsrc.match("tuicool.com") || imgsrc.match("jirou.com") || imgsrc.match("qhimg.com") || imgsrc.match("sogoucdn.com") || imgsrc.match("gtimg.com") || imgsrc.match("pcbaby.com.cn")){
+            if(imgsrc.match("/getimg.php")){
+
+            }else{
+                var newurl = "/getimg.php?url="+imgsrc;
+                $(this).attr('src',newurl);
+            }
+
+        }
+
+    });
+});
+</script>
+
+</head>
+<body>
+<header id="header-web">
+  <div class="header-main">
+    <hgroup class="logo">
+      <h1><a href="<?=$domainname?>" title="" rel="home"><img src="<?=$skin?>/images/logo.png" alt=""></a></h1>
+    </hgroup>
+    <!--logo-->
+    <nav class="header-nav">
+      <ul id="menu-nav" class="menu">
+          <li id="menu-item-0" class="menu-item">
+                 <a href="<?=$domainname?>" class="qm-nav-actice" title="" >首页</a>
+           </li>
+                   
+                      <?php foreach ($this->sys_cms_category->classlistbypid(0,5,'sort asc') as $key => $value) {?>
+                        <li id="menu-item-<?=$value['id']?>" class="menu-item">
+                            <a  href="<?=$domainname?>/cat-<?=$value['id']?>.html" ><?=$value['name']?></a>
+                         </li>
+                        <?php }?>
+
+      
+      </ul>    
+    </nav>
+    <!--header-nav-->
+    <div class="weibo">
+    <a href="<?=$domainname?>" target="_blank">稿</a>
+    </div>
+    <!--header-main--> 
+  </div>
+</header>

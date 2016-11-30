@@ -1,0 +1,178 @@
+                <!--main star-->
+                <div class="main">
+                        <div class="layout ">
+                                <div class="clearfix">
+                                        <div class="sd_780_box fl">
+                                                <!--轮播图 star-->
+                                                <div class="slider bgColor_white">
+                                                        <div id="fsD1" class="focus">
+                                                                <div id="D1pic1" class="fPic">
+
+                <?php foreach ($this->sys_cms_content->getFirsttitleList(5) as $key => $value) {
+                 $current = $key==0 ? "current" : "";
+                ?>
+
+                                                                    <div class="fcon" style="display: none;">
+                                                                                <a href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                                                                        <img src="<?=$value['headimage']?>" style="opacity: 1;" alt="<?=$value['title']?>" />
+                                                                                </a>
+                                                                                <span class="shadow">
+                                                                                        <a href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
+                                                                                </span>
+                                                                        </div>
+
+                <?php }?>
+
+
+
+                                                                       
+                                                                </div>
+                                                                <div class="fbg">
+                                                                        <div class="D1fBt" id="D1fBt">
+                                                                                <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>1</i></a>
+                                                                                <a href="javascript:void(0)" hidefocus="true" target="_self"><i>2</i></a>
+                                                                                <a href="javascript:void(0)" hidefocus="true" target="_self"><i>3</i></a>
+                                                                                <a href="javascript:void(0)" hidefocus="true" target="_self"><i>4</i></a>
+                                                                        </div>
+                                                                </div>
+                                                                <span class="prev"></span>
+                                                                <span class="next"></span>
+                                                        </div>
+                                                        <script type="text/javascript">
+                                                                Qfast.add('widgets', { path: "<?=$skin?>/js/terminator2.2.min.js", type: "js", requires: ['fx'] });
+                                                                Qfast(false, 'widgets', function () {
+                                                                        K.tabs({
+                                                                                id: 'fsD1',   //焦点图包裹id  
+                                                                                conId: "D1pic1",  //** 大图域包裹id  
+                                                                                tabId: "D1fBt",
+                                                                                tabTn: "a",
+                                                                                conCn: '.fcon', //** 大图域配置class       
+                                                                                auto: 1,   //自动播放 1或0
+                                                                                effect: 'fade',   //效果配置
+                                                                                eType: 'click', //** 鼠标事件
+                                                                                pageBt: true,//是否有按钮切换页码
+                                                                                bns: ['.prev', '.next'],//** 前后按钮配置class                          
+                                                                                interval: 3000  //** 停顿时间  
+                                                                        })
+                                                                })
+                                                        </script>
+                                                </div>
+                                                <!--轮播图 stop-->
+                                                <div class="m15"></div>
+                                                <div class="storey_list bgColor_white">
+                                                        <ul>
+
+                                                                <?php foreach ($this->sys_cms_content->getWhereList("and headimage<>'' ",20,0," order by id desc") as $key => $value) {?>             
+
+                                                                <li class="clearfix">
+                                                                        <div class="spic fl">
+                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html">
+                                                                                        <img src="<?=$value['headimage']?>" />
+                                                                                </a>
+                                                                        </div>
+                                                                        <div class="stxt fr">
+                                                                                <h2><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html"><?=$value['title']?></a></h2>
+                                                                                <div class="soure">
+                                                                                        <a class="blue"><?=$value['buildtime']?></a>
+                                                                                        <a target="_blank" href="<?=$domainname?>/list-<?=$value['cid']?>.html" ><?=$value['catname']?></a>
+                                                                                </div>
+                                                                                <p>
+                                                                                        <?=$value['description']?>
+                                                                                </p>
+                     
+                                                                        </div>
+                                                                </li>
+                                                                <?php }?>
+                                                        </ul>
+                                                        <ul id="more_news">
+                                                               <?php foreach ($this->sys_cms_content->getWhereList("and headimage<>'' ",20,20,' order by id desc') as $key => $value) {?>             
+
+                                                                <li class="clearfix">
+                                                                        <div class="spic fl">
+                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html">
+                                                                                        <img src="<?=$value['headimage']?>" />
+                                                                                </a>
+                                                                        </div>
+                                                                        <div class="stxt fr">
+                                                                                <h2><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html"><?=$value['title']?></a></h2>
+                                                                                <div class="soure">
+                                                                                        <a class="blue">Simon</a>
+                                                                                        <a><?=$value['buildtime']?></a>
+                                                                                        <a target="_blank" href="<?=$domainname?>/list-<?=$value['cid']?>.html" ><?=$value['catname']?></a>
+                                                                                </div>
+                                                                                <p>
+                                                                                        <?=$value['description']?>
+                                                                                </p>
+                     
+                                                                        </div>
+                                                                </li>
+                                                                <?php }?>
+                                                        </ul>
+                                                        <a href="javascript:;" class="loadMore" id="loadMore">再显示20条新闻↓</a>
+
+                                                </div>
+                                        </div>
+                                        <div class="sd 400_box fr">
+                                                <!--推荐文章 star-->
+                                                <div class="recom_art bgColor_white">
+                                                        <div class="parall">推荐文章</div>
+                                                        <div class="hot_art">
+                                                              <?php foreach ($this->sys_cms_content->getWhereList('',1,0,' order by buildtime desc') as $key => $value) {?>                          
+                                                                <h2><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a></h2>
+                                                                <div class="abstract">
+                                                                        <p><?=$value['description']?></p>
+                                                                </div>
+                                                                <?php }?>
+                                                        </div>
+                                                        <div class="hot_art_list">
+                                                                <ul class="clearfix">
+
+                                             <?php foreach ($this->sys_cms_content->getWhereList('',4,1,' order by buildtime desc') as $key => $value) {?>
+                                                                <li><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a></li>
+                                             <?php }?>
+
+                                                                </ul>
+                                                        </div>
+                                                </div>
+                                                <!--推荐文章 stop-->
+
+                                                <div class="m15"></div>
+                                                <div class="fix" id="fix">
+                                                        <!--随机文章列表 star-->
+                                                        <div class="artich_box bgColor_white box_padding">
+                                                                <div class="boxhd">
+                                                                        <h2>您可能感兴趣的文章</h2>
+                                                                </div>
+                                                                <div class="boxbg">
+                                                                        <div class="pic_news_list">
+                                                                        </div>
+                                                                        <div class="txt_news_list">
+                                                                                <ul>
+
+                                                                <?php foreach ($this->sys_cms_content->getNewList(10,0,'newsdate desc') as $key => $value) {?>
+                                                                 <li><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a></li>
+                                                                 <?php }?>
+                                                                                </ul>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                        <!--随机文章列表 stop-->
+                                                        <div class="m15"></div>
+                                                        <div class="hot_KeyWorld bgColor_white box_padding">
+                                                                <div class="boxhd">
+                                                                        <h2>热门关键词</h2>
+                                                                </div>
+                                                                <div class="boxbg" id="tags">
+                                                                {hotweixin}
+                                                                                <a href="<?=$domainname?>/list-{id}.html" title="{catname}" target="_blank">{catname}</a>
+                                                                 {/hotweixin}
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <!--main stop-->
+                <div class="m50"></div>
+

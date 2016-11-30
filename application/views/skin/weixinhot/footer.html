@@ -1,0 +1,48 @@
+<style type="text/css">
+.rich_media_content {
+min-height: 10px;
+
+}
+ form {
+display: block !important;
+}
+                </style>
+                <!--otherNav star-->
+                <div class="m15"></div>
+                <div class="other-nav">
+                        <div class="layout zhenFw other-nav-main">
+                                <div class="otm-item out border-bottom-gray">
+                                        <div class="otm-item-left in">
+                                                <span>热门分类</span>
+                                        </div>
+                                         <div class="otm-item-right in">
+                        <?php foreach ($this->sys_cms_category->classlistbypid(0,30,'sort asc',29) as $key => $value) {?>
+                             <a target="_blank" href="<?=$domainname?>/cat-<?=$value['id']?>.html" ><?=$value['name']?></a>
+                        <?php }?>
+                                         </div>
+                                </div>
+                                <div class="otm-item out border-bottom-gray">
+                                        <div class="otm-item-left in">
+                                                <span>热门公众号</span>
+                                        </div>
+                                         <div class="otm-item-right in">
+                        <?php foreach ($this->sys_cms_category->footerCat(20) as $key => $value) {?>
+                             <a target="_blank" href="<?=$domainname?>/list-<?=$value['id']?>.html" ><?=$value['catname']?></a>
+                        <?php }?>
+
+                                         </div>
+                                </div>
+                        </div>
+                </div>
+                <!--otherNav stop-->
+                <div class="m20"></div>
+                <!--footer star-->
+                <div class="footer">
+                        <div class="layout zhenFw">
+                                <p>© 2015 HZSUNNY - <?=$beian?> - <?=$zhanzhangtong?></p>
+                        </div>
+                </div>
+                <!--footer stop-->
+        </div>
+</body>
+</html>

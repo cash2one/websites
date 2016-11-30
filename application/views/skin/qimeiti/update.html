@@ -1,0 +1,50 @@
+
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml">
+ 	<head>
+ 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ 		<meta http-equiv="refresh" content="6;URL='<?=$domainname?>'">
+        <title>更新页面</title>
+        <meta name="keywords" content="<?=$sitekeywords?>" />
+        <meta name="description" content="<?=$sitedescription?>" />
+ 		<meta name="generator" content="Baidu SiteMap Generator" />
+ 		<style type="text/css">
+	 		body {font-family: Verdana;FONT-SIZE: 12px;MARGIN: 0;color: #000000;background: #ffffff;}
+	 		img {border:0;}
+	 		li {margin-top: 8px;}
+	 		.page {padding: 4px; border-top: 1px #EEEEEE solid}
+	 		.author {background-color:#EEEEFF; padding: 6px; border-top: 1px #ddddee solid}
+	 		#nav, #menu, #content, #footer {padding: 8px; border: 1px solid #EEEEEE; clear: both; width: 95%; margin: auto; margin-top: 10px;}
+	 		#menu ul{overflow:hidden; line-height:24px;}
+	 		#menu ul li{ font-size:14px; font-weight:700}
+	 		#menu ul li ol{list-style-type:none; overflow:hidden; padding:0; margin:0;}
+	 		#menu ul li ol li{float:left; padding:0 10px 0 0; font-size:12px; font-weight:400;}
+ 	    </style>
+ 	</head>
+ 	<body vlink="#333333" link="#333333">
+ 		<h2 style="text-align: center; margin-top: 20px"><?=$sitename?></h2>
+ 		<center></center>
+ 		<div id="nav">
+ 			<a href="<?=$domainname?>"><strong><?=$sitename?></strong></a>
+ 		</div>
+ 		<div id="menu">
+ 			<h3>最新文章</h3>
+ 			<ul>
+
+                        <?php foreach ($this->sys_cms_content->getWhereList('',20,0,' order by id desc') as $key => $value) {?>
+                        <li><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html"><?=$value['title']?></a><?=$value['buildtime']?></li>
+                        <?php }?>
+ 			</li>
+ 		</ul>
+ 		</div>
+ 		<div id="menu">
+ 			<ul>
+ 				 <li>站点导航<ol>
+ 				        <?php foreach ($this->sys_cms_category->classlistbypid(0,50,'sort asc') as $key => $value) {?>
+                            <li class="fl tags"><a target="_blank" href="<?=$domainname?>/cat-<?=$value['id']?>.html" ><?=$value['name']?></a></li>
+                        <?php }?>
+ 			</ul>
+ 		</div>
+ 		<div id="footer">查看首页: <strong><a href="<?=$domainname?>" title="<?=$sitename?>"><strong><?=$sitename?></strong></a></strong></div><br />
+ 	</body>
+ </html>

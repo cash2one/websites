@@ -1,0 +1,530 @@
+﻿/*inline-block布局*/
+/*inline-block布局的外盒子*/
+.out {
+    font-size: 0px;
+    letter-spacing: -8px; /*兼容Safari浏览器，负值对其他浏览器无效*/
+    *letter-spacing: normal; /* reset IE < 8 */
+}
+/*inline-block布局的里盒子*/
+.in {
+    display: inline-block;
+    vertical-align: top; /*所有并列盒子项顶部对齐*/
+}
+/*兼容IE6 7*/
+.in {
+    *display: inline;
+    zoom: 1;
+}
+
+.martop10 {
+    margin-top: 10px;
+}
+
+.martop20 {
+    margin-top: 20px;
+}
+
+.marleft10 {
+    margin-left: 10px;
+}
+
+.marleft20 {
+    margin-left: 20px;
+}
+
+.layout {
+    width: 1000px;
+    margin: auto;
+}
+
+.m10 {
+    height: 10px;
+}
+
+.m20 {
+    height: 20px;
+}
+
+.m35 {
+    height: 35px;
+}
+
+.head {
+    background-color: #297299;
+}
+
+    .head .headBody {
+        height: 152px;
+    }
+
+.headBody .left {
+    width: 162px;
+    height: 132px;
+    margin: 10px 0px 0px 40px;
+}
+
+    .headBody .left .pic {
+        width: 112px;
+        height: 112px;
+        background: url(../images/logo.png) no-repeat;
+    }
+
+        .headBody .left .pic a {
+            display: block;
+            text-indent: -9999px;
+            height: 112px;
+        }
+
+    .headBody .left .txt {
+        width: 162px;
+        height: 20px;
+        text-align: center;
+        color: #fff;
+        line-height: 20px;
+    }
+
+        .headBody .left .txt span {
+            color: #fff;
+        }
+
+.headBody .right {
+    width: 626px;
+    height: 152px;
+    margin-left: 160px;
+}
+
+    .headBody .right .navSec, .headBody .right .message {
+        width: 626px;
+        height: 31px;
+        margin-top: 60px;
+    }
+
+    .headBody .right .message {
+        margin-top: 15px;
+    }
+
+.navSec .navL {
+    width: 431px;
+    height: 17px;
+    margin-top: 5px;
+}
+
+    .navSec .navL ul {
+        width: 255px;
+        margin-left: 250px;
+    }
+
+        .navSec .navL ul li {
+            width: 60px;
+            height: 17px;
+            margin-right: 25px;
+        }
+
+            .navSec .navL ul li a {
+                display: block;
+                color: #fff;
+            }
+
+            .navSec .navL ul li.current a {
+                font-weight: 800;
+            }
+
+.navSec .seach {
+    /*width: 167px;*/
+    height: 26px;
+    position: relative;
+}
+
+.seach .seachText {
+    width: 167px;
+    height: 26px;
+    position: absolute;
+    z-index: 1000;
+    background: url(../images/blog_ico.png) -30px -20px no-repeat;
+    border: 0px;
+    text-indent: 10px;
+}
+
+.seach .seachSbt {
+    position: absolute;
+    text-indent: -9999px;
+    z-index: 1001;
+    width: 20px;
+    height: 20px;
+    right: 4px;
+    top: 3px;
+    background: url(../images/blog_ico.png) 0px -20px no-repeat;
+    border: 0px;
+    cursor: pointer;
+}
+
+.message .suonaIco {
+    width: 17px;
+    height: 22px;
+    background: url(../images/blog_ico.png)0px -56px no-repeat;
+}
+
+.message .txt {
+    height: 22px;
+    width: 577px;
+    margin-left: 10px;
+    overflow: hidden;
+    line-height: 21px;
+}
+
+    .message .txt a {
+        color: #fff;
+    }
+
+.siteMain {
+}
+
+    .siteMain .siteMainBody {
+        width: 1000px;
+    }
+
+.leftList {
+    width: 717px;
+}
+
+.rightList {
+    width: 258px;
+    margin-left: 25px;
+}
+
+.arlBk {
+    width: 657px;
+    margin: 0 auto;
+}
+
+    .arlBk .arlBkList {
+        height: 160px;
+    }
+
+.arlBkList h2 {
+    height: 33px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.arlBkList .time {
+    height: 18px;
+}
+
+.time i {
+    width: 10px;
+    height: 10px;
+    background: url(../images/blog_ico.png) 0px 0px no-repeat;
+    margin-top: 2px;
+}
+
+.time span {
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.contxt {
+    height: 65px;
+    line-height: 28px;
+    overflow: hidden;
+    background: url(../images/conbg.png) no-repeat;
+    margin-top: 10px;
+}
+
+    .contxt p {
+        text-indent: 2em;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+.readAll {
+    display: block;
+    color: #297299;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.seniority {
+}
+
+    .seniority .title h2 {
+        height: 30px;
+        font-size: 18px;
+        font-weight: 800;
+        color: #297299;
+    }
+
+    .seniority .ctList ul li {
+        width: 258px;
+        height: 32px;
+        overflow: hidden;
+        line-height: 32px;
+    }
+
+.footer {
+    border-top: 1px solid #c1c1c1;
+}
+
+    .footer .footerBody, .flink .flinkBody {
+        width: 940px;
+        margin: 15px auto;
+        text-align: center;
+        color: #c1c1c1;
+    }
+
+        .footer .footerBody a, .flink .flinkBody a {
+            margin-left: 10px;
+            color: #c1c1c1;
+        }
+
+    .footer a.onlinesb {
+        color: #297299;
+    }
+
+.arlBk .listLk {
+}
+
+.listLk .breadCrumb {
+    height: 30px;
+    border-bottom: 1px solid #c1c1c1;
+}
+
+.ind {
+    color: #297299;
+}
+
+.txtList ul li {
+    height: 30px;
+    border-bottom: 1px dotted #c1c1c1;
+}
+
+    .txtList ul li i {
+        width: 10px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+    }
+
+    .txtList ul li a {
+        width: 520px;
+        height: 30px;
+        line-height: 30px;
+        overflow: hidden;
+    }
+
+    .txtList ul li span {
+        width: 105px;
+        height: 30px;
+        line-height: 30px;
+        margin-left: 17px;
+    }
+
+.siteMain .page {
+    width: 717px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.listContent {
+    width: 657px;
+}
+
+    .listContent .title {
+        height: 51px;
+    }
+
+        .listContent .title h2 {
+            height: 33px;
+            font-size: 18px;
+            font-weight: 800;
+            overflow: hidden;
+        }
+
+        .listContent .title .time {
+            height: 18px;
+        }
+
+            .listContent .title .time i {
+                width: 10px;
+                height: 10px;
+                background: url(../images/blog_ico.png) 0px 0px no-repeat;
+                margin-top: 2px;
+            }
+
+            .listContent .title .time span {
+                font-size: 12px;
+                margin-left: 10px;
+            }
+
+    .listContent .txt {
+        line-height: 30px;
+    }
+
+        .listContent .txt p, .listContent .txt div {
+            line-height: 30px;
+            text-indent: 2em;
+        }
+
+        .listContent .txt img {
+            max-width: 630px;
+        }
+
+.preNext1 span {
+    width: 72px;
+    height: 30px;
+    line-height: 30px;
+    color: #000;
+    font-size: 18px;
+}
+
+.preNext1 a {
+    line-height: 32px;
+    font-size: 15px;
+    text-decoration: none;
+    color: #297299;
+}
+
+.related .title h2 {
+    height: 30px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #297299;
+}
+
+.relatedList ul li {
+    width: 325px;
+    height: 32px;
+}
+
+    .relatedList ul li i {
+        width: 10px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 25px;
+    }
+
+    .relatedList ul li a {
+        width: 310px;
+        height: 32px;
+        line-height: 32px;
+        overflow: hidden;
+    }
+
+.ctPicList ul li {
+    width: 258px;
+}
+
+    .ctPicList ul li a.pic {
+        width: 73px;
+        height: 73px;
+        margin: 11px 11px 11px 11px;
+    }
+
+        .ctPicList ul li a.pic img {
+            width: 73px;
+            height: 73px;
+        }
+
+    .ctPicList ul li a.txt {
+        width: 160px;
+        height: 73px;
+        margin: 11px 0px 11px 0px;
+        cursor: pointer;
+    }
+
+        .ctPicList ul li a.txt:hover {
+            color: #2997ab;
+        }
+
+        .ctPicList ul li a.txt h2 {
+            width: 160px;
+            height: 25px;
+            overflow: hidden;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 25px;
+            padding-top: 10px;
+        }
+        .PicSer li {
+            width: 164px;
+            cursor: pointer;
+        }
+
+            .PicSer li:hover {
+                background-color: #eae7e7;
+            }
+
+            .PicSer li a.pic {
+                display: block;
+                width: 73px;
+                height: 73px;
+                margin: 11px 11px 11px 0px;
+            }
+
+            .PicSer li a.txt {
+                display: block;
+                width: 140px;
+                height: 56px;
+                /*margin: 0px 11px 11px 0px;*/
+                overflow: hidden;
+            }
+
+            .PicSer li a.pic img {
+                width: 73px;
+                height: 73px;
+            }
+
+            .PicSer li a.txt h2 {
+                height: 33px;
+                line-height: 33px;
+                font-weight: 700;
+            }
+
+            .PicSer li a.pic span {
+                display: block;
+                height: 23px;
+            }
+
+            .preNext {
+    width: 680px;
+    height: 40px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.pnUl li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pnUl li {
+    *display: inline;
+    zoom: 1;
+}
+
+.preNext a, .preNext span {
+    display: block;
+    height: 33px;
+    min-width: 13px;
+    color: #000;
+    line-height: 34px;
+    font-size: 14px;
+    border: 1px solid #c1c1c1;
+    margin: 0px 5px 0px 5px;
+    padding: 0px 10px 0px 10px;
+}
+
+    .preNext a.current {
+        background-color: #c1c1c1;
+        color: #fff;
+    }
+
+    .preNext a.pre, .preNext a.next {
+        display: block;
+        width: 78px;
+    }
+    .headBody .left .pic a {
+display: block;
+text-indent: -9999px;
+height: 112px;
+}

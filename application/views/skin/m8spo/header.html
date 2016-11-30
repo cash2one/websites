@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <link rel="canonical" href="<?=$pcurl?>">
+    <title><?=$htitle?></title>
+    <meta name="keywords" content="<?=$sitekeywords?>" />
+    <meta name="description" content="<?=$sitedescription?>" />
+    <link href="<?=$skin?>/css/base.css" rel="stylesheet" />
+    <link href="<?=$skin?>/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="<?=$skin?>/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="<?=$skin?>/js/flexible.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('img').each(function(){
+            var imgsrc = this.src;
+            if(imgsrc.match("http://mmbiz.qpic.cn") || imgsrc.match("qq.com") || imgsrc.match("hiphotos.baidu.com") || imgsrc.match("ph.126.net") || imgsrc.match("yujiame.com") || imgsrc.match("tuicool.com") || imgsrc.match("jirou.com") || imgsrc.match("qhimg.com") || imgsrc.match("sogoucdn.com") || imgsrc.match("gtimg.com") || imgsrc.match("pcbaby.com.cn") || imgsrc.match("sogou.com") || imgsrc.match("imgs.cc") || imgsrc.match("ckcdn.com")){
+                if(imgsrc.match("/getimg.php")){
+
+                }else{
+                    var newurl = "/getimg.php?url="+imgsrc;
+                    $(this).attr('src',newurl);
+                }
+
+            }
+
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <!-- header star -->
+    <header class="header">
+        <div class="item-1">
+            <div class="logo">
+                <a href="/" title="bibi"></a>
+            </div>
+            <div class="search" id="search-bt">
+                <em>
+                    <i class="fa fa-modx"></i>
+                </em>
+            </div>
+        </div>
+        <nav class="nav">
+            <?php 
+            if($classid){
+                $indexactinon = '';
+            }else{
+                $indexactinon = 'class="active"';
+            }
+            ?>
+            <a <?=$indexactinon?> href="<?=$domainname?>">首页</a>
+            <?php 
+            $dindex = 0;
+            $actinon = '';
+            foreach ($this->sys_cms_category->classlistbypid(0,4) as $key => $value) {
+                if(isset($classid)){
+                    if($classid == $value['id']){
+                        $actinon = 'class="active"';
+                    }else{
+                        $actinon = '';
+                    }
+                }else{
+                    $actinon = '';
+                }
+            ?>
+                <a  <?=$actinon?> href="<?=$domainname?>/<?=$value['ename']?>/" data-index="<?=$dindex?>" >
+                    <?=mb_substr($value['name'],0,2)?></a>
+            <?php 
+                    $dindex++;
+            }?> 
+        </nav>
+    </header>
+    <!-- header stop -->

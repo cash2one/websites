@@ -1,0 +1,120 @@
+<!--main star-->
+        <div class="layout siteMain">
+            <div class="siteMainBody out">
+                <!--left star-->
+                <div class="leftList in">
+                    <div class="arlBk">
+                        <div class="listLk">
+                            <div class="breadCrumb">
+                                <?=$mypostion?>
+                            </div>
+                            <div class="m20"></div>
+                            <div class="listContent">
+                            {data_content}
+                            <input type="hidden" id="content_id" name="content_id" value="{id}" >
+                                <div class="title">
+                                    <h2>{title}</h2>
+                                    <div class="time out">
+                                        <i class="in"></i>
+                                        <span class="in">{buildtime}</span>
+                                        <span class="in">{catname}</span>
+                                    </div>
+                                </div>
+                                <div class="m20"></div>
+                                <div class="txt">
+                                {content}
+                                </div>
+                            </div>
+                              {/data_content}
+                        </div>
+                        <div class="m20"></div>
+                        <div class="preNext2 out">
+                            <div>
+                                <span class="in">上一篇：</span>
+                                <?=$content_per?>
+                            </div>
+                            <div>
+                                <span class="in">下一篇：</span>
+                                 <?=$content_next?>
+                            </div>
+                        </div>
+                        <div class="m20"></div>
+                        <div class="related">
+                            <div class="title">
+                                <h2>推荐文章</h2>
+                            </div>
+                            <div class="relatedList">
+                                <ul class="out">
+                            <?php foreach ($this->sys_cms_content->getNewList(10,10) as $key => $value) {?>       
+                                    <li class="in">
+                                        <i class="in">·</i>
+                                        <a class="in" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>"><?=$value['title']?></a>
+                                    </li>
+
+                            <?php }?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--left stop-->
+                <!--right star-->
+                <div class="rightList in">
+                    <div class="seniority">
+                        <div class="title">
+                            <h2>最新文章</h2>
+                        </div>
+                        <div class="ctList">
+                            <ul>
+                            {newest}
+                                <li><a href="<?=$domainname?>/view-{id}.html" title="{title}" target="_blank">{title}</a></li>
+                            {/newest}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="m20"></div>
+                    <div class="seniority">
+                        <div class="title">
+                            <h2>推荐公众号</h2>
+                        </div>
+                        <div class="ctPicList">
+                            <ul>
+                                {hotweixin}
+                                 <li class="out">
+                                    <a class="pic in" href="<?=$domainname?>/list-{id}.html" title="{catname}">
+                                        <img src="{logourl}" alt="{catname}" />
+                                    </a>
+                                    <a class="txt in" href="<?=$domainname?>/list-{id}.html" title="{catname}">
+                                        <h2>{catname}</h2>
+                                        <span>微信号：</span><span>{weixinhao}</span>
+                                    </a>
+                                </li>
+                                {/hotweixin}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--right stop-->
+            </div>
+        </div>
+        <!--main stop-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        var id  = $("#content_id").val();
+        $.ajax({
+            type:'GET',
+            url:'/index.php?c=cms_index&m=viewClick&id='+id+''
+        });
+
+        var imgobj = $(".content img");
+        $.each(imgobj,function (key){
+            var datasrc = $(this).attr("data-src");
+            if(datasrc == undefined){
+
+            }else{
+                $(this).attr("src",datasrc);
+            }
+        });
+        
+    });
+</script>

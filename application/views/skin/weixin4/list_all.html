@@ -1,0 +1,24 @@
+<!--main star-->
+        <div class="layout siteMain">
+            <div class="layout hyFwTxt">
+                <div class="title">
+                    <h2>公众号排行版</h2>
+                </div>
+                <div class="m30"></div>
+                <div class="fwBox">
+                    <ul class="PicSer out">
+                         {allweixin}
+                            <li class="in">
+                                <a class="pic" href="<?=$domainname?>/list-{id}.html" title="{catname}">
+                                    <img src="{logourl}" alt="{catname}" />
+                                </a>
+                                <a class="txt" href="<?=$domainname?>/list-{id}.html" title="{catname}">
+                                    <h2>{catname}</h2>
+                                </a>
+                            </li>
+                          {/allweixin}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--main stop-->

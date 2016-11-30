@@ -1,0 +1,171 @@
+<html lang="zh-CN">
+<head>
+<title>kb</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<script src="/skin/qianmo/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2.js" charset="utf-8"></script>
+</head>
+<body>
+
+
+<div>
+<h2 id="arttitle"></h2>
+
+</div>
+<div class="article-content clear" id="artcontent">
+</div>
+<div class="tips tipsbottom clear">
+</div>
+<input type="hidden" id="kbid" value="<?=$kbid?>" > 
+<input type="hidden" id="aid" value="<?=$aid?>" > 
+<input type="hidden" id="cid" value="<?=$cid?>" > 
+</body>
+<script type="text/javascript">
+var id = "";
+var aid = "";
+var cid = "";
+$(document).ready(function () { 
+	// id =GetQueryString("kbid");
+	// aid =GetQueryString("aid");
+	// cid =GetQueryString("cid");
+	id =$("#kbid").val();
+	aid =$("#aid").val();
+	cid =$("#cid").val();
+	//id = '20151201A033K100';
+	if(id != 'null'){
+		getArticle(id);
+	}
+
+});
+
+
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+
+function getArticle(id) {
+	var result = "";
+	$.ajax({
+		url: 'http://openapi.kuaibao.qq.com/getSubNewsContent?callback=responseData&appver=8.4_qnreading_1.0.0&screen_width=320&screen_height=568&devid=D5126D83-6E2F-4C7F-8BEF-3D81E34C4387&device_model=iPhone&screen_scale=2&id='+id+'&alg_version=0&chlid=news_news_dailyhot&media_id=2240&seq_no=&isShowTitle=1&_=1448979895357',
+		dataType: 'jsonp',
+		jsonp: 'callback',
+		jsonpCallback:'responseData',//jsonp回调函数名称
+		success: function(data){
+			// 取出标签列表类型
+			//if(data.ret != 0) {
+			//	QQ.Cookie.clear('skey', '/', 'qq.com');
+				//window.location.reload();
+			//}
+			var content = data.content.text;
+			var imgList = data.attribute;
+			document.getElementById('arttitle').innerHTML = data.content['titleName'];
+			document.title = data.content['titleName'] + '_快报';
+			//var chlname = data.card.chlname;
+			// 把图片对象转换为字符串，把desc转换为div
+			// 把视频转换为字符串
+			var imgHtml = {};
+			for(var i in imgList) {
+				var imgObj = imgList[i];
+				var winWidth = $(window).width();
+				
+
+
+				var w = imgObj.width;
+				var h = imgObj.height;
+
+				if(winWidth < 768){
+					h = parseInt(366 * (h/w), 10);
+					w = 366;
+				}
+
+				var nw, nh;
+				if(w > 700) {
+					nh = parseInt(700 * (h/w), 10);
+					nw = 700;
+				}else{
+					nw = w;
+					nh = h;
+				}
+				if(i.charAt(0) === 'I') {
+					// 图片 IMG
+					imgHtml[i]= ''+
+						'<div style="width:'+ nw +'px;height:'+ nh +'px;" class="article-img">'+
+							'<p style="text-align:center;">'+
+								'<img src="'+ imgObj.url +'" width='+nw+' height='+nh+'>'+
+							'</p>'+
+						'</div>';
+				}else if(i.charAt(0) === 'V'){
+					// 视频VIDEO
+					imgHtml[i]= ''+
+					'<div class="videobox" id="'+ i + '"></div>'+
+					'<scr'+'ipt type="text/javascript">'+
+						'(function () {'+
+						'var video = new tvp.VideoInfo();'+
+						'video.setVid("'+ imgObj.vid+'");'+
+						'var player =new tvp.Player();'+
+						'player.create({'+
+							'width:'+ nw +','+
+							'height:'+ nh +','+
+							'video:video,'+
+							'modId:"'+ i +'",'+
+							'autoplay:true'+
+						'});'+
+					'})()'+
+					'</scr'+'ipt>';
+				}
+				if(imgObj.desc) { 
+					imgHtml[i] += ''+ 
+						'<div class="article-txt">'+
+							'<p id="ReadingImageDesc'+ i +'">'+ imgObj.desc +'</p>'+
+							'<div class="repi-txt">'+
+							'<div class="bd" markid="ReadingImageDesc'+ i +'"> </div>'+
+							'</div>'+
+						'</div>';
+				}
+			};
+			//var contentImg = content.replace(/<!--IMG_\d+-->/g, function(word){
+			  //return imgHtml[word.match(/[a-zA-Z0-9_]+/)[0]];
+			//});
+			//替换图片
+			var contentImg = content.replace(/<P id\=\"TextMark_(\d+)\"><!--IMG_(\d+)--><\/P>/g, function(word, m, n){
+				return imgHtml['IMG_'+n];
+			});
+			// 替换文字
+			var contentTxt = contentImg.replace(/<P id\=\"TextMark_(\d+)\">(.+?)<\/P>/g, function(word, m, n){
+				return '<div class="article-txt">'+word+'<div class="repi-txt"><div class="bd" markid="TextMark_'+ m +'"></div></div></div>';
+			});
+
+			// 替换视频
+			var contentVideo = contentTxt.replace(/<!--VIDEO_(\d+)-->/g, function(word, m, n){
+				return imgHtml['VIDEO_'+m];
+			});
+
+			//curData.art = contentVideo;
+			//getMark();
+			//getRelateNews();
+			// 把内容填到页面
+			//result = result + contentHtml;
+			// document.getElementById("artcontent").innerHTML = contentTxt;
+			$('#artcontent').append(contentVideo);
+
+		},
+		error: function(data){
+			window.location.href = api.getSubNewsContent+'?id='+window.CONFIG.id;
+		},
+		complete: function(){
+			// alert($("#artcontent").html());
+			var content = $("#artcontent").html();
+			$.post('index.php?c=cms_contentMan&m=updatekbcontent',{id:aid,cid:cid,content:content},function(data){
+				alert(aid);
+			},'html');
+		}
+	});
+	//return result;
+}
+
+
+</script>
+</html>

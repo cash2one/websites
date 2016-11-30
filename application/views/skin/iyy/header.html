@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        <meta name="viewport" content="width=device-width , initial-scale=1.0 , user-scalable=0 , minimum-scale=1.0 , maximum-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+         <meta http-equiv="Cache-Control" content="no-siteapp" />
+         <meta name="applicable-device"content="pc,mobile">
+        <title><?=$htitle?></title>
+        <meta name="keywords" content="<?=$sitekeywords?>" />
+        <meta name="description" content="<?=$sitedescription?>" />
+        <link rel="stylesheet" type="text/css" media="all" href="<?=$skin?>/css/style.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="<?=$skin?>/css/mobile.css" />
+        <link rel="stylesheet" href="<?=$skin?>/css/font-awesome.min.css" />
+        <!--[if IE 7]>
+                <link rel="stylesheet" href="<?=$skin?>/css/font-awesome-ie7.min.css" />
+        <![endif]-->
+        <script type='text/javascript' src='<?=$skin?>/js/jquery.js'></script>
+        <script type="text/javascript" src="<?=$skin?>/js/frontopen.js"></script>
+        <script type="text/javascript">(function () { mod_txt = '#'; adminBar = "" || 0 })();</script>
+          <!--[if lt IE 9]>
+                <script src="<?=$skin?>/js/html5.js"></script>
+        <![endif]-->
+
+</head>
+<body class="home blog">
+        <div class="loading"></div>
+        <div class="web_bod">
+        <!--header star-->
+        <header class="header marauto">
+                <span class="logo">
+                        <a href="<?=$domainname?>" title="<?=$sitename?>" rel="home">
+                                <img src="<?=$skin?>/images/logo2.gif" alt="<?=$sitename?>" />
+                        </a>
+                        <i></i>
+                </span>
+                <!--搜索 star-->
+                <form role="search" method="get" id="searchform" action="javascript:;">
+                        <span class="search">
+                                <input name="s" id="s" type="text" class="input" value="搜索一下更精彩" onclick="this.value = '';" style="color: #999" />
+                                <button id="searchsubmit" class="btn">搜索</button>
+                        </span>
+                </form>
+                <!--搜索 stop-->
+                <div class="cls"></div>
+        </header>
+         <div class="nav marauto">
+                        <div class="tig">
+                                <a href="<?=$domainname?>" target="_self" rel="" title="登陆投稿"><span class="sub">登陆投稿</span></a>
+                                <div class="gonggao">
+                                        <ul id="g_box">
+                                                <li><span class="gg_tx"><i class="icon-volume-off icon-large"></i>爱运营接受各种网站运营稿件，并会开展网站运营的实际案例分析，以案例学运营。</span></li>
+                                                <li><span class="gg_tx"><i class="icon-volume-off icon-large"></i><font color="red">网站运营官方微信（iyunyingorg）上线，欢迎各位运营人士关注并交流运营知识。</font></span></li>
+                                        </ul>
+                                </div>
+                        </div>
+                        <div class="navlist">
+                                <dl>
+                                        <dt><a href="<?=$domainname?>" title="关于我们" target="_self" class="nav_button" style="opacity: 0.7;" rel="">
+                                                <img src="<?=$skin?>/images/1-1.png" width="45" height="45"></a></dt>
+                                        <dd>关于我们</dd>
+                                </dl>
+                                <dl>
+                                        <dt><a href="<?=$domainname?>" title="联系我们" target="_self" class="nav_button" style="opacity: 0.7;" rel="">
+                                                <img src="<?=$skin?>/images/1-2.png" width="45" height="45"></a></dt>
+                                        <dd>联系我们</dd>
+                                </dl>
+                                <dl>
+                                        <dt><a href="<?=$domainname?>" title="合作伙伴" target="_self" class="nav_button" style="opacity: 0.7;" rel="">
+                                                <img src="<?=$skin?>/images/01.jpg" width="45" height="45"></a></dt>
+                                        <dd>合作伙伴</dd>
+                                </dl>
+                                <dl>
+                                        <dt><a href="<?=$domainname?>" title="推荐书单" target="_self" class="nav_button" style="opacity: 0.7;" rel="">
+                                                <img src="<?=$skin?>/images/1-4.png" width="45" height="45"></a></dt>
+                                        <dd>推荐书单</dd>
+                                </dl>
+                                <dl>
+                                        <dt><a href="<?=$domainname?>" title="广告联系" target="_self" class="nav_button" style="opacity: 0.7;" rel="">
+                                                <img src="<?=$skin?>/images/zuozhe1.jpg" width="45" height="45"></a></dt>
+                                        <dd>广告联系</dd>
+                                </dl>
+                                <dl>
+                                        <dt><a href="<?=$domainname?>" title="我要投稿" target="_self" class="nav_button" style="opacity: 0.7;" rel="">
+                                                <img src="<?=$skin?>/images/011-300x300.png" width="45" height="45"></a></dt>
+                                        <dd>我要投稿</dd>
+                                </dl>
+                                <div class="cls"></div>
+                        </div>
+                </div>
+                <!--导航 star-->
+                <nav class="navcon marauto">
+                        <div id="mobile_nav_btn">网站导航</div>
+                        <div class="menu-header">
+                                <ul id="" class="menu">
+
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home "><a title="网站运营" href="<?=$domainname?>">爱运营</a></li>
+                                       
+                                        <?php foreach ($this->sys_cms_category->classlistbypid(0,5,'sort asc') as $key => $value) {?>
+                                            <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children "><a title="<?=$value['name']?>" href="<?=$domainname?>/cat-<?=$value['id']?>.html"><?=$value['name']?></a>
+                                            </li>
+                                        <?php }?>     
+                                        </li>
+                                </ul>
+                        </div>
+                </nav>
+                <!--导航 stop-->
+<script type='text/javascript' src='<?=$skin?>/js/jquery.1.11.1.js'></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('img').each(function(){
+        var imgsrc = this.src;
+        if(imgsrc.match("http://mmbiz.qpic.cn") || imgsrc.match("qq.com") || imgsrc.match("hiphotos.baidu.com") || imgsrc.match("ph.126.net") || imgsrc.match("yujiame.com") || imgsrc.match("tuicool.com") || imgsrc.match("jirou.com") || imgsrc.match("qhimg.com") || imgsrc.match("sogoucdn.com") || imgsrc.match("gtimg.com") || imgsrc.match("pcbaby.com.cn")){
+            if(imgsrc.match("/getimg.php")){
+
+            }else{
+                var newurl = "/getimg.php?url="+imgsrc;
+                $(this).attr('src',newurl);
+            }
+
+        }
+
+    });
+});
+</script>
+         <!--header stop-->      
