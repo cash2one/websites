@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="baidu_union_verify" content="fd33ffab167a6ca903299d09e727974c">
-        <title><?=$htitle?></title>
-        <meta name="keywords" content="<?=$sitekeywords?>" />
-        <meta name="description" content="<?=$sitedescription?>" />
-        <meta http-equiv="Cache-Control" content="no-transform" />
-        <meta http-equiv="Cache-Control" content="no-siteapp" />
-        <meta name="mobile-agent" content="format=html5;url=<?=$murl?>" />
-        <meta name="mobile-agent" content="format=xhtml;url=<?=$murl?>" />
-        <link rel="alternate" media="only screen and(max-width: 640px)" href="<?=$murl?>" >
-        <link href="<?=$skin?>/css/reset.css" rel="stylesheet" />
-        <link href="<?=$skin?>/css/base.css" rel="stylesheet" />
-        <script src="<?=$skin?>/js/jquery-1.11.1.js"></script>
-        <script src="<?=$skin?>/js/fixed.js"></script>
-                <script type="text/javascript">
-                var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
-                var browser = navigator.userAgent.toLowerCase();
-                var isMobile = false;
-                for (var i = 0; i < mobileAgent.length; i++) {
-                        if (browser.indexOf(mobileAgent[i]) != -1) {
-                                isMobile = true;
-                                location.href = 'http://m.china-7.net/<?=$murl?>';
-                                break;
-                        }
-                }
-        </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="baidu_union_verify" content="fd33ffab167a6ca903299d09e727974c">
+    <title>
+        <?=$htitle?>
+    </title>
+    <meta name="keywords" content="<?=$sitekeywords?>" />
+    <meta name="description" content="<?=$sitedescription?>" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="mobile-agent" content="format=html5;url=<?=$murl?>" />
+    <meta name="mobile-agent" content="format=xhtml;url=<?=$murl?>" />
+    <link rel="alternate" media="only screen and(max-width: 640px)" href="<?=$murl?>">
+    <link href="<?=$skin?>/css/reset.css" rel="stylesheet" />
+    <link href="<?=$skin?>/css/base.css" rel="stylesheet" />
+    <script src="<?=$skin?>/js/jquery-1.11.1.js"></script>
+    <script src="<?=$skin?>/js/fixed.js"></script>
+    <script type="text/javascript">
+    var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+    var browser = navigator.userAgent.toLowerCase();
+    var isMobile = false;
+    for (var i = 0; i < mobileAgent.length; i++) {
+        if (browser.indexOf(mobileAgent[i]) != -1) {
+            isMobile = true;
+            location.href = 'http://m.china-7.net/<?=$murl?>';
+            break;
+        }
+    }
+    </script>
 </head>
 <body>
-        <div class="zhenPage">
-                <!--header star-->
-                <div class="header">
-                        <div class="layout zhenFw out">
-                                <div class="logo in">
-                                        <a href="<?=$domainname?>" title="<?=$sitename?>"></a>
-                                </div>
-                                <div class="search in">
-
-
-                                </div>
-                        </div>
+    <div class="zhenPage">
+        <!--header star-->
+        <div class="header">
+            <div class="layout zhenFw out">
+                <div class="logo in">
+                    <a href="<?=$domainname?>" title="<?=$sitename?>"></a>
                 </div>
-
+                <div class="search in">
+                </div>
+            </div>
+        </div>
         <script type="text/javascript">
-        $(document).ready(function () {
-            $('img').each(function(){
+        $(document).ready(function() {
+            $('img').each(function() {
                 var imgsrc = this.src;
-                if(imgsrc.match("http://mmbiz.qpic.cn") || imgsrc.match("photo.store.qq.com") || imgsrc.match("hiphotos.baidu.com") || imgsrc.match("ph.126.net") || imgsrc.match("yujiame.com") || imgsrc.match("tuicool.com") || imgsrc.match("jirou.com") || imgsrc.match("qhimg.com") || imgsrc.match("sogoucdn.com")){
-                    if(imgsrc.match("/getimg.php")){
+                if (imgsrc.match("http://mmbiz.qpic.cn") || imgsrc.match("photo.store.qq.com") || imgsrc.match("hiphotos.baidu.com") || imgsrc.match("ph.126.net") || imgsrc.match("yujiame.com") || imgsrc.match("tuicool.com") || imgsrc.match("jirou.com") || imgsrc.match("qhimg.com") || imgsrc.match("sogoucdn.com")) {
+                    if (imgsrc.match("/getimg.php")) {
 
-                    }else{
-                        var newurl = "/getimg.php?url="+imgsrc;
-                        $(this).attr('src',newurl);
+                    } else {
+                        var newurl = "/getimg.php?url=" + imgsrc;
+                        $(this).attr('src', newurl);
                     }
 
                 }
@@ -61,282 +60,279 @@
         });
         </script>
         <!--header stop-->
-<div class="m15"></div>
-                <!--main star-->
-                <script src="<?=$skin?>/js/prototype.js"></script>
-                <script src="<?=$skin?>/js/ImageSlide.js"></script>
-                <div class="main">
-                        <div class="layout zhenFw out">
-                                <div class="main-left in">
-                                        <!--slide star-->
-                                        <div id="focusImage" class="slide">
-                                                <ul class="contents">
-
-             <?php foreach ($this->sys_cms_content->getFirsttitleList(5) as $key => $value) {
-                 $current = $key==0 ? "current" : "";
-                ?>
-                                                         <li class="<?=$current?>">
-                                                                <div class="image">
-                                                                        <a href="<?=$domainname?>/view-<?=$value['id']?>.html" target="_blank">
-                                                                                <img src="<?=$value['headimage']?>" title="<?=$value['title']?>" /></a>
-                                                                </div>
-                                                                <div class="text">
-                                                                        <span class="title"><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html"  title="<?=$value['title']?>"><?=$value['title']?></a></span>
-                                                                        <p><?=$value['description']?></p>
-                                                                </div>
-                                                        </li>
-
-
-                <?php }?>
-
-                                                </ul>
-
-                                                <div class="triggers">
-                                                 <?php foreach ($this->sys_cms_content->getFirsttitleList(5) as $key => $value) {
-                 $current = $key==0 ? "current" : "";
-                ?>
-                                                       <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html">
-                                                                                <img src="<?=$value['headimage']?>" title="<?=$value['title']?>" /></a>
-                <?php }?>
-                                                       
-                                                </div>
-
-                                                <div class="icon-dot">
-                                                        <a  class="cur current"></a>
-                                                        <a></a>
-                                                        <a></a>
-                                                        <a></a>
-                                                        <a></a>
-                                                </div>
-
-                                                <span class="link-watch pre down"></span>
-                                                <span class="link-watch next down"></span>
-
-                                        </div>
-                                        <script type="text/javascript">
-                                                new ImageSlide({
-                                                        project: "#focusImage",
-                                                        content: ".contents li",
-                                                        tigger: ".triggers a",
-                                                        dot: ".icon-dot a",
-                                                        watch: ".link-watch",
-                                                        auto: !0,
-                                                        hide: !0
-                                                })
-                                        </script>
-                                        <!--slide stop-->
-                                        <div class="m15"></div>
-                                        <div class="main-container">
-                                                <div class="nav" id="nav">
-                                                        <ul class="nav-box out">
-                                                                <li class="in current"><a target="_blank" href="<?=$domainname?>" title="热门">热门</a></li>
-                        <?php foreach ($this->sys_cms_category->classlistbypid(0,29,'sort asc') as $key => $value) {?>
-                            <li class="in"><a target="_blank" href="<?=$domainname?>/cat-<?=$value['id']?>.html" ><?=$value['name']?></a></li>
-                        <?php }?>
-
-                         
-                                                        </ul>
-                                                        <script type="text/javascript">
-                                                                $("#nav").smartFloat();
-                                                        </script>
-                                                </div>
-                                                <div class="container-list">
-                                                        <ul class="su-bd">
-             <?php foreach ($this->sys_cms_content->getWhereList('',26,0,' order by id desc') as $key => $value) {?>             
-                                                                <li class="out">
-                                                                        <div class="weixin-img in">
-                                                                                <a target="_blank" href="<?=$domainname?>/list-<?=$value['cid']?>.html" title="<?=$value['catname']?>">
-                                                                                        <span class="ico-bg"></span>
-                                                                                        <p class="ico-im">
-                                                                                                <img src="<?=$value['logourl']?>" />
-                                                                                        </p>
-                                                                                        <p class="weixin-num"><?=$value['catname']?></p>
-                                                                                </a>
-                                                                                <div class="fxf">
-                                                                                        <a target="_blank" href="<?=$domainname?>/list-<?=$value['cid']?>.html" onclick="return false;">关注</a>
-                                                                                        <div class="erweima clearfix" style="display: none;">
-                                                                                                <div class="erweima-img fl">
-                                                                                                        <em>
-                                                                                                                <img src="<?=$value['logourl']?>" /></em>
-                                                                                                        <img src="<?=$domainname?>/upload/weixin_china7.jpg" />
-                                                                                                </div>
-                                                                                                <div class="phone fr"></div>
-                                                                                        </div>
-                                                                                </div>
-                                                                        </div>
-                                                                        <div class="weixin-news-info in">
-                                                                                <h3><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html"><?=$value['title']?></a></h3>
-                                                                                <p class="m-txt">
-                                                                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=mb_substr($value['description'],0,60)?>...</a>
-                                                                                </p>
-                                                                                <p class="other">
-                                                                                        <span>阅读:</span>
-                                                                                        <i><?=$value['onclick']?></i>
-                                                                                        <em class="time"><?=$value['buildtime']?></em>
-                                                                                </p>
-                                                                        </div>
-                                                                        <div class="weixin-news-img in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>">
-                                                                                        <img src="<?=$value['headimage']?>" />
-                                                                                </a>
-                                                                        </div>
-                                                                </li>
-                                                                <?php }?>
-                                                        </ul>
-                                                </div>
-                                                <script type="text/javascript">
-                                                        $(".fxf a").hover(function () {
-                                                                $(this).next().show();
-                                                        }, function () {
-                                                                $(this).next().hide();
-                                                        });
-                                                </script>
-                                        </div>
+        <div class="m15"></div>
+        <!--main star-->
+        <script src="<?=$skin?>/js/prototype.js"></script>
+        <script src="<?=$skin?>/js/ImageSlide.js"></script>
+        <div class="main">
+            <div class="layout zhenFw out">
+                <div class="main-left in">
+                    <!--slide star-->
+                    <div id="focusImage" class="slide">
+                        <ul class="contents">
+                            <?php foreach ($this->sys_cms_content->getFirsttitleList(5) as $key => $value) {
+$current = $key==0 ? "current" : "";
+?>
+                            <li class="<?=$current?>">
+                                <div class="image">
+                                    <a href="<?=$domainname?>/view-<?=$value['id']?>.html" target="_blank">
+<img src="<?=$value['headimage']?>" title="<?=$value['title']?>" /></a>
                                 </div>
-                                <div class="main-right in">
-                                        <div class="xixi-box">
-                                                <div class="hd">
-                                                        <h3><a target="_blank" href="<?=$domainname?>/cat-31.html" title="热搜榜" >热搜榜</a></h3>
-                                                        <span></span>
-                                                </div>
-                                                <div class="bd tagbox out">
-                                                 <?php foreach ($this->sys_cms_category->catlistbyclassid(31,60,'id desc') as $key => $value) {?>
-
-                                                    <a target="_blank" href="list-<?=$value['id']?>.html" class="in"><?=$value['catname']?></a>
-
-                                                    <?php }?>
-
-                                                </div>
-                                        </div>                      
-                                        <div class="xixi-box">
-                                                <div class="hd">
-                                                        <h3>最热收藏</h3>
-                                                        <span></span>
-                                                </div>
-                                                <div class="bd">
-                                                        <ul>
-                <?php foreach ($this->sys_cms_content->getWhereList('',10,46,' order by id desc') as $key => $value) {?>
-                                                                <li class="out">
-                                                                        <p class="txt in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
-                                                                                <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
-                                                                        </p>
-                                                                        <p class="pic in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
-                                                                                        <img src="<?=$value['headimage']?>" />
-                                                                                </a>
-                                                                        </p>
-                                                                </li>
-                                                                 <?php }?>
-                                                        </ul>
-
-                                                </div>
-                                        </div>
-                                        <div class="m15"></div>
-
-
-
-                                        <div class="xixi-box">
-                                                <div class="hd">
-                                                        <h3>最新内容</h3>
-                                                        <span></span>
-                                                </div>
-                                                <div class="bd">
-                                                        <ul>
-                                        <?php foreach ($this->sys_cms_content->getNewList(10,26,'id desc') as $key => $value) {
-                ?>
-                                                                <li class="out">
-                                                                        <p class="txt in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
-                                                                                <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
-                                                                        </p>
-                                                                        <p class="pic in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
-                                                                                        <img src="<?=$value['headimage']?>" />
-                                                                                </a>
-                                                                        </p>
-                                                                </li>
-                                                                 <?php }?>
-                                                        </ul>
-
-                                                </div>
-                                        </div>
-
-
-                                        <div class="xixi-box">
-                                                <div class="hd">
-                                                        <h3>推荐内容</h3>
-                                                        <span></span>
-                                                </div>
-                                                <div class="bd">
-                                                        <ul>
-                                        <?php foreach ($this->sys_cms_content->getNewList(10,36,'id desc') as $key => $value) {
-                ?>
-                                                                <li class="out">
-                                                                        <p class="txt in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
-                                                                                <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
-                                                                        </p>
-                                                                        <p class="pic in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
-                                                                                        <img src="<?=$value['headimage']?>" />
-                                                                                </a>
-                                                                        </p>
-                                                                </li>
-                                                                 <?php }?>
-                                                        </ul>
-
-                                                </div>
-                                        </div>
+                                <div class="text">
+                                    <span class="title"><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html"  title="<?=$value['title']?>"><?=$value['title']?></a></span>
+                                    <p>
+                                        <?=$value['description']?>
+                                    </p>
                                 </div>
+                            </li>
+                            <?php }?>
+                        </ul>
+                        <div class="triggers">
+                            <?php foreach ($this->sys_cms_content->getFirsttitleList(5) as $key => $value) {
+$current = $key==0 ? "current" : "";
+?>
+                            <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html">
+<img src="<?=$value['headimage']?>" title="<?=$value['title']?>" /></a>
+                            <?php }?>
                         </div>
-                </div>
-                <!--main stop-->
-<style type="text/css">
-.rich_media_content {
-min-height: 10px;
-
-}
- form {
-display: block !important;
-}
-                </style>
-                <!--otherNav star-->
-                <div class="m15"></div>
-                <div class="other-nav">
-                        <div class="layout zhenFw other-nav-main">
-                                <div class="otm-item out border-bottom-gray">
-                                        <div class="otm-item-left in">
-                                                <span>热门分类</span>
-                                        </div>
-                                         <div class="otm-item-right in">
-                        <?php foreach ($this->sys_cms_category->classlistbypid(0,30,'sort asc',29) as $key => $value) {?>
-                             <a target="_blank" href="<?=$domainname?>/cat-<?=$value['id']?>.html" ><?=$value['name']?></a>
-                        <?php }?>
-                                         </div>
-                                </div>
-                                <div class="otm-item out border-bottom-gray">
-                                        <div class="otm-item-left in">
-                                                <span>热门公众号</span>
-                                        </div>
-                                         <div class="otm-item-right in">
-                        <?php foreach ($this->sys_cms_category->footerCat(20) as $key => $value) {?>
-                             <a target="_blank" href="<?=$domainname?>/list-<?=$value['id']?>.html" ><?=$value['catname']?></a>
-                        <?php }?>
-
-                                         </div>
-                                </div>
+                        <div class="icon-dot">
+                            <a class="cur current"></a>
+                            <a></a>
+                            <a></a>
+                            <a></a>
+                            <a></a>
                         </div>
-                </div>
-                <!--otherNav stop-->
-                <div class="m20"></div>
-                <!--footer star-->
-                <div class="footer">
-                        <div class="layout zhenFw">
-                                <p>© 2015</p>
+                        <span class="link-watch pre down"></span>
+                        <span class="link-watch next down"></span>
+                    </div>
+                    <script type="text/javascript">
+                    new ImageSlide({
+                        project: "#focusImage",
+                        content: ".contents li",
+                        tigger: ".triggers a",
+                        dot: ".icon-dot a",
+                        watch: ".link-watch",
+                        auto: !0,
+                        hide: !0
+                    })
+                    </script>
+                    <!--slide stop-->
+                    <div class="m15"></div>
+                    <div class="main-container">
+                        <div class="nav" id="nav">
+                            <ul class="nav-box out">
+                                <li class="in current"><a target="_blank" href="<?=$domainname?>" title="热门">热门</a></li>
+                                <?php foreach ($this->sys_cms_category->classlistbypid(0,29,'sort asc') as $key => $value) {?>
+                                <li class="in">
+                                    <a target="_blank" href="<?=$domainname?>/cat-<?=$value['id']?>.html">
+                                        <?=$value['name']?>
+                                    </a>
+                                </li>
+                                <?php }?>
+                            </ul>
+                            <script type="text/javascript">
+                            $("#nav").smartFloat();
+                            </script>
                         </div>
+                        <div class="container-list">
+                            <ul class="su-bd">
+                                <?php foreach ($this->sys_cms_content->getWhereList('',26,0,' order by id desc') as $key => $value) {?>
+                                <li class="out">
+                                    <div class="weixin-img in">
+                                        <a target="_blank" href="<?=$domainname?>/list-<?=$value['cid']?>.html" title="<?=$value['catname']?>">
+                                            <span class="ico-bg"></span>
+                                            <p class="ico-im">
+                                                <img src="<?=$value['logourl']?>" />
+                                            </p>
+                                            <p class="weixin-num">
+                                                <?=$value['catname']?>
+                                            </p>
+                                        </a>
+                                        <div class="fxf">
+                                            <a target="_blank" href="<?=$domainname?>/list-<?=$value['cid']?>.html" onclick="return false;">关注</a>
+                                            <div class="erweima clearfix" style="display: none;">
+                                                <div class="erweima-img fl">
+                                                    <em>
+<img src="<?=$value['logourl']?>" /></em>
+                                                    <img src="<?=$domainname?>/upload/weixin_china7.jpg" />
+                                                </div>
+                                                <div class="phone fr"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="weixin-news-info in">
+                                        <h3><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html"><?=$value['title']?></a></h3>
+                                        <p class="m-txt">
+                                            <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                                <?=mb_substr($value['description'],0,60)?>...</a>
+                                        </p>
+                                        <p class="other">
+                                            <span>阅读:</span>
+                                            <i><?=$value['onclick']?></i>
+                                            <em class="time"><?=$value['buildtime']?></em>
+                                        </p>
+                                    </div>
+                                    <div class="weixin-news-img in">
+                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>">
+<img src="<?=$value['headimage']?>" />
+</a>
+                                    </div>
+                                </li>
+                                <?php }?>
+                            </ul>
+                        </div>
+                        <script type="text/javascript">
+                        $(".fxf a").hover(function() {
+                            $(this).next().show();
+                        }, function() {
+                            $(this).next().hide();
+                        });
+                        </script>
+                    </div>
                 </div>
-                <!--footer stop-->
+                <div class="main-right in">
+                    <div class="xixi-box">
+                        <div class="hd">
+                            <h3><a target="_blank" href="<?=$domainname?>/cat-31.html" title="热搜榜" >热搜榜</a></h3>
+                            <span></span>
+                        </div>
+                        <div class="bd tagbox out">
+                            <?php foreach ($this->sys_cms_content->getWhereList('',10,5,' order by id desc') as $key => $value) {?>
+                            <a target="_blank" href="list-<?=$value['id']?>.html" class="in">
+                                <?=$value['catname']?>
+                            </a>
+                            <?php }?>
+                        </div>
+                    </div>
+                    <div class="xixi-box">
+                        <div class="hd">
+                            <h3>最热收藏</h3>
+                            <span></span>
+                        </div>
+                        <div class="bd">
+                            <ul>
+                                <?php foreach ($this->sys_cms_content->getWhereList('',10,0,' order by onclick desc') as $key => $value) {?>
+                                <li class="out">
+                                    <p class="txt in">
+                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                            <?=$value['title']?>
+                                        </a>
+                                        <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
+                                    </p>
+                                    <p class="pic in">
+                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+<img src="<?=$value['headimage']?>" />
+</a>
+                                    </p>
+                                </li>
+                                <?php }?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="m15"></div>
+                    <div class="xixi-box">
+                        <div class="hd">
+                            <h3>最新内容</h3>
+                            <span></span>
+                        </div>
+                        <div class="bd">
+                            <ul>
+                                <?php foreach ($this->sys_cms_content->getWhereList('',10,0,' order by id desc') as $key => $value) {?>
+                                <li class="out">
+                                    <p class="txt in">
+                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                            <?=$value['title']?>
+                                        </a>
+                                        <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
+                                    </p>
+                                    <p class="pic in">
+                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+<img src="<?=$value['headimage']?>" />
+</a>
+                                    </p>
+                                </li>
+                                <?php }?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="xixi-box">
+                        <div class="hd">
+                            <h3>推荐内容</h3>
+                            <span></span>
+                        </div>
+                        <div class="bd">
+                            <ul>
+                                <?php foreach ($this->sys_cms_content->getWhereList('',10,0,' order by isrecommend desc') as $key => $value) {?>
+                                <li class="out">
+                                    <p class="txt in">
+                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                            <?=$value['title']?>
+                                        </a>
+                                        <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
+                                    </p>
+                                    <p class="pic in">
+                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+<img src="<?=$value['headimage']?>" />
+</a>
+                                    </p>
+                                </li>
+                                <?php }?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!--main stop-->
+        <style type="text/css">
+        .rich_media_content {
+            min-height: 10px;
+        }
+        
+        form {
+            display: block !important;
+        }
+        </style>
+        <!--otherNav star-->
+        <div class="m15"></div>
+        <div class="other-nav">
+            <div class="layout zhenFw other-nav-main">
+                <div class="otm-item out border-bottom-gray">
+                    <div class="otm-item-left in">
+                        <span>热门分类</span>
+                    </div>
+                    <div class="otm-item-right in">
+                        <?php foreach ($this->sys_cms_category->classlistbypid(0,30,'sort asc',29) as $key => $value) {?>
+                        <a target="_blank" href="<?=$domainname?>/cat-<?=$value['id']?>.html">
+                            <?=$value['name']?>
+                        </a>
+                        <?php }?>
+                    </div>
+                </div>
+                <div class="otm-item out border-bottom-gray">
+                    <div class="otm-item-left in">
+                        <span>热门公众号</span>
+                    </div>
+                    <div class="otm-item-right in">
+                        <?php foreach ($this->sys_cms_category->footerCat(20) as $key => $value) {?>
+                        <a target="_blank" href="<?=$domainname?>/list-<?=$value['id']?>.html">
+                            <?=$value['catname']?>
+                        </a>
+                        <?php }?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--otherNav stop-->
+        <div class="m20"></div>
+        <!--footer star-->
+        <div class="footer">
+            <div class="layout zhenFw">
+                <p>© 2015</p>
+            </div>
+        </div>
+        <!--footer stop-->
+    </div>
 </body>
+
 </html>

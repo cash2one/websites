@@ -98,21 +98,42 @@ class Cms_sites extends  Cms_Controller {
 			$this->load->view($tmpl,$data);
 		}
 
-
-
-
-
-
-
-		
-		// $this->parser->parse($tmpl,$data);
-
-
      }
 
      public function catlist(){
-     	echo 'cat list';
-     	echo 'test cat';
+
+     	$domain_config = $this->config->item('domain_config');
+     	$catename= str_replace('/', '', $_SERVER['REQUEST_URI']);
+     	echo 'catename:',$catename;
+     	//根据拼音查找 catid
+     	$catarr =$domain_config['cat_map'];
+     	foreach ($catarr as $key => $val) {
+     		if($val['pinyin']==$catename){
+     			$catname = $key;
+     			break;
+     		}
+     	}
+     	if($catname){
+     		echo ' catname:',$catname;
+     	}else{
+     		show_404();
+     	}
+        $this->load->library('parser');
+        $muban = $domain_config['webtype']=='pc' ? $domain_config['muban'] : $domain_config['mobile_tmpl'];
+        $data = array(
+			'htitle' => $domain_config['index_title'],
+			'sitename' => $domain_config['sitename'],
+			'sitebname' => $domain_config['sitename'],
+			'domainname' => $domain_config['sitename'],
+			'skin' => base_url().'skin/'.$muban,
+			'sitekeywords' => $domain_config['index_key'],
+			'sitedescription' => $domain_config['detail_seo_title'],
+			'murl' => $domain_config['mdomain'],
+			'pcurl' => $domain_config['pcdomain'],
+			'zhanzhangtong' => $domain_config['tongji'],
+		);
+		$tmpl= '../../templates/'.$muban.'/list.html';
+
      }
 
      public function view(){

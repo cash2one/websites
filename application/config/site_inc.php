@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['cache'] = 1;
+$config['cache'] = 0;
 $config['allhost']=array(
   'sunnycms.com' =>array(
     'wid' => 4003,
