@@ -8,13 +8,17 @@ $config['allhost']=array(
     'muban' => 'weixinhot',
     'mobile_tmpl' => 'mdemo8',
     'cat_map' =>array(
-      '风云' =>array(
+      '1' =>array(
         'pinyin' => 'fulitu',
         'name' => '美图',
+        'keys' => '爱言叶钢琴谱,疯狂来往下载',
+        'description' => '动漫人物图片女生可爱,爱言叶钢琴谱,疯狂来往下载',
       ),
-      '好图' =>array(
+      '2' =>array(
         'pinyin' => 'yohot',
         'name' => '动态图',
+        'keys' => '动漫人物图片女生可爱,爱言叶钢琴谱',
+        'description' => '动漫人物图片女生可爱,爱言叶钢琴谱,疯狂来往下载',
       ),
     ),
     'mdomain' => 'http://m.sunnycms.com',

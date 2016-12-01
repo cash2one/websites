@@ -93,7 +93,7 @@ class Sys_cms_content extends MY_Model {
 	public function getWhereList($where,$limit,$offset=0,$order_by='order by id desc'){
 		$wid=isset($this->_domainconfig['wid']) ? $this->_domainconfig['wid'] : 0;
 		if($wid){
-			$where = ' and wid='.$wid.' ';
+			$where .= ' and wid='.$wid.' ';
 		}
 		if($limit=='all'){
     		$limit = '';
@@ -104,8 +104,32 @@ class Sys_cms_content extends MY_Model {
     	}
 		$sql = "select * from ".$this->_table." where id>1 ".$where." ".$order_by.$limit;
 		$res = $this->db->query($sql)->result_array();
+		foreach ($res as $key => $arr) {
+			if(array_key_exists($arr['cid'], $this->_domainconfig['cat_map'])){
+				$catarr = $this->_domainconfig['cat_map'][$arr['cid']];
+				$res[$key]['catname'] = $catarr['name'];
+				$res[$key]['catename'] = $catarr['pinyin'];
+			}
+		}
 		return $res;
 	}
+
+    public function getcatlist($limit=10,$offset=0){
+    	if($limit){
+    		$limit = ' limit '.$offset.','.$limit;
+    	}
+        $sql = "select id,catname,catename,logourl from sys_cms_category  order by id asc".$limit;
+        $res = $this->db->query($sql)->result_array();
+        foreach ($res as $key => $arr) {
+			if(array_key_exists($arr['id'], $this->_domainconfig['cat_map'])){
+				$catarr = $this->_domainconfig['cat_map'][$arr['id']];
+				$res[$key]['catname'] = $catarr['name'];
+				$res[$key]['catename'] = $catarr['pinyin'];
+			}
+		}
+        return $res;
+    }
+
 
 	public function getTxtList($where,$limit,$offset=0,$order_by='order by id desc'){
 

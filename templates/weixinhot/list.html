@@ -1,5 +1,66 @@
-<div class="m15">
-</div>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="baidu_union_verify" content="fd33ffab167a6ca903299d09e727974c">
+    <title>
+        <?=$htitle?>
+    </title>
+    <meta name="keywords" content="<?=$sitekeywords?>" />
+    <meta name="description" content="<?=$sitedescription?>" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="mobile-agent" content="format=html5;url=<?=$murl?>" />
+    <meta name="mobile-agent" content="format=xhtml;url=<?=$murl?>" />
+    <link rel="alternate" media="only screen and(max-width: 640px)" href="<?=$murl?>">
+    <link href="<?=$skin?>/css/reset.css" rel="stylesheet" />
+    <link href="<?=$skin?>/css/base.css" rel="stylesheet" />
+    <script src="<?=$skin?>/js/jquery-1.11.1.js"></script>
+    <script src="<?=$skin?>/js/fixed.js"></script>
+    <script type="text/javascript">
+    var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+    var browser = navigator.userAgent.toLowerCase();
+    var isMobile = false;
+    for (var i = 0; i < mobileAgent.length; i++) {
+        if (browser.indexOf(mobileAgent[i]) != -1) {
+            isMobile = true;
+            location.href = 'http://m.china-7.net/<?=$murl?>';
+            break;
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="zhenPage">
+        <!--header star-->
+        <div class="header">
+            <div class="layout zhenFw out">
+                <div class="logo in">
+                    <a href="<?=$domainname?>" title="<?=$sitename?>"></a>
+                </div>
+                <div class="search in">
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('img').each(function() {
+                var imgsrc = this.src;
+                if (imgsrc.match("http://mmbiz.qpic.cn") || imgsrc.match("photo.store.qq.com") || imgsrc.match("hiphotos.baidu.com") || imgsrc.match("ph.126.net") || imgsrc.match("yujiame.com") || imgsrc.match("tuicool.com") || imgsrc.match("jirou.com") || imgsrc.match("qhimg.com") || imgsrc.match("sogoucdn.com")) {
+                    if (imgsrc.match("/getimg.php")) {
+
+                    } else {
+                        var newurl = "/getimg.php?url=" + imgsrc;
+                        $(this).attr('src', newurl);
+                    }
+
+                }
+
+            });
+        });
+        </script>
+        <!--header stop-->
+        <div class="m15"></div>
 <!--main star-->
 <div class="main">
     <div class="layout zhenFw out">
@@ -8,13 +69,13 @@
                 <div class="nav" id="nav">
                     <ul class="nav-box out">
                         <li class="in current"><a target="_blank" href="<?=$domainname?>" title="热门">热门</a></li>
-                        <?php foreach ($this->sys_cms_category->classlistbypid(0,29,'sort asc') as $key => $value) {?>
-                        <li class="in">
-                            <a target="_blank" href="<?=$domainname?>/cat-<?=$value['id']?>.html">
-                                <?=$value['name']?>
-                            </a>
-                        </li>
-                        <?php }?>
+                                <?php foreach ($this->sys_cms_sites->getcatlist(10,0) as $key => $value) {?>
+                                <li class="in">
+                                    <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/">
+                                        <?=$value['catname']?>
+                                    </a>
+                                </li>
+                                <?php }?>
                     </ul>
                     <script type="text/javascript">
                     $("#nav").smartFloat();
@@ -32,7 +93,6 @@
                 </div>
                 <div class="container-list">
                     <ul class="su-bd su-list-bd" id="er-show">
-                        {infoweixin}
                         <input type="hidden" id="cat_id" name="cat_id" value="{id}">
                         <li class="out">
                             <div class="weixin-img in">
@@ -54,14 +114,13 @@
                                 </div>
                             </div>
                             <div class="weixin-news-info weixin-list-news-info in">
-                                <h6>{catname}</h6>
+                                <h6><?=$catname?></h6>
                                 <p class="m-txt m-list-txt">
-                                    <span>微信号：{weixinhao} </span>
-                                    <em>功能介绍:{description}</em>
+                                    <span>微信号：<?=$catname?></span>
+                                    <em>功能介绍:<?=$catdescription?></em>
                                 </p>
                             </div>
                         </li>
-                        {/infoweixin}
                     </ul>
                 </div>
                 <script type="text/javascript">
@@ -75,31 +134,31 @@
                 <div class="m20"></div>
                 <div class="container-list">
                     <ul class="su-bd">
-                        {news}
+                        <?php foreach ($news as $key => $value) {?>
                         <li class="out">
                             <div class="weixin-news-info weixin-list-news-info in">
-                                <h3><a target="_blank" href="<?=$domainname?>/view-{id}.html" title="{title}">{title}</a></h3>
+                                <h3><a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="{title}"><?=$value['title']?></a></h3>
                                 <p class="m-txt">
-                                    <a href="<?=$domainname?>/view-{id}.html" title="{title}" target="_blank">{description}....</a>
+                                    <a href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="{title}" target="_blank"><?=$value['description']?>....</a>
                                 </p>
                                 <p class="other">
                                     <span>阅读:</span>
-                                    <i>{onclick}</i>
-                                    <em class="time">{buildtime}</em>
+                                    <i><?=$value['onclick']?></i>
+                                    <em class="time"><?=$value['buildtime']?></em>
                                 </p>
                             </div>
                             <div class="weixin-news-img in">
-                                <a target="_blank" href="<?=$domainname?>/view-{id}.html" title="{title}">
-                                    <img src="{headimage}" />
+                                <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>">
+                                    <img src="<?=$value['headimage']?>" />
                                 </a>
                             </div>
                         </li>
-                        {/news}
+                        <?php }?>
                     </ul>
                     <div class="m20"></div>
                     <!--page star-->
                     <div class="page">
-                        <?php  $this->pager->show();  ?>
+                        <?php  $this->pagercat->pingyin_next($catename);  ?>
                     </div>
                     <!--page stop-->
                 </div>
@@ -112,11 +171,11 @@
                     <span></span>
                 </div>
                 <div class="bd tagbox out">
-                    <?php foreach ($this->sys_cms_category->catlistbyclassid(31,30,'id desc',30) as $key => $value) {?>
-                    <a target="_blank" href="list-<?=$value['id']?>.html" class="in">
-                        <?=$value['catname']?>
-                    </a>
-                    <?php }?>
+                         <?php foreach ($this->sys_cms_sites->getWhereList('',10,5,' order by id desc') as $key => $value) {?>
+                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" class="in">
+                            <?=$value['title']?>
+                        </a>
+                        <?php }?>
                 </div>
             </div>
             <!-- ad -->
@@ -147,8 +206,7 @@
                 </div>
                 <div class="bd">
                     <ul>
-                        <?php foreach ($this->sys_cms_content->getNewList(10,0,'id desc') as $key => $value) {
-                ?>
+                        <?php foreach ($this->sys_cms_content->getNewList(10,0,'id desc') as $key => $value) {?>
                         <li class="out">
                             <p class="txt in">
                                 <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">

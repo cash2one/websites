@@ -70,16 +70,16 @@
                     <!--slide star-->
                     <div id="focusImage" class="slide">
                         <ul class="contents">
-                            <?php foreach ($this->sys_cms_content->getFirsttitleList(5) as $key => $value) {
-$current = $key==0 ? "current" : "";
-?>
+                            <?php foreach ($this->sys_cms_sites->getWhereList(' and isfirsttitle=1 ',5,0,' order by id desc') as $key => $value) {
+                                $current = $key==0 ? "current" : "";
+                            ?>
                             <li class="<?=$current?>">
                                 <div class="image">
-                                    <a href="<?=$domainname?>/view-<?=$value['id']?>.html" target="_blank">
-<img src="<?=$value['headimage']?>" title="<?=$value['title']?>" /></a>
+                                    <a href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" target="_blank">
+                                        <img src="<?=$value['headimage']?>" title="<?=$value['title']?>" /></a>
                                 </div>
                                 <div class="text">
-                                    <span class="title"><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html"  title="<?=$value['title']?>"><?=$value['title']?></a></span>
+                                    <span class="title"><a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html"  title="<?=$value['title']?>"><?=$value['title']?></a></span>
                                     <p>
                                         <?=$value['description']?>
                                     </p>
@@ -88,11 +88,11 @@ $current = $key==0 ? "current" : "";
                             <?php }?>
                         </ul>
                         <div class="triggers">
-                            <?php foreach ($this->sys_cms_content->getFirsttitleList(5) as $key => $value) {
-$current = $key==0 ? "current" : "";
-?>
-                            <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html">
-<img src="<?=$value['headimage']?>" title="<?=$value['title']?>" /></a>
+                           <?php foreach ($this->sys_cms_sites->getWhereList(' and isfirsttitle=1 ',5,0,' order by id desc') as $key => $value) {
+                                $current = $key==0 ? "current" : "";
+                            ?>
+                            <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html">
+                                <img src="<?=$value['headimage']?>" title="<?=$value['title']?>" /></a>
                             <?php }?>
                         </div>
                         <div class="icon-dot">
@@ -121,11 +121,11 @@ $current = $key==0 ? "current" : "";
                     <div class="main-container">
                         <div class="nav" id="nav">
                             <ul class="nav-box out">
-                                <li class="in current"><a target="_blank" href="<?=$domainname?>" title="热门">热门</a></li>
-                                <?php foreach ($this->sys_cms_category->classlistbypid(0,29,'sort asc') as $key => $value) {?>
+                                <li class="in current"><a target="_blank" href="<?=$pcurl?>" title="热门">热门</a></li>
+                                <?php foreach ($this->sys_cms_sites->getcatlist(10,0) as $key => $value) {?>
                                 <li class="in">
-                                    <a target="_blank" href="<?=$domainname?>/cat-<?=$value['id']?>.html">
-                                        <?=$value['name']?>
+                                    <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/">
+                                        <?=$value['catname']?>
                                     </a>
                                 </li>
                                 <?php }?>
@@ -136,34 +136,34 @@ $current = $key==0 ? "current" : "";
                         </div>
                         <div class="container-list">
                             <ul class="su-bd">
-                                <?php foreach ($this->sys_cms_content->getWhereList('',26,0,' order by id desc') as $key => $value) {?>
+                                <?php foreach ($this->sys_cms_sites->getWhereList('',26,0,' order by id desc') as $key => $value) {?>
                                 <li class="out">
                                     <div class="weixin-img in">
-                                        <a target="_blank" href="<?=$domainname?>/list-<?=$value['cid']?>.html" title="<?=$value['catname']?>">
+                                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/" title="<?=$value['catname']?>">
                                             <span class="ico-bg"></span>
                                             <p class="ico-im">
-                                                <img src="<?=$value['logourl']?>" />
+                                                <img src="<?=$value['headimage']?>" />
                                             </p>
                                             <p class="weixin-num">
                                                 <?=$value['catname']?>
                                             </p>
                                         </a>
                                         <div class="fxf">
-                                            <a target="_blank" href="<?=$domainname?>/list-<?=$value['cid']?>.html" onclick="return false;">关注</a>
+                                            <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/" onclick="return false;">关注</a>
                                             <div class="erweima clearfix" style="display: none;">
                                                 <div class="erweima-img fl">
                                                     <em>
-<img src="<?=$value['logourl']?>" /></em>
-                                                    <img src="<?=$domainname?>/upload/weixin_china7.jpg" />
+<img src="<?=$value['headimage']?>" /></em>
+                                                    <img src="<?=$pcurl?>/upload/weixin_china7.jpg" />
                                                 </div>
                                                 <div class="phone fr"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="weixin-news-info in">
-                                        <h3><a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html"><?=$value['title']?></a></h3>
+                                        <h3><a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html"><?=$value['title']?></a></h3>
                                         <p class="m-txt">
-                                            <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                            <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
                                                 <?=mb_substr($value['description'],0,60)?>...</a>
                                         </p>
                                         <p class="other">
@@ -173,7 +173,7 @@ $current = $key==0 ? "current" : "";
                                         </p>
                                     </div>
                                     <div class="weixin-news-img in">
-                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>">
+                                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>">
 <img src="<?=$value['headimage']?>" />
 </a>
                                     </div>
@@ -193,13 +193,13 @@ $current = $key==0 ? "current" : "";
                 <div class="main-right in">
                     <div class="xixi-box">
                         <div class="hd">
-                            <h3><a target="_blank" href="<?=$domainname?>/cat-31.html" title="热搜榜" >热搜榜</a></h3>
+                            <h3><a target="_blank" href="<?=$pcurl?>/" title="热搜榜" >热搜榜</a></h3>
                             <span></span>
                         </div>
                         <div class="bd tagbox out">
-                            <?php foreach ($this->sys_cms_content->getWhereList('',10,5,' order by id desc') as $key => $value) {?>
-                            <a target="_blank" href="list-<?=$value['id']?>.html" class="in">
-                                <?=$value['catname']?>
+                            <?php foreach ($this->sys_cms_sites->getWhereList('',10,5,' order by id desc') as $key => $value) {?>
+                            <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" class="in">
+                                <?=$value['title']?>
                             </a>
                             <?php }?>
                         </div>
@@ -211,16 +211,16 @@ $current = $key==0 ? "current" : "";
                         </div>
                         <div class="bd">
                             <ul>
-                                <?php foreach ($this->sys_cms_content->getWhereList('',10,0,' order by onclick desc') as $key => $value) {?>
+                                <?php foreach ($this->sys_cms_sites->getWhereList('',10,0,' order by onclick desc') as $key => $value) {?>
                                 <li class="out">
                                     <p class="txt in">
-                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
                                             <?=$value['title']?>
                                         </a>
                                         <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
                                     </p>
                                     <p class="pic in">
-                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
 <img src="<?=$value['headimage']?>" />
 </a>
                                     </p>
@@ -237,16 +237,16 @@ $current = $key==0 ? "current" : "";
                         </div>
                         <div class="bd">
                             <ul>
-                                <?php foreach ($this->sys_cms_content->getWhereList('',10,0,' order by id desc') as $key => $value) {?>
+                                <?php foreach ($this->sys_cms_sites->getWhereList('',10,0,' order by id desc') as $key => $value) {?>
                                 <li class="out">
                                     <p class="txt in">
-                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
                                             <?=$value['title']?>
                                         </a>
                                         <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
                                     </p>
                                     <p class="pic in">
-                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
 <img src="<?=$value['headimage']?>" />
 </a>
                                     </p>
@@ -262,16 +262,16 @@ $current = $key==0 ? "current" : "";
                         </div>
                         <div class="bd">
                             <ul>
-                                <?php foreach ($this->sys_cms_content->getWhereList('',10,0,' order by isrecommend desc') as $key => $value) {?>
+                                <?php foreach ($this->sys_cms_sites->getWhereList('',10,0,' order by isrecommend desc') as $key => $value) {?>
                                 <li class="out">
                                     <p class="txt in">
-                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
                                             <?=$value['title']?>
                                         </a>
                                         <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
                                     </p>
                                     <p class="pic in">
-                                        <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
 <img src="<?=$value['headimage']?>" />
 </a>
                                     </p>
@@ -302,9 +302,9 @@ $current = $key==0 ? "current" : "";
                         <span>热门分类</span>
                     </div>
                     <div class="otm-item-right in">
-                        <?php foreach ($this->sys_cms_category->classlistbypid(0,30,'sort asc',29) as $key => $value) {?>
-                        <a target="_blank" href="<?=$domainname?>/cat-<?=$value['id']?>.html">
-                            <?=$value['name']?>
+                        <?php foreach ($this->sys_cms_sites->getWhereList('',10,5,' order by id desc') as $key => $value) {?>
+                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" >
+                            <?=$value['title']?>
                         </a>
                         <?php }?>
                     </div>
@@ -314,9 +314,9 @@ $current = $key==0 ? "current" : "";
                         <span>热门公众号</span>
                     </div>
                     <div class="otm-item-right in">
-                        <?php foreach ($this->sys_cms_category->footerCat(20) as $key => $value) {?>
-                        <a target="_blank" href="<?=$domainname?>/list-<?=$value['id']?>.html">
-                            <?=$value['catname']?>
+                        <?php foreach ($this->sys_cms_sites->getWhereList('',10,5,' order by id desc') as $key => $value) {?>
+                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" >
+                            <?=$value['title']?>
                         </a>
                         <?php }?>
                     </div>

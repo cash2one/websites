@@ -28,11 +28,10 @@ class Cms_sites extends  Cms_Controller {
 
 	public function __construct(){
 		 parent::__construct();
-		 $this->load->model('sys_cms_category');
-		 $this->load->model('sys_cms_content');
-		 $this->load->model('sys_cms_link');
+		 $this->load->model('sys_cms_sites');
 		 $this->load->database();
 		 $this->load->helper('url');
+		 $this->load->library('parser');
 	}
 	
 
@@ -103,21 +102,85 @@ class Cms_sites extends  Cms_Controller {
      public function catlist(){
 
      	$domain_config = $this->config->item('domain_config');
-     	$catename= str_replace('/', '', $_SERVER['REQUEST_URI']);
+     	$catename = $_GET['catename'];
+     	$catename= str_replace('/', '', $catename);
      	echo 'catename:',$catename;
      	//根据拼音查找 catid
      	$catarr =$domain_config['cat_map'];
+     	$catid=0;
      	foreach ($catarr as $key => $val) {
      		if($val['pinyin']==$catename){
-     			$catname = $key;
+     			$catid = $key;
+     			$catename = $val['pinyin'];
+     			$catname = $val['name'];
+     			$catkeys = $val['keys'];
+     			$catdescription = $val['description'];
      			break;
      		}
      	}
-     	if($catname){
-     		echo ' catname:',$catname;
-     	}else{
-     		show_404();
+     	if(!$catid){
+     		$catlist = $this->sys_cms_sites->getCatByCatename($catename);
+     		if($catlist){
+     			$catid = $catlist['id'];
+     			$catename = $catlist['catename'];
+     			$catname = $catlist['catname'];
+     			$catkeys = $catlist['keys'];
+     			$catdescription = $catlist['decription'];
+     		}else{
+     			show_404();
+     		}
+     		print_r($catlist);
      	}
+
+
+		//分页，查询列表设置
+		$this->load->model('sys_cms_content');
+        $currentPage = 1;
+		if(isset($_GET['page']) && $_GET['page'] != ''){
+			$currentPage = $_GET['page'];
+		}
+
+        $pagesize=2;
+        if(isset($_GET['page']) && $_GET['page'] != ''){
+        	//$per_page = isset($_GET['page']) ? $_GET['page']+$pagesize :  $pagesize;
+        	if($_GET['page']>1){
+        		$per_page = ($_GET['page']-1)*$pagesize;
+        	}else{
+        		$per_page = 0;
+        	}
+
+        }else{
+        	$per_page =  0;
+        }
+        $_where = array(
+        	'wid' =>  $domain_config['wid'],
+        	'cid' =>  $catid,
+        	);
+        $_like = array();
+        $_order_by = array('id' => 'desc');
+        $cols=array('*');
+        $join=array();
+        $total_rows = $this->sys_cms_content->getCount($_where,$_like);
+		$news = $this->sys_cms_content->getListByPageNew($per_page, $_where, $_like, $_order_by,$cols=array('*'),$join=array(),$pagesize);
+		$newslist = $news['list'];
+		print_r($newslist);
+
+        foreach ($newslist as $key => $arr) {
+			if(array_key_exists($arr['cid'], $domain_config['cat_map'])){
+				$catarr = $domain_config['cat_map'][$arr['cid']];
+				$newslist[$key]['catname'] = $catarr['name'];
+				$newslist[$key]['catename'] = $catarr['pinyin'];
+			}
+		}
+
+		//分页
+        $data_pager = array(
+            'page' => $currentPage,     //当前页
+            'page_size' => $pagesize,    //分页总大小
+            'total' => $total_rows        //总页数
+        );
+        $this->load->library('pagercat',$data_pager);        //载入分页类
+
         $this->load->library('parser');
         $muban = $domain_config['webtype']=='pc' ? $domain_config['muban'] : $domain_config['mobile_tmpl'];
         $data = array(
@@ -131,8 +194,16 @@ class Cms_sites extends  Cms_Controller {
 			'murl' => $domain_config['mdomain'],
 			'pcurl' => $domain_config['pcdomain'],
 			'zhanzhangtong' => $domain_config['tongji'],
+			'news' => $newslist,
+			'catename' => $catename,
+			'catname' => $catname,
+			'catkeys' => $catkeys,
+			'catdescription' => $catdescription,
 		);
 		$tmpl= '../../templates/'.$muban.'/list.html';
+
+		$this->load->view($tmpl,$data);
+		// $this->parser->parse($tmpl, $data);
 
      }
 
