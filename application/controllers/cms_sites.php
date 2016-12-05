@@ -57,8 +57,6 @@ class Cms_sites extends  Cms_Controller {
 		// echo dirname($url);
 
 		$domain_config = $this->config->item('domain_config');
-		print_r($domain_config);
-
 		$this->config->load('config_site', TRUE);
 
         $this->load->library('parser');
@@ -82,11 +80,9 @@ class Cms_sites extends  Cms_Controller {
 		if($domain_config['cache']){
 			$this->load->driver('cache', array('adapter' => 'redis'));
 			$indexkey = 'index_'.$domain_config['wid'];
-			echo '$indexkey:',$indexkey;
 			$index_content = $this->cache->get($indexkey);
 			if (!$index_content)
 			{
-			 echo 'Saving to the cache!<br />';
 			 $index_content= $this->load->view($tmpl,$data,true);
 			 // Save into the cache for 5 minutes
 			 $this->cache->save($indexkey,$index_content, 30);
@@ -104,7 +100,6 @@ class Cms_sites extends  Cms_Controller {
      	$domain_config = $this->config->item('domain_config');
      	$catename = $_GET['catename'];
      	$catename= str_replace('/', '', $catename);
-     	echo 'catename:',$catename;
      	//根据拼音查找 catid
      	$catarr =$domain_config['cat_map'];
      	$catid=0;
@@ -129,7 +124,6 @@ class Cms_sites extends  Cms_Controller {
      		}else{
      			show_404();
      		}
-     		print_r($catlist);
      	}
 
 
@@ -163,7 +157,6 @@ class Cms_sites extends  Cms_Controller {
         $total_rows = $this->sys_cms_content->getCount($_where,$_like);
 		$news = $this->sys_cms_content->getListByPageNew($per_page, $_where, $_like, $_order_by,$cols=array('*'),$join=array(),$pagesize);
 		$newslist = $news['list'];
-		print_r($newslist);
 
         foreach ($newslist as $key => $arr) {
 			if(array_key_exists($arr['cid'], $domain_config['cat_map'])){
@@ -208,12 +201,10 @@ class Cms_sites extends  Cms_Controller {
      }
 
      public function view(){
-     	echo 'view';
      	$catename = $_GET['catename'];
      	$catename= str_replace('/', '', $catename);
 		$ipage = isset($_GET["ipage"]) ? intval($_GET["ipage"]):1;
 		$id = $_GET['id'];
-		echo ' id:',$id;
 		$this->load->model('sys_cms_content');
 		$this->load->model('sys_cms_category');
 		//根据id找对应的数据表
@@ -235,6 +226,7 @@ class Cms_sites extends  Cms_Controller {
         }
 		
 		$domain_config = $this->config->item('domain_config');
+		print_r($domain_config);
 		//网站标题、皮肤、关键词、描述等设置
 		$mypostion = '<a href="'.$domain_config['pcdomain'].'">'.$domain_config['sitename'].'</a>&nbsp>&nbsp'.
 		 			 '<a href="'.$domain_config['pcdomain'].'/'.$catename.'/'.'">'.$catename.'</a>&nbsp>&nbsp'.
@@ -242,9 +234,8 @@ class Cms_sites extends  Cms_Controller {
 
 		//上、下篇
 		$curdomain=$domain_config['webtype']=='pc' ? $domain_config['pcdomain'] : $domain_config['mdomain'];
-		$content_per = $this->sys_cms_content->getPer($id,$curdomain);
-		$content_next = $this->sys_cms_content->getNext($id,$curdomain);
-		print_r($data_content);
+		$content_per = $this->sys_cms_sites->getPer($id,$curdomain);
+		$content_next = $this->sys_cms_sites->getNext($id,$curdomain);
 
      	$muban = $domain_config['webtype']=='pc' ? $domain_config['muban'] : $domain_config['mobile_tmpl'];
         $data = array(
@@ -259,10 +250,9 @@ class Cms_sites extends  Cms_Controller {
 			'murl' => $domain_config['mdomain'],
 			'pcurl' => $domain_config['pcdomain'],
 			'zhanzhangtong' => $domain_config['tongji'],
+			'content_per' => $content_per,
+			'content_next' => $content_next,
 			'catename' => $catename,
-			'catname' => $catname,
-			'catkeys' => $catkeys,
-			'catdescription' => $catdescription,
 		);
 		$tmpl= '../../templates/'.$muban.'/content.html';
 

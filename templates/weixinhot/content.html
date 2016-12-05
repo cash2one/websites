@@ -69,9 +69,13 @@
                                                 <div class="nav" id="nav">
                                                         <ul class="nav-box out">
                                                         <li class="in current"><a href="<?=$domainname?>" title="热门">热门</a></li>
-                        <?php foreach ($this->sys_cms_category->classlistbypid(0,29,'sort asc') as $key => $value) {?>
-                            <li class="in"><a href="<?=$domainname?>/cat-<?=$value['id']?>.html" ><?=$value['name']?></a></li>
-                        <?php }?>
+                                 <?php foreach ($this->sys_cms_sites->getcatlist(10,0) as $key => $value) {?>
+                                <li class="in">
+                                    <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/">
+                                        <?=$value['catname']?>
+                                    </a>
+                                </li>
+                                <?php }?>
                                     <script type="text/javascript">
          $("#nav").smartFloat();
         $(document).ready(function () {
@@ -87,9 +91,6 @@
                                                         </script>
                                                         </ul>
                                                 </div>
-<!--ad-->
-
-<!--ad end-->
                                                 <div class="m20"></div>
                                                 <div class="content">
                                                   <input type="hidden" id="content_id" value="{id}">
@@ -100,7 +101,7 @@
                                                         </div>
                                                         <div class="ct-soure">
                                                                 <em>时间：<?=$data_content['buildtime']?></em>
-                                                                <span>公众号：<a href="<?=$domainname?>/list-{cid}.html"><?=$data_content['catname']?></a></span>
+                                                                <span>公众号：<a href="<?=$pcurl?>/<?=$catename?>/"><?=$data_content['catname']?></a></span>
                                                         </div>
                                                         <div class="ct-content-main">
                                                                 <p><?=$data_content['content']?></p>
@@ -116,15 +117,7 @@ var cpro_id="u2493488";
 <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
 
     </div>
-    <div class='fr' style='width:336px;'>
-       <script type="text/javascript">
-    /*336*280 创建于 2016-01-12*/
-    var cpro_id = "u2489652";
-</script>
-<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
 
-
-    </div>
 </div>
                            
 <div class="m20"></div>
@@ -143,21 +136,13 @@ var cpro_id="u2493488";
                                                         <span></span>
                                                 </div>
                                                 <div class="bd tagbox out">
-                                                 <?php foreach ($this->sys_cms_category->catlistbyclassid(31,30,'id desc',30) as $key => $value) {?>
-
-                                                    <a target="_blank" href="list-<?=$value['id']?>.html" class="in"><?=$value['catname']?></a>
-
-                                                    <?php }?>
-
+                         <?php foreach ($this->sys_cms_sites->getWhereList('',10,5,' order by id desc') as $key => $value) {?>
+                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" class="in">
+                            <?=$value['title']?>
+                        </a>
+                        <?php }?>
                                                 </div>
                                         </div>
-                                        <!-- ad -->
-                                        <script type="text/javascript">
-                                        var cpro_id="u2364365";
-                                        (window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id]={at:"3",rsi0:"280",rsi1:"250",pat:"17",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"1",adp:"1",ptt:"0",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0"}
-                                        </script>
-                                        <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
-                                        <!-- ad end-->
                                         <div class="xixi-box">
                                                 <div class="hd">
                                                         <h3>最新内容</h3>
@@ -165,15 +150,14 @@ var cpro_id="u2493488";
                                                 </div>
                                                 <div class="bd">
                                                         <ul>
-                                        <?php foreach ($this->sys_cms_content->getNewList(10,0,'id desc') as $key => $value) {
-                ?>
+                         <?php foreach ($this->sys_cms_sites->getWhereList('',10,0,' order by id desc') as $key => $value) {?>
                                                                 <li class="out">
                                                                         <p class="txt in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
+                                                                                <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
                                                                                 <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
                                                                         </p>
                                                                         <p class="pic in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                                                                <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
                                                                                         <img src="<?=$value['headimage']?>" />
                                                                                 </a>
                                                                         </p>
@@ -190,14 +174,14 @@ var cpro_id="u2493488";
                                                 </div>
                                                 <div class="bd">
                                                         <ul>
-                                                         <?php foreach ($this->sys_cms_content->getWhereList('and class_id=21',10,0,' order by id desc') as $key => $value) {?>
+                                                         <?php foreach ($this->sys_cms_sites->getWhereList('',10,10,' order by id desc') as $key => $value) {?>
                                                                 <li class="out">
                                                                         <p class="txt in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
+                                                                                <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
                                                                                 <i class="time"><?=date('m-d H:i',strtotime($value['buildtime']))?></i>
                                                                         </p>
                                                                         <p class="pic in">
-                                                                                <a target="_blank" href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
+                                                                                <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank">
                                                                                         <img src="<?=$value['headimage']?>" />
                                                                                 </a>
                                                                         </p>
@@ -210,24 +194,24 @@ var cpro_id="u2493488";
                                         <div class="m15"></div>
                                         <div class="xixi-box">
                                                 <div class="hd">
-                                                        <h3>最热内容</h3>
+                                                        <h3>其他内容</h3>
                                                         <span></span>
                                                 </div>
                                                 <div class="bd">
                                                         <ul>
-                                                               {newest}
+                                                                <?php foreach ($this->sys_cms_sites->getOutList('',10,0,' order by id desc') as $key => $value) {?>
                                                                 <li class="out">
                                                                         <p class="txt in">
-                                                                                <a href="<?=$domainname?>/view-{id}.html" title="{title}" target="_blank">{title}</a>
-                                                                                <i class="time">{buildtime}</i>
+                                                                                <a href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="{title}" target="_blank"><?=$value['title']?></a>
+                                                                                <i class="time"><?=$value['buildtime']?></i>
                                                                         </p>
                                                                         <p class="pic in">
-                                                                                <a href="<?=$domainname?>/view-{id}.html" title="{title}" target="_blank">
-                                                                                        <img src="{headimage}" />
+                                                                                <a href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="{title}" target="_blank">
+                                                                                        <img src="<?=$value['headimage']?>" />
                                                                                 </a>
                                                                         </p>
                                                                 </li>
-                                                                {/newest} 
+                                                                 <?php }?>
                                                         </ul>
 
                                                 </div>
