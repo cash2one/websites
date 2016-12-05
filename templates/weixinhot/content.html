@@ -1,4 +1,66 @@
-                <div class="m15"></div>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="baidu_union_verify" content="fd33ffab167a6ca903299d09e727974c">
+    <title>
+        <?=$htitle?>
+    </title>
+    <meta name="keywords" content="<?=$sitekeywords?>" />
+    <meta name="description" content="<?=$sitedescription?>" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="mobile-agent" content="format=html5;url=<?=$murl?>" />
+    <meta name="mobile-agent" content="format=xhtml;url=<?=$murl?>" />
+    <link rel="alternate" media="only screen and(max-width: 640px)" href="<?=$murl?>">
+    <link href="<?=$skin?>/css/reset.css" rel="stylesheet" />
+    <link href="<?=$skin?>/css/base.css" rel="stylesheet" />
+    <script src="<?=$skin?>/js/jquery-1.11.1.js"></script>
+    <script src="<?=$skin?>/js/fixed.js"></script>
+    <script type="text/javascript">
+    var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+    var browser = navigator.userAgent.toLowerCase();
+    var isMobile = false;
+    for (var i = 0; i < mobileAgent.length; i++) {
+        if (browser.indexOf(mobileAgent[i]) != -1) {
+            isMobile = true;
+            location.href = 'http://m.china-7.net/<?=$murl?>';
+            break;
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="zhenPage">
+        <!--header star-->
+        <div class="header">
+            <div class="layout zhenFw out">
+                <div class="logo in">
+                    <a href="<?=$domainname?>" title="<?=$sitename?>"></a>
+                </div>
+                <div class="search in">
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('img').each(function() {
+                var imgsrc = this.src;
+                if (imgsrc.match("http://mmbiz.qpic.cn") || imgsrc.match("photo.store.qq.com") || imgsrc.match("hiphotos.baidu.com") || imgsrc.match("ph.126.net") || imgsrc.match("yujiame.com") || imgsrc.match("tuicool.com") || imgsrc.match("jirou.com") || imgsrc.match("qhimg.com") || imgsrc.match("sogoucdn.com")) {
+                    if (imgsrc.match("/getimg.php")) {
+
+                    } else {
+                        var newurl = "/getimg.php?url=" + imgsrc;
+                        $(this).attr('src', newurl);
+                    }
+
+                }
+
+            });
+        });
+        </script>
+        <!--header stop-->
+        <div class="m15"></div>
                 <!--main star-->
                 <div class="main">
                         <div class="layout zhenFw out">
@@ -30,37 +92,21 @@
 <!--ad end-->
                                                 <div class="m20"></div>
                                                 <div class="content">
-                                                  {data_content}
                                                   <input type="hidden" id="content_id" value="{id}">
                                                         <div class="ct-title">
-                                                                <h2>{title}</h2>
+                                                                <h2><?=$data_content['title']?></h2>
 <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
                                                         </div>
                                                         <div class="ct-soure">
-                                                                <em>时间：{buildtime}</em>
-                                                                <span>公众号：<a href="<?=$domainname?>/list-{cid}.html">{catname}</a></span>
+                                                                <em>时间：<?=$data_content['buildtime']?></em>
+                                                                <span>公众号：<a href="<?=$domainname?>/list-{cid}.html"><?=$data_content['catname']?></a></span>
                                                         </div>
-                            <!-- 新添加 -->
-                            <div class="nh-pic-warp out">
-                            <?php 
-                                        foreach ($this->sys_cms_content->getlistbytagid(2578,4,0,' order by rand()') as $key => $value) {
-                                 ?>
-                                    <a href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" class="in"  target="_blank">
-                                             <img src="<?=$value['headimage']?>" alt="<?=$value['title']?>" />
-                                    </a>
-                                <?php }?>
-                            </div>
-                            <!-- 新添加 -->
-                                                           
-
-
-
                                                         <div class="ct-content-main">
-                                                                <p>{content}</p>
+                                                                <p><?=$data_content['content']?></p>
                                                                 
                                                         </div>
-                                                          {/data_content}
+
  <div class='clearfix' style='width:100%; margin:0 auto;background-color:#fff;'>
     <div class='fl' style='width:336px;'>
 <script type="text/javascript">
@@ -80,17 +126,7 @@ var cpro_id="u2493488";
 
     </div>
 </div>
-                            <!-- 新添加 -->
-                            <div class="nh-pic-warp out">
-                            <?php 
-                                        foreach ($this->sys_cms_content->getlistbytagid(2578,8,0,' order by rand()') as $key => $value) {
-                                 ?>
-                                    <a href="<?=$domainname?>/view-<?=$value['id']?>.html" title="<?=$value['title']?>" class="in"  target="_blank">
-                                             <img src="<?=$value['headimage']?>" alt="<?=$value['title']?>" />
-                                    </a>
-                                <?php }?>
-                            </div>
-                            <!-- 新添加 -->
+                           
 <div class="m20"></div>
                                                         <div class="pre-next">
                                                                 <p>上一篇：<?=$content_per?></p>
@@ -201,20 +237,55 @@ var cpro_id="u2493488";
                 </div>
                 <!--main stop-->
 
-        <script type="text/javascript">
-            $(document).ready(function(){
-                var id  = $("#content_id").val();
-                $.ajax({
-                    type:'GET',
-                    url:'/index.php?c=cms_index&m=viewClick&id='+id+''
-                });   
-            });
-        </script>
-<!--ad-->
-<script type="text/javascript">
-    /* 创建于 2016-01-07*/
-var cpro_id = "u2482131";
-</script>
-<script src="http://cpro.baidustatic.com/cpro/ui/cnw.js" type="text/javascript"></script>
+        <style type="text/css">
+        .rich_media_content {
+            min-height: 10px;
+        }
+        
+        form {
+            display: block !important;
+        }
+        </style>
+        <!--otherNav star-->
+        <div class="m15"></div>
+        <div class="other-nav">
+            <div class="layout zhenFw other-nav-main">
+                <div class="otm-item out border-bottom-gray">
+                    <div class="otm-item-left in">
+                        <span>热门分类</span>
+                    </div>
+                    <div class="otm-item-right in">
+                        <?php foreach ($this->sys_cms_sites->getWhereList('',10,5,' order by id desc') as $key => $value) {?>
+                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" >
+                            <?=$value['title']?>
+                        </a>
+                        <?php }?>
+                    </div>
+                </div>
+                <div class="otm-item out border-bottom-gray">
+                    <div class="otm-item-left in">
+                        <span>热门公众号</span>
+                    </div>
+                    <div class="otm-item-right in">
+                        <?php foreach ($this->sys_cms_sites->getWhereList('',10,5,' order by id desc') as $key => $value) {?>
+                        <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" >
+                            <?=$value['title']?>
+                        </a>
+                        <?php }?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--otherNav stop-->
+        <div class="m20"></div>
+        <!--footer star-->
+        <div class="footer">
+            <div class="layout zhenFw">
+                <p>© 2015</p>
+            </div>
+        </div>
+        <!--footer stop-->
+    </div>
+</body>
 
-<!--ad end-->
+</html>

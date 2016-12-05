@@ -212,7 +212,7 @@ class Pagercat {
            if(isset($this->classid)){
               $this->_cid = $this->classid;
            }else{
-              $this->_cid = $_GET['cid'];
+              $this->_cid = isset($_GET['cid']) ? $_GET['cid'] : '';
            }
             //解决获取不到静态地址出现的问题
             if(empty( $this->_cid)){

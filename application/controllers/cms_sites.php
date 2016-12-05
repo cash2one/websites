@@ -184,7 +184,7 @@ class Cms_sites extends  Cms_Controller {
         $this->load->library('parser');
         $muban = $domain_config['webtype']=='pc' ? $domain_config['muban'] : $domain_config['mobile_tmpl'];
         $data = array(
-			'htitle' => $domain_config['index_title'],
+			'htitle' => $catname.'-'.$domain_config['index_title'],
 			'sitename' => $domain_config['sitename'],
 			'sitebname' => $domain_config['sitename'],
 			'domainname' => $domain_config['sitename'],
@@ -209,6 +209,74 @@ class Cms_sites extends  Cms_Controller {
 
      public function view(){
      	echo 'view';
+     	$catename = $_GET['catename'];
+     	$catename= str_replace('/', '', $catename);
+		$ipage = isset($_GET["ipage"]) ? intval($_GET["ipage"]):1;
+		$id = $_GET['id'];
+		echo ' id:',$id;
+		$this->load->model('sys_cms_content');
+		$this->load->model('sys_cms_category');
+		//根据id找对应的数据表
+		$tableindex = $this->get_hash_table($id);
+        $this->load->library('parser');
+        $id = $_GET['id'];
+        $data_content = array();
+        if($id){
+        	$data_content = $this->sys_cms_content->getContentById($id);
+        	//根据索引读取文章内容
+        	$content = $this->sys_cms_content->getDataContentById($tableindex,$id);
+        	if(empty($content)){
+        		show_404();
+        	}else{
+        		$data_content['content'] = $content['content'];
+        	}
+        }else{
+        	show_404();
+        }
+		
+		$domain_config = $this->config->item('domain_config');
+		//网站标题、皮肤、关键词、描述等设置
+		$mypostion = '<a href="'.$domain_config['pcdomain'].'">'.$domain_config['sitename'].'</a>&nbsp>&nbsp'.
+		 			 '<a href="'.$domain_config['pcdomain'].'/'.$catename.'/'.'">'.$catename.'</a>&nbsp>&nbsp'.
+		 			 '<a>正文</a>';
+
+		//上、下篇
+		$curdomain=$domain_config['webtype']=='pc' ? $domain_config['pcdomain'] : $domain_config['mdomain'];
+		$content_per = $this->sys_cms_content->getPer($id,$curdomain);
+		$content_next = $this->sys_cms_content->getNext($id,$curdomain);
+		print_r($data_content);
+
+     	$muban = $domain_config['webtype']=='pc' ? $domain_config['muban'] : $domain_config['mobile_tmpl'];
+        $data = array(
+        	'data_content' => $data_content,
+			'htitle' => $data_content['title'].'-'.$domain_config['index_title'],
+			'sitename' => $domain_config['sitename'],
+			'sitebname' => $domain_config['sitename'],
+			'domainname' => $domain_config['sitename'],
+			'skin' => base_url().'skin/'.$muban,
+			'sitekeywords' => $domain_config['index_key'],
+			'sitedescription' => $domain_config['detail_seo_title'],
+			'murl' => $domain_config['mdomain'],
+			'pcurl' => $domain_config['pcdomain'],
+			'zhanzhangtong' => $domain_config['tongji'],
+			'catename' => $catename,
+			'catname' => $catname,
+			'catkeys' => $catkeys,
+			'catdescription' => $catdescription,
+		);
+		$tmpl= '../../templates/'.$muban.'/content.html';
+
+		$this->load->view($tmpl,$data);
+
+
      }
+
+    public function get_hash_table($id){   
+		 $tableindex = ceil($id/100000);
+		 if($tableindex<10){
+		 	$tableindex = '0'.$tableindex;
+		 }
+		 return $tableindex;   
+	}  
 
  }
