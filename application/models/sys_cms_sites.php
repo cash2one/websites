@@ -51,7 +51,6 @@ class Sys_cms_sites extends MY_Model {
     		$limit = ' limit '.$offset.','.$limit;
     	}
 		$sql = "select * from ".$this->_table." where id>1 ".$where." ".$order_by.$limit;
-		echo 'sql:',$sql;
 		$res = $this->db->query($sql)->result_array();
 		foreach ($res as $key => $arr) {
 			if(array_key_exists($arr['cid'], $this->_domainconfig['cat_map'])){
@@ -131,5 +130,72 @@ class Sys_cms_sites extends MY_Model {
 		}
 		return $str_next;
 	}
+
+	public function aboutbyfenci($id,$limit=10,$offset=0,$title=''){
+		$wid=isset($this->_domainconfig['wid']) ? $this->_domainconfig['wid'] : 0;
+		$where='';	
+		if($wid){
+			$where .= ' and wid='.$wid.' ';
+		}
+		if($limit=='all'){
+    		$limit = '';
+    	}
+    	else
+    	{
+    		$limit = ' limit '.$offset.','.$limit;
+    	}
+
+		if($title){
+			$fen_title = mb_substr($title,0,2);
+			// $fen_title = $this->cn_substr_utf8($title,2);
+			$where .= " and title like '".$fen_title."%' ";
+			$len_title = ceil(strlen($title)/3);
+			$fen_title2 = mb_substr($title,$len_title-4,2);
+			if($fen_title2){
+				$where .= " or title like '".$fen_title2."%' ";
+			}
+		}
+		
+		$sql = "select id,cid,catname,catename,title,headimage from sys_cms_content where id <> ".$id." ".$where." order by id desc ".$limit;
+		$res = $this->db->query($sql)->result_array();
+		foreach ($res as $key => $arr) {
+			if(array_key_exists($arr['id'], $this->_domainconfig['cat_map'])){
+				$catarr = $this->_domainconfig['cat_map'][$arr['id']];
+				$res[$key]['catname'] = $catarr['name'];
+				$res[$key]['catename'] = $catarr['pinyin'];
+			}
+		}
+
+		return $res;
+	}
+
+	public function downlist($id,$limit){
+		$wid=isset($this->_domainconfig['wid']) ? $this->_domainconfig['wid'] : 0;
+		$sql = 'select id,cid,catname,catename,title,headimage,buildtime,onclick from sys_cms_content where  wid='.$wid.' and id < '.$id.' order by id desc limit '.$limit;
+		$res = $this->db->query($sql)->result_array();
+		foreach ($res as $key => $arr) {
+			if(array_key_exists($arr['id'], $this->_domainconfig['cat_map'])){
+				$catarr = $this->_domainconfig['cat_map'][$arr['id']];
+				$res[$key]['catname'] = $catarr['name'];
+				$res[$key]['catename'] = $catarr['pinyin'];
+			}
+		}
+		return $res;
+	}
+
+	public function uplist($id,$limit){
+		$wid=isset($this->_domainconfig['wid']) ? $this->_domainconfig['wid'] : 0;
+		$sql = 'select id,cid,catname,catename,title,headimage,buildtime,onclick from sys_cms_content where  wid='.$wid.' and id > '.$id.' order by id asc limit '.$limit;
+		$res = $this->db->query($sql)->result_array();
+		foreach ($res as $key => $arr) {
+			if(array_key_exists($arr['id'], $this->_domainconfig['cat_map'])){
+				$catarr = $this->_domainconfig['cat_map'][$arr['id']];
+				$res[$key]['catname'] = $catarr['name'];
+				$res[$key]['catename'] = $catarr['pinyin'];
+			}
+		}
+		return $res;
+	}
+
 
 } 

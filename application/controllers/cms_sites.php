@@ -226,7 +226,6 @@ class Cms_sites extends  Cms_Controller {
         }
 		
 		$domain_config = $this->config->item('domain_config');
-		print_r($domain_config);
 		//网站标题、皮肤、关键词、描述等设置
 		$mypostion = '<a href="'.$domain_config['pcdomain'].'">'.$domain_config['sitename'].'</a>&nbsp>&nbsp'.
 		 			 '<a href="'.$domain_config['pcdomain'].'/'.$catename.'/'.'">'.$catename.'</a>&nbsp>&nbsp'.

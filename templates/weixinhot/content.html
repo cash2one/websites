@@ -132,11 +132,13 @@ var cpro_id="u2493488";
                                 <div class="main-right in">
                                         <div class="xixi-box">
                                                 <div class="hd">
-                                                        <h3><a target="_blank" href="<?=$domainname?>/cat-31.html" title="热搜榜" >热搜榜</a></h3>
+                                                        <h3><a target="_blank" href="<?=$domainname?>/cat-31.html" title="热搜榜" >相关</a></h3>
                                                         <span></span>
                                                 </div>
                                                 <div class="bd tagbox out">
-                         <?php foreach ($this->sys_cms_sites->getWhereList('',10,5,' order by id desc') as $key => $value) {?>
+                                             <?php
+                                                    foreach ($this->sys_cms_sites->aboutbyfenci($data_content['id'],10,0,''.$data_content['title'].'') as $key => $value) {
+                                              ?>
                         <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" class="in">
                             <?=$value['title']?>
                         </a>
@@ -145,12 +147,14 @@ var cpro_id="u2493488";
                                         </div>
                                         <div class="xixi-box">
                                                 <div class="hd">
-                                                        <h3>最新内容</h3>
+                                                        <h3>前几条</h3>
                                                         <span></span>
                                                 </div>
                                                 <div class="bd">
                                                         <ul>
-                         <?php foreach ($this->sys_cms_sites->getWhereList('',10,0,' order by id desc') as $key => $value) {?>
+                        <?php 
+                               foreach ($this->sys_cms_sites->downlist($data_content['id'],5)  as $key => $value) {
+                        ?>
                                                                 <li class="out">
                                                                         <p class="txt in">
                                                                                 <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
@@ -169,12 +173,14 @@ var cpro_id="u2493488";
                                         </div>
                                         <div class="xixi-box">
                                                 <div class="hd">
-                                                        <h3><a target="_blank" href="<?=$domainname?>/cat-21.html" title="两性健康" >两性健康</a></h3>
+                                                        <h3><a target="_blank" href="<?=$domainname?>/cat-21.html" title="两性健康" >后几条</a></h3>
                                                         <span></span>
                                                 </div>
                                                 <div class="bd">
                                                         <ul>
-                                                         <?php foreach ($this->sys_cms_sites->getWhereList('',10,10,' order by id desc') as $key => $value) {?>
+                                  <?php 
+                               foreach ($this->sys_cms_sites->uplist($data_content['id'],5)  as $key => $value) {
+                        ?>
                                                                 <li class="out">
                                                                         <p class="txt in">
                                                                                 <a target="_blank" href="<?=$pcurl?>/<?=$value['catename']?>/<?=$value['id']?>.html" title="<?=$value['title']?>" target="_blank"><?=$value['title']?></a>
