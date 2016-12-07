@@ -56,8 +56,20 @@ class Cms_sites extends  Cms_Controller {
 		// $url='http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]; 
 		// echo dirname($url);
 
+
 		$domain_config = $this->config->item('domain_config');
-		$this->config->load('config_site', TRUE);
+
+		//判断有没有缓存
+		$indexkey = 'index_'.$domain_config['wid'];
+		if($domain_config['cache']){
+			$this->load->driver('cache', array('adapter' => 'redis'));
+			$index_content = $this->cache->get($indexkey);
+			if($index_content)
+			{
+				echo $index_content;
+				exit;
+			}
+		}
 
         $this->load->library('parser');
         $muban = $domain_config['webtype']=='pc' ? $domain_config['muban'] : $domain_config['mobile_tmpl'];
@@ -79,7 +91,6 @@ class Cms_sites extends  Cms_Controller {
 		//缓存设置
 		if($domain_config['cache']){
 			$this->load->driver('cache', array('adapter' => 'redis'));
-			$indexkey = 'index_'.$domain_config['wid'];
 			$index_content = $this->cache->get($indexkey);
 			if (!$index_content)
 			{
@@ -127,12 +138,28 @@ class Cms_sites extends  Cms_Controller {
      	}
 
 
+
 		//分页，查询列表设置
 		$this->load->model('sys_cms_content');
         $currentPage = 1;
 		if(isset($_GET['page']) && $_GET['page'] != ''){
 			$currentPage = $_GET['page'];
 		}
+
+		//判断有没有缓存
+		$indexkey = 'list_'.$catid.'_'.$domain_config['wid'];
+		if($currentPage==1){
+			if($domain_config['cache']){
+				$this->load->driver('cache', array('adapter' => 'redis'));
+				$index_content = $this->cache->get($indexkey);
+				if($index_content)
+				{
+					echo $index_content;
+					exit;
+				}
+			}
+		}
+
 
         $pagesize=2;
         if(isset($_GET['page']) && $_GET['page'] != ''){
@@ -195,8 +222,25 @@ class Cms_sites extends  Cms_Controller {
 		);
 		$tmpl= '../../templates/'.$muban.'/list.html';
 
-		$this->load->view($tmpl,$data);
-		// $this->parser->parse($tmpl, $data);
+		//缓存设置
+		if($domain_config['cache']){
+			if($currentPage==1){
+				$this->load->driver('cache', array('adapter' => 'redis'));
+				$index_content = $this->cache->get($indexkey);
+				if (!$index_content)
+				{
+				 $index_content= $this->load->view($tmpl,$data,true);
+				 // Save into the cache for 5 minutes
+				 $this->cache->save($indexkey,$index_content, 30);
+				}
+				echo $index_content;
+			}else{
+				$this->load->view($tmpl,$data);
+			}
+
+		}else{
+			$this->load->view($tmpl,$data);
+		}
 
      }
 
@@ -205,12 +249,25 @@ class Cms_sites extends  Cms_Controller {
      	$catename= str_replace('/', '', $catename);
 		$ipage = isset($_GET["ipage"]) ? intval($_GET["ipage"]):1;
 		$id = $_GET['id'];
+		$domain_config = $this->config->item('domain_config');
+
+		//判断有没有缓存
+		$indexkey = 'view_'.$id.'_'.$domain_config['wid'];
+		if($domain_config['cache']){
+			$this->load->driver('cache', array('adapter' => 'redis'));
+			$index_content = $this->cache->get($indexkey);
+			if($index_content)
+			{
+				echo $index_content;
+				exit;
+			}
+		}
+
 		$this->load->model('sys_cms_content');
 		$this->load->model('sys_cms_category');
 		//根据id找对应的数据表
 		$tableindex = $this->get_hash_table($id);
         $this->load->library('parser');
-        $id = $_GET['id'];
         $data_content = array();
         if($id){
         	$data_content = $this->sys_cms_content->getContentById($id);
@@ -225,7 +282,7 @@ class Cms_sites extends  Cms_Controller {
         	show_404();
         }
 		
-		$domain_config = $this->config->item('domain_config');
+		
 		//网站标题、皮肤、关键词、描述等设置
 		$mypostion = '<a href="'.$domain_config['pcdomain'].'">'.$domain_config['sitename'].'</a>&nbsp>&nbsp'.
 		 			 '<a href="'.$domain_config['pcdomain'].'/'.$catename.'/'.'">'.$catename.'</a>&nbsp>&nbsp'.
@@ -255,8 +312,21 @@ class Cms_sites extends  Cms_Controller {
 		);
 		$tmpl= '../../templates/'.$muban.'/content.html';
 
-		$this->load->view($tmpl,$data);
+		//缓存设置
+		if($domain_config['cache']){
+			$this->load->driver('cache', array('adapter' => 'redis'));
+			$index_content = $this->cache->get($indexkey);
+			if (!$index_content)
+			{
+			 $index_content= $this->load->view($tmpl,$data,true);
+			 // Save into the cache for 5 minutes
+			 $this->cache->save($indexkey,$index_content,3600);
+			}
+			echo $index_content;
 
+		}else{
+			$this->load->view($tmpl,$data);
+		}
 
      }
 
