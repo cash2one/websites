@@ -1,37 +1,37 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2016-04-09 14:37:51
+<?php /* Smarty version Smarty-3.1.18, created on 2016-12-08 22:58:21
          compiled from "application\views\stat_user.html" */ ?>
-<?php /*%%SmartyHeaderCode:93555708a33f146cf2-36235341%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:113135849750d43a415-00076923%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '320c9859e416357bd04cb54ec84b5eb60bcf3d9f' => 
     array (
       0 => 'application\\views\\stat_user.html',
-      1 => 1458201760,
+      1 => 1480611411,
       2 => 'file',
     ),
     '3c596ebb474f18116c621d13434576de5f901b18' => 
     array (
       0 => 'application\\views\\base_content.html',
-      1 => 1458201769,
+      1 => 1480611411,
       2 => 'file',
     ),
     'f165530f262ead3194e3da74319d75271efdfbb5' => 
     array (
       0 => 'application\\views\\base.html',
-      1 => 1458201760,
+      1 => 1480611411,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '93555708a33f146cf2-36235341',
+  'nocache_hash' => '113135849750d43a415-00076923',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_5708a33f2877b7_18197555',
+  'unifunc' => 'content_5849750d68d883_99869427',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5708a33f2877b7_18197555')) {function content_5708a33f2877b7_18197555($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5849750d68d883_99869427')) {function content_5849750d68d883_99869427($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />

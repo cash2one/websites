@@ -1,43 +1,43 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2016-11-23 17:15:21
+<?php /* Smarty version Smarty-3.1.18, created on 2016-12-08 23:06:42
          compiled from "application\views\sys_cms_setting.html" */ ?>
-<?php /*%%SmartyHeaderCode:889458355e297ac537-51250219%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1800958497702088a09-96850672%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '7de7cb85715d3e885c58fcd642c29596f3753118' => 
     array (
       0 => 'application\\views\\sys_cms_setting.html',
-      1 => 1461244192,
+      1 => 1480611411,
       2 => 'file',
     ),
     '3c596ebb474f18116c621d13434576de5f901b18' => 
     array (
       0 => 'application\\views\\base_content.html',
-      1 => 1458201769,
+      1 => 1480611411,
       2 => 'file',
     ),
     'f165530f262ead3194e3da74319d75271efdfbb5' => 
     array (
       0 => 'application\\views\\base.html',
-      1 => 1458201760,
+      1 => 1480611411,
       2 => 'file',
     ),
     '8eb80540d977b61863eaa84b9076238b5bc9835e' => 
     array (
       0 => 'application\\views\\inc_form_result.html',
-      1 => 1458201760,
+      1 => 1480611411,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '889458355e297ac537-51250219',
+  'nocache_hash' => '1800958497702088a09-96850672',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_58355e2aaa64f9_38839133',
+  'unifunc' => 'content_5849770222e4a3_86806198',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58355e2aaa64f9_38839133')) {function content_58355e2aaa64f9_38839133($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5849770222e4a3_86806198')) {function content_5849770222e4a3_86806198($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -159,8 +159,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <form class="form-horizontal" id="validation-form" method="post" role="form">
     <?php /*  Call merged included template "inc_form_result.html" */
 $_tpl_stack[] = $_smarty_tpl;
- $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate("inc_form_result.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0, '889458355e297ac537-51250219');
-content_58355e2a09fc24_86910350($_smarty_tpl);
+ $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate("inc_form_result.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0, '1800958497702088a09-96850672');
+content_5849770219a094_06865430($_smarty_tpl);
 $_smarty_tpl = array_pop($_tpl_stack); 
 /*  End of included template "inc_form_result.html" */?>
     <div class="form-group">
@@ -505,9 +505,9 @@ $_smarty_tpl = array_pop($_tpl_stack);
 </body>
 </html>
 <?php }} ?>
-<?php /* Smarty version Smarty-3.1.18, created on 2016-11-23 17:15:22
+<?php /* Smarty version Smarty-3.1.18, created on 2016-12-08 23:06:42
          compiled from "application\views\inc_form_result.html" */ ?>
-<?php if ($_valid && !is_callable('content_58355e2a09fc24_86910350')) {function content_58355e2a09fc24_86910350($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['error']->value)) {?>
+<?php if ($_valid && !is_callable('content_5849770219a094_06865430')) {function content_5849770219a094_06865430($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['error']->value)) {?>
 <div class="alert alert-danger">
     <strong>
         <i class="icon-remove"></i>

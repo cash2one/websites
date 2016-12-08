@@ -1,6 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $config['cache'] = 0;
+$config['cnzz'] = '<script src="https://s11.cnzz.com/';
 $config['allhost']=array(
   'sunnycms.com' =>array(
     'wid' => 4003,

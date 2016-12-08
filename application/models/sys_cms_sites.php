@@ -198,4 +198,19 @@ class Sys_cms_sites extends MY_Model {
 	}
 
 
+	public function getMaxGroupid(){
+		$sql = 'select max(id) as `id` from sys_cms_group';
+		$res = $this->db->query($sql)->result_array();
+		$wid = isset($res) ? $res[0]['id'] : 1;
+		return $wid;
+	}	
+
+	public function getMaxWid(){
+		$sql = 'select max(id) as `id` from sys_cms_website';
+		$res = $this->db->query($sql)->result_array();
+		$wid = isset($res) ? $res[0]['id'] : 1;
+		return $wid;
+	}
+
+
 } 

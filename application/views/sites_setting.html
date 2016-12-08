@@ -1,0 +1,204 @@
+{%extends file="base_content.html"%}
+{%block name="breadcrumb"%}
+<li><a href="index.php?c=cms_setting">生成配置文件</a></li>
+<li class="active">编辑</li>
+{%/block%}
+
+{%block name="content"%}
+
+<script src="{%dirname(__FILE__)%}/skin/weixin/js/jquery-1.8.3.min.js"></script>
+
+
+<form class="form-horizontal" id="validation-form" method="post" role="form">
+    {%include file="inc_form_result.html"%}
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="groupid">分组ID:</label>
+
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="groupid" id="groupid" class="col-xs-12 col-sm-6" value="{%$setting.groupid|default:'1'%}" />
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="wid">WID:</label>
+
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="wid" id="wid" class="col-xs-12 col-sm-6" value="{%$setting.wid|default:'1'%}" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="domainname">域名:</label>
+
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <textarea name="domainname" id="domainname" class="col-xs-24 col-sm-6">{%$setting.domainname|default:''%}</textarea>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="space-2"></div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="pcskin">PC皮肤:</label>
+
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="pcskin" id="pcskin" class="col-xs-12 col-sm-6"
+                        value="'laonanren-nc','blbhxy-nc','kang-nc'" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="space-2"></div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="mskin">M皮肤:</label>
+
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="mskin" id="mskin" class="col-xs-12 col-sm-6"
+                        value="'mlaonanren-nc','mblbhxy-nc','mkang-nc'" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="hr hr-dotted"></div>
+
+
+    <div class="space-2"></div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="cnzz">站长统计</label>
+
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+             <textarea name="cnzz" id="cnzz" class="col-xs-12 col-sm-6">{%$setting.cnzz|default:''%}</textarea>
+            </div>
+        </div>
+    </div>
+
+
+  
+
+    <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-info" type="submit">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                提交
+            </button>
+
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn" href="index.php?c=cms_contentMan">
+                <i class="ace-icon fa fa-undo bigger-110"></i>
+                返回
+            </a>
+        </div>
+    </div>
+</form>
+
+
+
+{%/block%}
+
+{%block name="js"%}
+<script>
+      $(function(){
+
+          jQuery.validator.addMethod("username", function (value, element) {
+              return this.optional(element) || /^[_a-zA-Z0-9]+$/.test(value);
+          }, "账号只能包含数字，字母，下划线");
+          $('#validation-form').validate({
+              errorElement: 'div',
+              errorClass: 'help-block',
+              focusInvalid: false,
+              rules: {
+                  email: {
+                      required: true,
+                      email:true
+                  },
+                  password: {
+                  {%if $smarty.request.m=='add'%}required: true,{%/if%}
+                      minlength: 6,
+                      maxlength: 15
+                  },
+
+                  username: {
+                      required: true,
+                      minlength: 3,
+                      maxlength: 15,
+                      username: 'required'
+                  }
+                  ,
+
+                  truename: {
+                      required: true,
+                      minlength: 2,
+                      maxlength: 15
+                  }
+              },
+
+              messages: {
+                  email: {
+                      required: "请输入邮箱",
+                      email: "请输入正确邮箱格式"
+                  },
+                  password: {
+                      required: "请输入密码",
+                      minlength: "密码需要6-12个字符",
+                      maxlength: "密码需要6-15个字符"
+                  },
+                  username: {
+                      required: "请输入账号",
+                      minlength: "账号需要3-15个字符",
+                      maxlength: "账号需要3-15个字符"
+                  },
+                  truename: {
+                      required: "请输入姓名",
+                      minlength: "姓名需要2-15个字符",
+                      maxlength: "姓名需要2-15个字符"
+                  }
+              },
+
+
+
+              highlight: function (e) {
+                  $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+              },
+
+              success: function (e) {
+                  $(e).closest('.form-group').removeClass('has-error');//.addClass('has-info');
+                  $(e).remove();
+              },
+
+              errorPlacement: function (error, element) {
+                  if(element.is(':checkbox') || element.is(':radio')) {
+                      var controls = element.closest('div[class*="col-"]');
+                      if(controls.find(':checkbox,:radio').length > 1) controls.append(error);
+                      else error.insertAfter(element.nextAll('.lbl:eq(0)').eq(0));
+                  }
+                  else if(element.is('.select2')) {
+                      error.insertAfter(element.siblings('[class*="select2-container"]:eq(0)'));
+                  }
+                  else if(element.is('.chosen-select')) {
+                      error.insertAfter(element.siblings('[class*="chosen-container"]:eq(0)'));
+                  }
+                  else error.insertAfter(element.parent());
+              }
+
+
+          });
+      });
+</script>
+{%/block%}

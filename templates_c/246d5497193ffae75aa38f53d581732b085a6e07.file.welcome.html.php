@@ -1,37 +1,37 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2016-11-23 17:14:09
+<?php /* Smarty version Smarty-3.1.18, created on 2016-12-09 00:48:14
          compiled from "application\views\welcome.html" */ ?>
-<?php /*%%SmartyHeaderCode:2848658355de1f06939-75771571%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:862558498ece11a943-35515451%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '246d5497193ffae75aa38f53d581732b085a6e07' => 
     array (
       0 => 'application\\views\\welcome.html',
-      1 => 1458201760,
+      1 => 1480611411,
       2 => 'file',
     ),
     '3c596ebb474f18116c621d13434576de5f901b18' => 
     array (
       0 => 'application\\views\\base_content.html',
-      1 => 1458201769,
+      1 => 1480611411,
       2 => 'file',
     ),
     'f165530f262ead3194e3da74319d75271efdfbb5' => 
     array (
       0 => 'application\\views\\base.html',
-      1 => 1458201760,
+      1 => 1480611411,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2848658355de1f06939-75771571',
+  'nocache_hash' => '862558498ece11a943-35515451',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_58355de2cf76c1_80077816',
+  'unifunc' => 'content_58498ece1cef88_47338462',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58355de2cf76c1_80077816')) {function content_58355de2cf76c1_80077816($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_58498ece1cef88_47338462')) {function content_58498ece1cef88_47338462($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
